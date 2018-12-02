@@ -1,2 +1,2 @@
-# py-graphit.github.io
-A python graph based data modeling library
+# graphit.github.io
+A Python graph based data modeling library
