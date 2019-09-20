@@ -1,0 +1,11 @@
+# Distribution / packaging
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# JetBrains PyCharm
+.idea
+
+# OS specific files
+.DS_Store

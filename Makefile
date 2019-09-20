@@ -6,7 +6,7 @@
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build-3.6
 SOURCEDIR     = source
-BUILDDIR      = docs
+BUILDDIR      = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,3 +18,10 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+	# Copy compiled files to root for rendering on github.io pages
+	cp -f ./$(BUILDDIR)/html/*.html .
+	cp -f ./$(BUILDDIR)/html/*.js .
+	cp -f ./$(BUILDDIR)/html/.nojekyll .
+	cp -fr ./$(BUILDDIR)/html/_sources .
+	cp -fr ./$(BUILDDIR)/html/_static .
