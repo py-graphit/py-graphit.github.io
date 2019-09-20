@@ -33,6 +33,8 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'sphinx.ext.githubpages',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -43,6 +45,18 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# Tell sphinx what the primary language being documented is.
+primary_domain = 'py'
+
+# Tell sphinx what the pygments highlight language should be.
+highlight_language = 'py'
+pygments_style = 'sphinx'
+
+todo_include_todos = False
+intersphinx_mapping = {
+    'python2': ('https://docs.python.org/2', None),
+    'python': ('https://docs.python.org/3', None),
+}
 
 # -- Options for HTML output -------------------------------------------------
 
