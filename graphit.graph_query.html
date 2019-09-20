@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit.graph_query package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_storage_drivers package" href="graphit.graph_storage_drivers.html" />
+    <link rel="prev" title="graphit.graph_model_classes package" href="graphit.graph_model_classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graphit.html">graphit API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graphit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">graphit.graph_query package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_query.graph_query">graphit.graph_query.graph_query module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_query.query_xpath">graphit.graph_query.query_xpath module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_query">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="graphit.html">graphit package</a> &raquo;</li>
+        
+      <li>graphit.graph_query package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.graph_query.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-graph-query-package">
+<h1>graphit.graph_query package<a class="headerlink" href="#graphit-graph-query-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-graphit.graph_query.graph_query">
+<span id="graphit-graph-query-graph-query-module"></span><h2>graphit.graph_query.graph_query module<a class="headerlink" href="#module-graphit.graph_query.graph_query" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="graphit.graph_query.graph_query.GraphQuery">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_query.graph_query.</code><code class="sig-name descname">GraphQuery</code><span class="sig-paren">(</span><em class="sig-param">sep='.'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.graph_query.GraphQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Graph query engine</p>
+<p>Query mini language:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>. = positional argument as either:</dt><dd><p>key = search at rootlevel
+.key = search at current node
+..key = search at any level</p>
+</dd>
+<dt>{} = node or edge argument based search:</dt><dd><p>‘type’: seach in ‘node’ or ‘edge’
+‘attr’: attribute name to match</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="method">
+<dt id="graphit.graph_query.graph_query.GraphQuery.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">querystring</em>, <em class="sig-param">nid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.graph_query.GraphQuery.query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_query.graph_query.GraphQuery.query_edges">
+<code class="sig-name descname">query_edges</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">pos='R'</em>, <em class="sig-param">attr='key'</em>, <em class="sig-param">key=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.graph_query.GraphQuery.query_edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_query.graph_query.GraphQuery.query_nodes">
+<code class="sig-name descname">query_nodes</code><span class="sig-paren">(</span><em class="sig-param">nid</em>, <em class="sig-param">pos='R'</em>, <em class="sig-param">attr='key'</em>, <em class="sig-param">key=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.graph_query.GraphQuery.query_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_query.query_xpath">
+<span id="graphit-graph-query-query-xpath-module"></span><h2>graphit.graph_query.query_xpath module<a class="headerlink" href="#module-graphit.graph_query.query_xpath" title="Permalink to this headline">¶</a></h2>
+<p>file: query_xpath.py</p>
+<p>XPath based query of Axis based graphs.</p>
+<dl class="class">
+<dt id="graphit.graph_query.query_xpath.XpathExpressionEvaluator">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_query.query_xpath.</code><code class="sig-name descname">XpathExpressionEvaluator</code><span class="sig-paren">(</span><em class="sig-param">sep='/'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.query_xpath.XpathExpressionEvaluator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="graphit.graph_query.query_xpath.XpathExpressionEvaluator.parse_attr">
+<em class="property">static </em><code class="sig-name descname">parse_attr</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.query_xpath.XpathExpressionEvaluator.parse_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse XPath attribute definitions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_query.query_xpath.XpathExpressionEvaluator.parse_xpath_expression">
+<code class="sig-name descname">parse_xpath_expression</code><span class="sig-paren">(</span><em class="sig-param">expression</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.query_xpath.XpathExpressionEvaluator.parse_xpath_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_query.query_xpath.XpathExpressionEvaluator.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param">expression</em>, <em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_query.query_xpath.XpathExpressionEvaluator.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve XPath expression</p>
+<p>Always returns a graph that can be empty if the XPath evaluation
+failed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression</strong> (<em>:py:str</em>) – XPath expression to evaluate</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:GraphAxis</em>) – GraphAxis instance to apply XPath evaluation on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph nodes or attributes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_query">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit.graph_query" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_storage_drivers.html" class="btn btn-neutral float-right" title="graphit.graph_storage_drivers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graphit.graph_model_classes.html" class="btn btn-neutral float-left" title="graphit.graph_model_classes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>

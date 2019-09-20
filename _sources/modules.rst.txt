@@ -1,0 +1,7 @@
+graphit
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   graphit

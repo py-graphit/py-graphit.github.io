@@ -1,18 +1,25 @@
-Welcome to Graphit's documentation!
-===================================
+Graphit
+======
 
-.. automodule:: graphit
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Graphit is a graph based data modeling library written in Python.
+It marries three powerful concepts:
+
+ - A graph library similar to `NetworkX <https://networkx.github.io>`_
+ - A Python Object Relation Mapper
+ - A Python native API
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
 
-Indices and tables
-==================
+   installation
+   graphit API reference <graphit>
+   tutorials
+
+License
+-------
+
+Graphit is licensed under the Apache License v2.0.
+
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`

@@ -1,0 +1,1869 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_algorithms package" href="graphit.graph_algorithms.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">graphit API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>graphit package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-package">
+<h1>graphit package<a class="headerlink" href="#graphit-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_algorithms.html#module-graphit.graph_algorithms.centrality">graphit.graph_algorithms.centrality module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_algorithms.html#module-graphit.graph_algorithms.connectivity">graphit.graph_algorithms.connectivity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_algorithms.html#module-graphit.graph_algorithms.path_traversal">graphit.graph_algorithms.path_traversal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_algorithms.html#module-graphit.graph_algorithms.shortest_path">graphit.graph_algorithms.shortest_path module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_algorithms.html#module-graphit.graph_algorithms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_axis.html#module-graphit.graph_axis.graph_axis_class">graphit.graph_axis.graph_axis_class module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_axis.html#module-graphit.graph_axis.graph_axis_methods">graphit.graph_axis.graph_axis_methods module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_axis.html#module-graphit.graph_axis.graph_axis_mixin">graphit.graph_axis.graph_axis_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_axis.html#module-graphit.graph_axis">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_combinatorial.html#module-graphit.graph_combinatorial.graph_setlike_operations">graphit.graph_combinatorial.graph_setlike_operations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_combinatorial.html#module-graphit.graph_combinatorial.graph_split_join_operations">graphit.graph_combinatorial.graph_split_join_operations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_combinatorial.html#module-graphit.graph_combinatorial.graph_update_operations">graphit.graph_combinatorial.graph_update_operations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_combinatorial.html#module-graphit.graph_combinatorial">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_adl_format">graphit.graph_io.io_adl_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_cwl_format">graphit.graph_io.io_cwl_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_dot_format">graphit.graph_io.io_dot_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_flattened_data_format">graphit.graph_io.io_flattened_data_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_gexf_format">graphit.graph_io.io_gexf_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#graphit-graph-io-io-gml-format-module">graphit.graph_io.io_gml_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_helpers">graphit.graph_io.io_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_jgf_format">graphit.graph_io.io_jgf_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_json_format">graphit.graph_io.io_json_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_jsonschema_format">graphit.graph_io.io_jsonschema_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_jsonschema_format_drafts">graphit.graph_io.io_jsonschema_format_drafts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_lgf_format">graphit.graph_io.io_lgf_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_lgr_format">graphit.graph_io.io_lgr_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_p2g_format">graphit.graph_io.io_p2g_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_pdb_format">graphit.graph_io.io_pdb_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_pgf_format">graphit.graph_io.io_pgf_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_pydata_format">graphit.graph_io.io_pydata_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_tgf_format">graphit.graph_io.io_tgf_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_web_format">graphit.graph_io.io_web_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_xml_format">graphit.graph_io.io_xml_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io.io_yaml_format">graphit.graph_io.io_yaml_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_io.html#module-graphit.graph_io">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_datetime">graphit.graph_model_classes.model_datetime module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_dictionary">graphit.graph_model_classes.model_dictionary module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_email">graphit.graph_model_classes.model_email module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_files">graphit.graph_model_classes.model_files module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_identifiers">graphit.graph_model_classes.model_identifiers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_networking">graphit.graph_model_classes.model_networking module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_openapi">graphit.graph_model_classes.model_openapi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes.model_user">graphit.graph_model_classes.model_user module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_model_classes.html#module-graphit.graph_model_classes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_query.html#module-graphit.graph_query.graph_query">graphit.graph_query.graph_query module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_query.html#module-graphit.graph_query.query_xpath">graphit.graph_query.query_xpath module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_query.html#module-graphit.graph_query">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_storage_drivers.html#module-graphit.graph_storage_drivers.graph_arraystorage_driver">graphit.graph_storage_drivers.graph_arraystorage_driver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_storage_drivers.html#module-graphit.graph_storage_drivers.graph_dictstorage_driver">graphit.graph_storage_drivers.graph_dictstorage_driver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_storage_drivers.html#module-graphit.graph_storage_drivers.graph_driver_baseclass">graphit.graph_storage_drivers.graph_driver_baseclass module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_storage_drivers.html#module-graphit.graph_storage_drivers.graph_storage_views">graphit.graph_storage_drivers.graph_storage_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_storage_drivers.html#module-graphit.graph_storage_drivers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_utils.html#module-graphit.graph_utils.graph_utilities">graphit.graph_utils.graph_utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.graph_utils.html#module-graphit.graph_utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-graphit.graph">
+<span id="graphit-graph-module"></span><h2>graphit.graph module<a class="headerlink" href="#module-graphit.graph" title="Permalink to this headline">¶</a></h2>
+<p>file: graph.py</p>
+<p>Graph base class implementing a graph based data storage with support
+for dictionary like storage of data in graph nodes and edges, rich
+graph comparison, query and traversal method and a Object Relations
+Mapper.</p>
+<dl class="simple">
+<dt>TODO: Would it be possible and useful to create support for config files</dt><dd><p>to configure a Graph and function arguments?</p>
+</dd>
+<dt>TODO: Dynamic class creation kills performance. Turning off run_node_new</dt><dd><p>or run_edge_new when creation new nodes and edges results in a
+enormous performance boost. Can we make the latter faster?</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="graphit.graph.GraphBase">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph.</code><code class="sig-name descname">GraphBase</code><span class="sig-paren">(</span><em class="sig-param">edges=None</em>, <em class="sig-param">directed=False</em>, <em class="sig-param">nodes=None</em>, <em class="sig-param">data=None</em>, <em class="sig-param">root=None</em>, <em class="sig-param">orm=None</em>, <em class="sig-param">storagedriver=&lt;function init_dictstorage_driver&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Graph base class</p>
+<p><em>Graph root</em>
+By default a graph is an undirected and non-rooted network of nodes.
+Many graph methods however require the definition of a root relative to
+which a calculation will be performed.</p>
+<p>The graph class defines a <cite>root</cite> attribute for this purpose that is
+undefined by default. It will be set automatically in the following cases:</p>
+<ul class="simple">
+<li><p>Node traversal: the first node selected (getnodes method) will be assigned
+root and traversal to <cite>child</cite> nodes will be done relative to the <cite>root</cite>.
+If multiple nodes are selected using <cite>getnodes</cite>, the root node is
+ambiguous and will be set to the node with the lowest nid.</p></li>
+</ul>
+<dl class="method">
+<dt id="graphit.graph.GraphBase.add_edge">
+<code class="sig-name descname">add_edge</code><span class="sig-paren">(</span><em class="sig-param">nd1</em>, <em class="sig-param">nd2</em>, <em class="sig-param">directed=None</em>, <em class="sig-param">node_from_edge=False</em>, <em class="sig-param">unicode_convert=True</em>, <em class="sig-param">run_edge_new=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add edge between two nodes to the graph</p>
+<p>An edge is defined as a connection between two node ID’s.
+Additional keyword arguments (kwargs) to the method are stored as edge
+metadata by the edge storage class.</p>
+<p>Edges are always directional in the way they are stored.
+An undirectional edge is thus represented by a pair of two edges
+pointing in opposite directions. Directionality is defined globally by
+the graph ‘directed’ attribute and can be overridden locally by the
+method ‘directed’ attribute.
+If undirected the two edges of the undirected pair need to share the
+same metadata attributes. This enabled by using JSON style ‘$ref’
+pointers that has one of the edges point to the data of the other.
+The pointer is transparently used by the edge storage class to get, set
+and delete attributes.</p>
+<p>After de new edge is created the edge class ‘new’ method is called once
+to allow any custom edge initiation to be performed. This feature can
+be customized by overloading the ‘new’ method in the
+NodeEdgeToolsBaseClass abstract base class.
+Calling the ‘new’ method can be disabled using the run_node_new flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nd1</strong> – first node in edge node pair. Source node in
+directed graph.</p></li>
+<li><p><strong>nd2</strong> – second node in edge node pair. Target node in
+directed graph.</p></li>
+<li><p><strong>directed</strong> (<em>:py:bool</em>) – override the graph definition for directed
+for the added edge.</p></li>
+<li><p><strong>node_from_edge</strong> (<em>:py:bool</em>) – make node for edge node id’s not in graph</p></li>
+<li><p><strong>unicode_convert</strong> (<em>:py:bool</em>) – convert string types to unicode</p></li>
+<li><p><strong>run_edge_new</strong> (<em>:py:bool</em>) – run the custom initiation method (new method) of
+the new edge once.</p></li>
+<li><p><strong>kwargs</strong> – any additional keyword arguments to be added as
+edge metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>edge ID</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.add_edges">
+<code class="sig-name descname">add_edges</code><span class="sig-paren">(</span><em class="sig-param">edges</em>, <em class="sig-param">node_from_edge=False</em>, <em class="sig-param">unicode_convert=True</em>, <em class="sig-param">run_edge_new=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.add_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add multiple edges to the graph.</p>
+<p>This is the iterable version of the add_edge methods allowing multiple
+edge additions from any iterable.
+If the iterable yields a tuple with a dictionary as third argument the
+key/value pairs of that dictionary will be added as attributes to the
+new edge along with any keyword arguments passed to the method.</p>
+<p>The latter functionality can be used to add the edges of one graph to
+those of another by using graph.edges.items() as argument to <cite>add_edges</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges</strong> (<em>Iterable of hashable objects</em>) – Objects to be added as edges to the graph</p></li>
+<li><p><strong>node_from_edge</strong> (<em>:py:bool</em>) – make node for edge node id’s not in graph</p></li>
+<li><p><strong>unicode_convert</strong> (<em>:py:bool</em>) – convert string types to unicode</p></li>
+<li><p><strong>run_edge_new</strong> (<em>:py:bool</em>) – run the custom initiation method (new method) of
+the new edges once.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of edge ids for the objects added in
+the same order as th input iterable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.add_node">
+<code class="sig-name descname">add_node</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">unicode_convert=True</em>, <em class="sig-param">run_node_new=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a node to the graph</p>
+<p>All nodes are stored using a dictionary like data structure that can be
+represented like:</p>
+<blockquote>
+<div><p>{nid: {‘_id’: auto_nid, attribute_key: attribute_value, ….}}</p>
+</div></blockquote>
+<p>‘nid’ is the primary node identifier which is either an auto-incremented
+unique integer value if <cite>Graph.data.auto_nid</cite> equals True or a custom
+value when False.</p>
+<p>If <cite>Graph.data.auto_nid</cite> equals True, the <cite>node</cite> parameter is stored as
+part of the node attributes (value in the above dict example) using the
+<cite>Graph.data.key_tag</cite> as key unless overloaded by any additional keyword
+arguments provided to the method.
+Using the key_tag and value_tag is a convenient way of storing node
+data that should be accessible using the same key. The key_tag and
+value_tag are used as default in the various dictionary style set and
+get methods of the graph, node and edge classes.</p>
+<p>When <cite>Graph.data.auto_nid</cite> equals False, the <cite>node</cite> parameter becomes
+the primary node identifier that can be any hashable object except None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With auto_nid disabled the method checks if there is a node
+with nid in the graph already. If found, a warning is logged
+and the attributes of the existing node are updated.</p>
+</div>
+<p>The node attribute dictionary contains at least the ‘_id’ attribute
+representing the unique auto-incremented integer node identifier and
+any additional keyword argument provided to the method (kwargs)</p>
+<p>After de new node is created the node class ‘new’ method is called once
+to allow any custom node initiation to be performed. This feature can
+be customized by overloading the ‘new’ method in the
+NodeEdgeToolsBaseClass abstract base class.
+Calling the ‘new’ method can be disabled using the run_node_new flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>any hashable object</em>) – object representing the node</p></li>
+<li><p><strong>unicode_convert</strong> (<em>:py:bool</em>) – convert string types to unicode</p></li>
+<li><p><strong>run_node_new</strong> (<em>:py:bool</em>) – run the custom initiation method (new method) of
+the new node once.</p></li>
+<li><p><strong>kwargs</strong> – any additional keyword arguments to be added as
+node attributes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node ID (nid)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.add_nodes">
+<code class="sig-name descname">add_nodes</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">unicode_convert=True</em>, <em class="sig-param">run_node_new=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.add_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add multiple nodes to the graph.</p>
+<p>This is the iterable version of the add_node methods allowing
+multiple node additions from any iterable.
+If the iterable yields a tuple with a dictionary as seconds
+argument the key/value pairs of that dictionary will be added
+as attributes to the new node along with any keyword arguments
+passed to the method.</p>
+<p>The latter functionality can be used to add the nodes of one
+graph to those of another by using graph.nodes.items() as
+argument to <cite>add_nodes</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<em>Iterable of hashable objects</em>) – Objects to be added as nodes to the graph</p></li>
+<li><p><strong>unicode_convert</strong> (<em>:py:bool</em>) – convert string types to unicode</p></li>
+<li><p><strong>run_node_new</strong> (<em>:py:bool</em>) – run the custom initiation method (new method) of
+the new nodes once.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of node ids for the objects added in the
+same order as th input iterable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.adjacency">
+<code class="sig-name descname">adjacency</code><a class="headerlink" href="#graphit.graph.GraphBase.adjacency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear nodes and edges in the graph.</p>
+<p>If the Graph instance represents a sub graph, only those nodes and edges
+will be removed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><em class="sig-param">deep=True</em>, <em class="sig-param">copy_view=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (deep) copy of the graph</p>
+<p>The copy method offers shallow and deep copy functionality for graphs
+similar to Pythons building copy and deepcopy functions.</p>
+<p>A shallow copy (python <cite>copy</cite>) will copy the class and its attributes
+except for the nodes, edges, orm and origin objects that are referenced.
+As such the copy will not be independent from the source Graph.</p>
+<p>Using deep=True, a deep copy (python <cite>deepcopy</cite>) will be returned that
+is a new and fully independent copy of the source Graph.
+A new graph with only those nodes and edges represented by the node and
+edge ‘views’ will be returned by default. Setting the <cite>copy_view</cite>
+attribute to True will copy the full nodes and edges data set of the
+origin graph together with the views to the new graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>deep</strong> (<em>:py:bool</em>) – return a deep copy of the Graph object</p></li>
+<li><p><strong>copy_view</strong> (<em>:py:bool</em>) – make a deep copy of the full nodes and edges
+dictionary and set any ‘views’. Otherwise, only make
+a deep copy of the ‘view’ state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>copy of the graph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Graph object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#graphit.graph.GraphBase.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.directed">
+<code class="sig-name descname">directed</code><a class="headerlink" href="#graphit.graph.GraphBase.directed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.edge_tools">
+<code class="sig-name descname">edge_tools</code><a class="headerlink" href="#graphit.graph.GraphBase.edge_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.edges">
+<code class="sig-name descname">edges</code><a class="headerlink" href="#graphit.graph.GraphBase.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.empty">
+<code class="sig-name descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report if the graph is empty (no nodes)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">nid</em>, <em class="sig-param">key=None</em>, <em class="sig-param">default=None</em>, <em class="sig-param">defaultattr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (sub)graph values.</p>
+<p>This is a placeholder method that can be overloaded by custom classes
+to return a value for (sub)graphs containing more than one edge or
+node in contrast to the single node or edge graph classes for which
+the get method returns attribute values.
+The <cite>get</cite> method has the latter functionality by default and will
+return single node or edge attributes based on nid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nid</strong> (<em>mixed</em>) – node or edge identifier to return data for. If not
+defined attempt to resolve using <cite>nid</cite> property.</p></li>
+<li><p><strong>key</strong> (<em>mixed</em>) – node or edge value attribute name. If not defined
+then attempt to use class wide <cite>key_tag</cite>
+attribute.</p></li>
+<li><p><strong>defaultattr</strong> (<em>mixed</em>) – node or edge value attribute to use as source of
+default data when <cite>key</cite> attribute is not present.</p></li>
+<li><p><strong>default</strong> (<em>mixed</em>) – value to return when all fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.getedges">
+<code class="sig-name descname">getedges</code><span class="sig-paren">(</span><em class="sig-param">edges</em>, <em class="sig-param">orm_cls=None</em>, <em class="sig-param">add_edge_tools=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.getedges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an edge as graph object</p>
+<p>Returns a new Graph with a ‘view’ on the selected nodes and the edges
+connecting them. If nodes equals None or empty list, the returned Graph
+object will have no nodes and is basically ‘empty’.</p>
+<p>Getedges calls the Graph Object Relation Mapper (GraphORM) class
+to customize the returned (sub) Graph class. Next to the custom classes
+registered with the ORM mapper, the <cite>getedges</cite> method allows for
+further customization of the returned Graph object through the
+orm_cls attribute. In addition, for sub graphs containing single edges,
+the EdgeTools class is added.</p>
+<p>The addition of the EdgeTools class changes the behaviour of the Graph
+class to a state where it provides direct access to edge attributes for
+that particular edge. This may be undesirable in cases where one wants
+to iterate over graphs even if they contain only one edge.
+The <cite>add_edge_tools</cite> attribute prevents addition of EdgeTools for these
+cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges</strong> (<em>iterable of length 2 containing integers</em>) – edge id</p></li>
+<li><p><strong>orm_cls</strong> (<em>:py:list</em>) – custom classes to construct new edge oriented
+Graph class from.</p></li>
+<li><p><strong>add_edge_tools</strong> (<em>:py:bool</em>) – add edge tools to Graph instance if one edge</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.getnodes">
+<code class="sig-name descname">getnodes</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">orm_cls=None</em>, <em class="sig-param">add_node_tools=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.getnodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one or multiple nodes as new sub graph instance</p>
+<p>Returns a new Graph with a ‘view’ on the selected nodes and the edges
+connecting them. If nodes equals None or empty list, the returned Graph
+object will have no nodes and is basically ‘empty’.</p>
+<p>Getnodes calls the Graph Object Relation Mapper (GraphORM) class
+to customize the returned (sub) Graph class. Next to the custom classes
+registered with the ORM mapper, the <cite>getnodes</cite> method allows for
+further customization of the returned Graph object through the
+orm_cls attribute. In addition, for sub graphs containing single nodes,
+the NodeTools class is added.</p>
+<p>The addition of the NodeTools class changes the behaviour of the Graph
+class to a state where it provides direct access to node attributes for
+that particular node. This may be undesirable in cases where one wants
+to iterate over graphs even if they contain only one node.
+The <cite>add_node_tools</cite> attribute prevents addition of NodeTools for these
+cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> – single node ID or an iterable of multiple node
+ID’s</p></li>
+<li><p><strong>orm_cls</strong> (<em>:py:list</em>) – custom classes to construct new node oriented
+Graph class from.</p></li>
+<li><p><strong>add_node_tools</strong> (<em>:py:bool</em>) – add node tools to Graph instance if single node</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph instance reflecting the node selection</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>GraphitException, node check fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.insert">
+<code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param">node</em>, <em class="sig-param">between</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a new node in between two other</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – node to add</p></li>
+<li><p><strong>between</strong> – nodes to add new node in between</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.items">
+<code class="sig-name descname">items</code><span class="sig-paren">(</span><em class="sig-param">keystring=None</em>, <em class="sig-param">valuestring=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node items in the (sub)graph.</p>
+<p>Keystring defines the value lookup key in the node data dict.
+This defaults to the graph key_tag.
+Valuestring defines the value lookup key in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keystring</strong> (<em>:py:str</em>) – Data key to use for dictionary keys.</p></li>
+<li><p><strong>valuestring</strong> (<em>:py:str</em>) – Data key to use for dictionary values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of keys, value pairs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.iteredges">
+<code class="sig-name descname">iteredges</code><span class="sig-paren">(</span><em class="sig-param">orm_cls=None</em>, <em class="sig-param">reverse=False</em>, <em class="sig-param">sort_key=&lt;class 'str'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.iteredges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graph edge iterator</p>
+<p>Returns a new graph view object for the given edge and it’s nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orm_cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom classes to construct new Graph class from for
+every edge that is returned</p></li>
+<li><p><strong>reverse</strong> (<em>:py:bool</em>) – switch between ascending and descending sort order of
+the returned edges</p></li>
+<li><p><strong>sort_key</strong> – function for sorting edge IDs. Equivalent to the ‘key’
+argument to Pythons ‘sorted’ build in function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>single edge Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.iternodes">
+<code class="sig-name descname">iternodes</code><span class="sig-paren">(</span><em class="sig-param">orm_cls=None</em>, <em class="sig-param">reverse=False</em>, <em class="sig-param">sort_key=&lt;class 'str'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.iternodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graph node iterator</p>
+<p>Returns a new graph view object for the given node and it’s edges.
+The dynamically created object contains additional node tools.
+Nodes are returned in node ID sorted order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orm_cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – custom classes to construct new Graph class from for
+every node that is returned</p></li>
+<li><p><strong>reverse</strong> (<em>:py:bool</em>) – switch between ascending and descending sort order of
+the returned nodes</p></li>
+<li><p><strong>sort_key</strong> – function for sorting node IDs. Equivalent to the ‘key’
+argument to Pythons ‘sorted’ build in function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>single node Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><em class="sig-param">keystring=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node keys in the (sub)graph.</p>
+<p>Keystring defines the value lookup key in the node data dict.
+This defaults to the graph key_tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keystring</strong> (<em>:py:str</em>) – Data key to use for dictionary keys.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of keys</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.masked">
+<code class="sig-name descname">masked</code><a class="headerlink" href="#graphit.graph.GraphBase.masked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.node_tools">
+<code class="sig-name descname">node_tools</code><a class="headerlink" href="#graphit.graph.GraphBase.node_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#graphit.graph.GraphBase.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.origin">
+<code class="sig-name descname">origin</code><a class="headerlink" href="#graphit.graph.GraphBase.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.orm">
+<code class="sig-name descname">orm</code><a class="headerlink" href="#graphit.graph.GraphBase.orm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.query_edges">
+<code class="sig-name descname">query_edges</code><span class="sig-paren">(</span><em class="sig-param">query=None</em>, <em class="sig-param">orm_cls=None</em>, <em class="sig-param">add_edge_tools=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.query_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select edges based on edge data query</p>
+<p>The query is executed by the <cite>query</cite> method of the respective edge
+storage driver class. That query method accepts a query function often
+as lambda function allowing for rich query functionality.
+The <cite>query_edges</cite> method accepts three different input arguments that
+are passed to the <cite>query</cite> method with some conversion if needed:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>1 A dictionary where the key, value pairs are converted to a</dt><dd><p>lambda function evaluation ‘key == value’ against the edge
+attributes.</p>
+</dd>
+</dl>
+<p>2 Additional keyword arguments used in the same way as in 1.
+3 A custom (lambda) function passed to as is.</p>
+</div></blockquote>
+<p>Matching edges are passed on to the <cite>getedges</cite> method and returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>:py:func</em>) – query function as input to storage driver
+<cite>query</cite> method</p></li>
+<li><p><strong>orm_cls</strong> (<em>:py:list</em>) – custom classes added to new Graph class.</p></li>
+<li><p><strong>add_edge_tools</strong> (<em>:py:bool</em>) – add edge tools to Graph instance if single edge</p></li>
+<li><p><strong>kwargs</strong> – if <cite>query</cite> is None, build lambda function from
+keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>edges subgraph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.query_nodes">
+<code class="sig-name descname">query_nodes</code><span class="sig-paren">(</span><em class="sig-param">query=None</em>, <em class="sig-param">orm_cls=None</em>, <em class="sig-param">add_node_tools=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.query_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select nodes based on node data query</p>
+<p>The query is executed by the <cite>query</cite> method of the respective node
+storage driver class. That query method accepts a query function often
+as lambda function allowing for rich query functionality.
+The <cite>query_nodes</cite> method accepts three different input arguments that
+are passed to the <cite>query</cite> method with some conversion if needed:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>1 A dictionary where the key, value pairs are converted to a</dt><dd><p>lambda function evaluation ‘key == value’ against the node
+attributes.</p>
+</dd>
+</dl>
+<p>2 Additional keyword arguments used in the same way as in 1.
+3 A custom (lambda) function passed to as is.</p>
+</div></blockquote>
+<p>Matching nodes are passed on to the <cite>getnodes</cite> method and returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>:py:func</em>) – query function as input to storage driver
+<cite>query</cite> method</p></li>
+<li><p><strong>orm_cls</strong> (<em>:py:list</em>) – custom classes added to new Graph class.</p></li>
+<li><p><strong>add_node_tools</strong> (<em>:py:bool</em>) – add node tools to Graph instance if single node</p></li>
+<li><p><strong>kwargs</strong> – if <cite>query</cite> is None, build lambda function from
+keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>nodes subgraph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.remove_edge">
+<code class="sig-name descname">remove_edge</code><span class="sig-paren">(</span><em class="sig-param">nd1</em>, <em class="sig-param">nd2</em>, <em class="sig-param">directed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.remove_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removing an edge from the graph</p>
+<p>Checks if the graph contains the edge, then removes it. If the graph is
+undirectional, try to remove both edges of the undirectional pair.
+Force directed removal of the edge using the ‘directed’ argument.
+Useful in mixed (un)-directional graphs.</p>
+<p>If the graph is a (sub)graph representing a <cite>view</cite> on the origin graph,
+the edge is removed from the view and not from the origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nd1</strong> – first node in edge node pair. Source node in
+directed graph.</p></li>
+<li><p><strong>nd2</strong> – second node in edge node pair. Target node in
+directed graph.</p></li>
+<li><p><strong>directed</strong> (<em>:py:bool</em>) – force directed removal of the edge</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.remove_edges">
+<code class="sig-name descname">remove_edges</code><span class="sig-paren">(</span><em class="sig-param">edges</em>, <em class="sig-param">directed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.remove_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove multiple edges from the graph.</p>
+<p>This is the iterable version of the remove_edge methods allowing
+mutliple edge removal from any iterable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges</strong> (<em>Iterable of edges defined as tuples of two node ID's</em>) – Iterable of edges to remove</p></li>
+<li><p><strong>directed</strong> (<em>:py:bool</em>) – force directed removal of the edge</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.remove_node">
+<code class="sig-name descname">remove_node</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.remove_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removing a node from the graph</p>
+<p>Checks if the graph contains the node and if the node is connected with
+edges. Removes the node and associated edges.</p>
+<p>If the graph is a (sub)graph representing a <cite>view</cite> on the origin graph,
+the node is removed from the view and not from the origin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>mixed</em>) – Node to remove</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.remove_nodes">
+<code class="sig-name descname">remove_nodes</code><span class="sig-paren">(</span><em class="sig-param">nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.remove_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove multiple nodes from the graph.</p>
+<p>This is the iterable version of the remove_node methods allowing
+multiple nodes to be removed from any iterable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodes</strong> (<em>mixed</em>) – Nodes to remove</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.root">
+<code class="sig-name descname">root</code><a class="headerlink" href="#graphit.graph.GraphBase.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph.GraphBase.storagedriver">
+<code class="sig-name descname">storagedriver</code><a class="headerlink" href="#graphit.graph.GraphBase.storagedriver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph.GraphBase.values">
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><em class="sig-param">valuestring=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph.GraphBase.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node values in the (sub)graph.</p>
+<p>Valuestring defines the value lookup key in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>valuestring</strong> (<em>:py:str</em>) – Data key to use for dictionary values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_exceptions">
+<span id="graphit-graph-exceptions-module"></span><h2>graphit.graph_exceptions module<a class="headerlink" href="#module-graphit.graph_exceptions" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_exceptions.py</p>
+<p>Graphit specific exceptions</p>
+<dl class="exception">
+<dt id="graphit.graph_exceptions.GraphitException">
+<em class="property">exception </em><code class="sig-prename descclassname">graphit.graph_exceptions.</code><code class="sig-name descname">GraphitException</code><a class="headerlink" href="#graphit.graph_exceptions.GraphitException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>Base class for Graphit specific exceptions</p>
+<p>Logs the exception as critical before raising.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="graphit.graph_exceptions.GraphitAlgorithmError">
+<em class="property">exception </em><code class="sig-prename descclassname">graphit.graph_exceptions.</code><code class="sig-name descname">GraphitAlgorithmError</code><a class="headerlink" href="#graphit.graph_exceptions.GraphitAlgorithmError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph_exceptions.GraphitException" title="graphit.graph_exceptions.GraphitException"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_exceptions.GraphitException</span></code></a></p>
+<p>Exception for unexpected termination of algorithms.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="graphit.graph_exceptions.GraphitEdgeNotFound">
+<em class="property">exception </em><code class="sig-prename descclassname">graphit.graph_exceptions.</code><code class="sig-name descname">GraphitEdgeNotFound</code><a class="headerlink" href="#graphit.graph_exceptions.GraphitEdgeNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph_exceptions.GraphitException" title="graphit.graph_exceptions.GraphitException"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_exceptions.GraphitException</span></code></a></p>
+<p>Exception raised if edge is not present in the graph</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="graphit.graph_exceptions.GraphitNodeNotFound">
+<em class="property">exception </em><code class="sig-prename descclassname">graphit.graph_exceptions.</code><code class="sig-name descname">GraphitNodeNotFound</code><a class="headerlink" href="#graphit.graph_exceptions.GraphitNodeNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph_exceptions.GraphitException" title="graphit.graph_exceptions.GraphitException"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_exceptions.GraphitException</span></code></a></p>
+<p>Exception raised if node is not present in the graph</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="graphit.graph_exceptions.GraphitValidationError">
+<em class="property">exception </em><code class="sig-prename descclassname">graphit.graph_exceptions.</code><code class="sig-name descname">GraphitValidationError</code><span class="sig-paren">(</span><em class="sig-param">message</em>, <em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_exceptions.GraphitValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph_exceptions.GraphitException" title="graphit.graph_exceptions.GraphitException"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_exceptions.GraphitException</span></code></a></p>
+<p>Exception raised if validation on a (sub)graph failed</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_helpers">
+<span id="graphit-graph-helpers-module"></span><h2>graphit.graph_helpers module<a class="headerlink" href="#module-graphit.graph_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="graphit.graph_helpers.adjacency_to_edges">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">adjacency_to_edges</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">adjacency</em>, <em class="sig-param">node_source</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.adjacency_to_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct edges for nodes based on adjacency.</p>
+<p>Edges are created for every node in <cite>nodes</cite> based on the neighbors of
+the node in adjacency if the neighbor node is also in <cite>node_source</cite>.
+The source of adjacency information would normally be self.graph and
+self.nodes for <cite>node_source</cite>. However, <cite>node_source may</cite> also equal
+<cite>nodes</cite> to return edges for the isolated graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – nodes to return edges for</p></li>
+<li><p><strong>adjacency</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – node adjacency (self.graph)</p></li>
+<li><p><strong>node_source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – other nodes to consider when creating edges</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.check_nodes_in_graph">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">check_nodes_in_graph</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.check_nodes_in_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if nodes are in graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:GraphBase</em>) – graph that should contain nodes</p></li>
+<li><p><strong>nodes</strong> (<em>:py:list</em>) – nodes to check</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if validation successful</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+</dl>
+<p>:raises       GraphitNodeNotFound</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.edge_list_to_adjacency">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">edge_list_to_adjacency</code><span class="sig-paren">(</span><em class="sig-param">edges</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.edge_list_to_adjacency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create adjacency dictionary based on a list of edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edges</strong> (<em>:py:list</em>) – edges to create adjacency for</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.edge_list_to_nodes">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">edge_list_to_nodes</code><span class="sig-paren">(</span><em class="sig-param">edges</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.edge_list_to_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of nodes from a list of edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edges</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – edges to create nodes for</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.edges_between_nodes">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">edges_between_nodes</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.edges_between_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all edges in graph that connect the nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> – </p></li>
+<li><p><strong>nodes</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.graph_directionality">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">graph_directionality</code><span class="sig-paren">(</span><em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.graph_directionality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a graph overall directionality as ‘directional’, ‘undirectional’
+or ‘mixed’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> – Graph to asses directionality of</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>‘directional’, ‘undirectional’ or ‘mixed’</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.make_edges">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">make_edges</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">directed=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.make_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an edge tuple from two nodes either directed
+(first to second) or undirected (two edges, both ways).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<em>:py:list</em><em>, </em><em>py:tuple</em>) – nodes to create edges for</p></li>
+<li><p><strong>directed</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – create directed edge or not</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.make_undirected_edges">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">make_undirected_edges</code><span class="sig-paren">(</span><em class="sig-param">edges</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.make_undirected_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complete a list of (directed) edges with their undirected equivalent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edges</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.renumber_id">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">renumber_id</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">start</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.renumber_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renumber all node ID’s in the graph from a new start ID and adjust edges
+accordingly. Useful when duplicating a graph substructure.
+If the graph uses auto_nid, the node nid is also changed.</p>
+<p>#TODO: this one failes if run on a subgraph. Probably need to make changes
+#to nids in place instead of registering new storage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph object</em>) – Graph object to renumber</p></li>
+<li><p><strong>start</strong> (<em>:py:int</em>) – New start number to renumber from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Renumber graph and mapping of old to new ID</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Graph object, :py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_helpers.share_common_origin">
+<code class="sig-prename descclassname">graphit.graph_helpers.</code><code class="sig-name descname">share_common_origin</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_helpers.share_common_origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if (sub)graphs share the same origin graph based
+on object id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – list of graphs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_mixin">
+<span id="graphit-graph-mixin-module"></span><h2>graphit.graph_mixin module<a class="headerlink" href="#module-graphit.graph_mixin" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_mixin.py</p>
+<p>Defines an abstract base class for node and edge tool classes that are used for
+dynamic (ORM based) Graph class creation.
+Node and Edge tools are used (sub)graphs containing a single node or single edge
+respectively.</p>
+<dl class="class">
+<dt id="graphit.graph_mixin.NodeTools">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_mixin.</code><code class="sig-name descname">NodeTools</code><a class="headerlink" href="#graphit.graph_mixin.NodeTools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<p>Node specific tools</p>
+<dl class="method">
+<dt id="graphit.graph_mixin.NodeTools.connected_edges">
+<code class="sig-name descname">connected_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_mixin.NodeTools.connected_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the connected edges to a node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connected edges</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.NodeTools.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">default=None</em>, <em class="sig-param">defaultattr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_mixin.NodeTools.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return node value</p>
+<p>Get direct access to relevant node attributes. If <cite>key</cite> is not defined
+the method returns the value of the default value_tag which is
+equivalent to returning the value for a dictionary key where the key
+is either the nid or the key_tag attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>mixed</em>) – node value attribute name. If not defined then
+attempt to use class wide <cite>value_tag</cite> attribute.</p></li>
+<li><p><strong>defaultattr</strong> (<em>mixed</em>) – node or edge value attribute to use as source of
+default data when <cite>key</cite> attribute is not present.</p></li>
+<li><p><strong>default</strong> (<em>mixed</em>) – value to return when all fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.NodeTools.isleaf">
+<em class="property">property </em><code class="sig-name descname">isleaf</code><a class="headerlink" href="#graphit.graph_mixin.NodeTools.isleaf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the current selected node is a leaf node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.NodeTools.nid">
+<em class="property">property </em><code class="sig-name descname">nid</code><a class="headerlink" href="#graphit.graph_mixin.NodeTools.nid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the nid of the current selected node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>node nid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.NodeTools.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_mixin.NodeTools.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node attribute values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node attribute key</p></li>
+<li><p><strong>value</strong> – node attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_mixin.EdgeTools">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_mixin.</code><code class="sig-name descname">EdgeTools</code><a class="headerlink" href="#graphit.graph_mixin.EdgeTools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<p>Edge specific tools</p>
+<dl class="method">
+<dt id="graphit.graph_mixin.EdgeTools.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">default=None</em>, <em class="sig-param">defaultattr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_mixin.EdgeTools.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return edge value</p>
+<p>Used by the <cite>value</cite> method to get direct access to relevant node or
+edge attributes. The <cite>value</cite> method itself is a placeholder method
+that can be overloaded by custom classes to post process the data
+before returning it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>mixed</em>) – node or edge value attribute name. If not defined
+then attempt to use class wide <cite>key_tag</cite>
+attribute.</p></li>
+<li><p><strong>defaultattr</strong> (<em>mixed</em>) – node or edge value attribute to use as source of
+default data when <cite>key</cite> attribute is not present.</p></li>
+<li><p><strong>default</strong> (<em>mixed</em>) – value to return when all fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.EdgeTools.is_directed">
+<em class="property">property </em><code class="sig-name descname">is_directed</code><a class="headerlink" href="#graphit.graph_mixin.EdgeTools.is_directed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if edge is directed based</p>
+<p>An edge is undirected if both edges of a pair pointing in opposite
+directions are present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.EdgeTools.nid">
+<em class="property">property </em><code class="sig-name descname">nid</code><a class="headerlink" href="#graphit.graph_mixin.EdgeTools.nid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the eid of the current selected edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>edge eid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_mixin.EdgeTools.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_mixin.EdgeTools.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set edge attribute values.
+The method may be overloaded in custom classes to pre-process data
+before setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – edge attribute key</p></li>
+<li><p><strong>value</strong> – edge attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_networkx">
+<span id="graphit-graph-networkx-module"></span><h2>graphit.graph_networkx module<a class="headerlink" href="#module-graphit.graph_networkx" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_networkx.py</p>
+<p>Provides a NetworkX compliant Graph class.</p>
+<dl class="class">
+<dt id="graphit.graph_networkx.NetworkXGraph">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_networkx.</code><code class="sig-name descname">NetworkXGraph</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph.GraphBase" title="graphit.graph.GraphBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph.GraphBase</span></code></a></p>
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.add_edges_from">
+<code class="sig-name descname">add_edges_from</code><span class="sig-paren">(</span><em class="sig-param">edges</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.add_edges_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.add_nodes_from">
+<code class="sig-name descname">add_nodes_from</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.add_nodes_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.add_weighted_edges_from">
+<code class="sig-name descname">add_weighted_edges_from</code><span class="sig-paren">(</span><em class="sig-param">edges</em>, <em class="sig-param">weight='weight'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.add_weighted_edges_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add edges with a numeric weight factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edges</strong> – edges as iterable of tuples with length 3 containing
+(node1, node2, weight value)</p></li>
+<li><p><strong>weight</strong> (<em>:py:str</em>) – edge weight attribute name</p></li>
+<li><p><strong>kwargs</strong> – additional keyword arguments passed to add_edge</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of edge ids for the objects added in
+the same order as th input iterable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.adj">
+<em class="property">property </em><code class="sig-name descname">adj</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.adj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.adjacency">
+<code class="sig-name descname">adjacency</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.adjacency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.degree">
+<em class="property">property </em><code class="sig-name descname">degree</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.degree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.directed">
+<code class="sig-name descname">directed</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.directed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.edge_subgraph">
+<code class="sig-name descname">edge_subgraph</code><span class="sig-paren">(</span><em class="sig-param">edges</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.edge_subgraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.edge_tools">
+<code class="sig-name descname">edge_tools</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.edge_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.edges">
+<code class="sig-name descname">edges</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.get_edge_data">
+<code class="sig-name descname">get_edge_data</code><span class="sig-paren">(</span><em class="sig-param">n1</em>, <em class="sig-param">n2</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.get_edge_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.has_edge">
+<code class="sig-name descname">has_edge</code><span class="sig-paren">(</span><em class="sig-param">n1</em>, <em class="sig-param">n2</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.has_edge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.has_node">
+<code class="sig-name descname">has_node</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.has_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.is_directed">
+<code class="sig-name descname">is_directed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.is_directed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return graph directionality</p>
+<p>A graph with mixed edges (partly directed, partly undirected) is
+considered a directed graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>directed or undirected graph</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.masked">
+<code class="sig-name descname">masked</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.masked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.nbunch_iter">
+<code class="sig-name descname">nbunch_iter</code><span class="sig-paren">(</span><em class="sig-param">nodes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.nbunch_iter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.neighbors">
+<code class="sig-name descname">neighbors</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.node_tools">
+<code class="sig-name descname">node_tools</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.node_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.number_of_edges">
+<code class="sig-name descname">number_of_edges</code><span class="sig-paren">(</span><em class="sig-param">first=None</em>, <em class="sig-param">second=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.number_of_edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.number_of_nodes">
+<code class="sig-name descname">number_of_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.number_of_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of nodes in the graph similar to __len__</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of nodes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.order">
+<code class="sig-name descname">order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of nodes in the graph similar to __len__</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of nodes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.origin">
+<code class="sig-name descname">origin</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.orm">
+<code class="sig-name descname">orm</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.orm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.remove_edges_from">
+<code class="sig-name descname">remove_edges_from</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.remove_edges_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.remove_nodes_from">
+<code class="sig-name descname">remove_nodes_from</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.remove_nodes_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.root">
+<code class="sig-name descname">root</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.size">
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_networkx.NetworkXGraph.storagedriver">
+<code class="sig-name descname">storagedriver</code><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.storagedriver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.subgraph">
+<code class="sig-name descname">subgraph</code><span class="sig-paren">(</span><em class="sig-param">nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.subgraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.to_directed">
+<code class="sig-name descname">to_directed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.to_directed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.to_undirected">
+<code class="sig-name descname">to_undirected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.to_undirected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_networkx.NetworkXGraph.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">edges=None</em>, <em class="sig-param">nodes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_networkx.NetworkXGraph.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_orm">
+<span id="graphit-graph-orm-module"></span><h2>graphit.graph_orm module<a class="headerlink" href="#module-graphit.graph_orm" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_orm.py</p>
+<p>Defines the Graph Object Relation Mapper (ORM)</p>
+<dl class="class">
+<dt id="graphit.graph_orm.GraphORM">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_orm.</code><code class="sig-name descname">GraphORM</code><span class="sig-paren">(</span><em class="sig-param">node_mapping=None</em>, <em class="sig-param">edge_mapping=None</em>, <em class="sig-param">inherit=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_orm.GraphORM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Graph Object Relation Mapper (ORM) class</p>
+<p>An Object Relation Mapper encapsulates data in an object based on a series
+of rules. It is an often used concept in database bindings in particular
+for dynamically typed languages such as Python.</p>
+<p>graphit uses an ORM to return customized versions of the Graph/GraphAxis
+classes at runtime based on rules matched against node or edge attributes.
+It is a powerful method to extend the Graph base class with new methods or
+override existing ones.</p>
+<p><strong>How it works</strong>
+ORM mapping is performed by registering custom classes for nodes or edges
+together with a matching function using the <cite>add</cite> method on the
+<cite>node_mapping</cite> and <cite>edge_mapping</cite> methods respectively. For each call to
+the <cite>get_nodes</cite> or <cite>get_edges</cite> methods of the ORM, all registered matching
+functions will be evaluated and the classes for positive matches will be
+included in the newly generated Graph/GraphAxis class together with other
+classes defined by the <cite>orm_cls</cite> argument of the <cite>getnodes</cite> or <cite>getedges</cite>
+methods.</p>
+<p><strong>Matching functions</strong>
+Matching is based on a match function (<cite>match_func</cite> argument) that requires
+the node or edge attribute dictionary as input and needs to return a boolean
+for the matching result.</p>
+<p>An example of a matching function where x is the node or edge dictionary:</p>
+<blockquote>
+<div><p>lambda x: x.get(‘arg’) == 1 and ‘conf’ in x</p>
+</div></blockquote>
+<p>A lambda function is convenient but any function accepting a dictionary and
+returning a boolean will do. The benefit of using functions is the freedom
+in defining the matching criteria.</p>
+<p><strong>Class inheritance</strong>
+Class inheritance is respected by the ORM and can be controlled.
+By default, the base class used in a mapping is the one from which the call
+to the <cite>getnodes</cite> or <cite>getedges</cite> methods was made. This includes the Graph
+base class and any custom methods added to it by the user or previous calls
+to the ORM.
+Inheritance can be disabled by setting the <cite>inherit</cite> variable on the ORM
+class to False.</p>
+<p><strong>The Method Resolution Order (mro)</strong>
+A new class is dynamically build by the class factory of the ORM from a
+list of classes that include required graph base classes and custom classes.
+The ORM ensures that the right Python method resolution order is defined.
+When multiple classes in the mro have similarly named methods the order
+affects the final class behaviour through method override.</p>
+<p>The mro can be controlled using the <cite>mro_pos</cite> argument that can be defined
+as part of a registered custom node or edge (<cite>add</cite> method).
+This argument influence the sort order of resolved classes in the MRO
+following the rule: smaller indices are resolved first.
+The mro_pos index may be both a negative to large positive number to force
+first or last resolution respectively.
+This is also important when using Pythons build-in ‘super’ function to call
+similar named method up the MRO stack.</p>
+<p><strong>Current scope of the ORM</strong>
+The ORM is used in the <cite>getnodes</cite> and <cite>getedges</cite> methods of the Graph class
+but only when a single node or edge is requested as it is currently
+designed to only match against the attributes of a single node or edge.
+This is primarily done to guard performance by limiting the amount of ORM
+matching evaluations performed. In addition the number of edges that need
+evaluation for a single node and vice versa depends on graph directionality
+and masking which may cause ambiguous behaviour for now.</p>
+<p>However, both <cite>getnodes</cite> and <cite>getedges</cite> will accept custom classes that
+will be included in the newly generated Graph class regardless of the ORM
+results (orm_cls argument). This allows to partly bypass current limitations
+of the ORM by writing custom evaluation code.</p>
+<dl class="attribute">
+<dt id="graphit.graph_orm.GraphORM.edge_mapping">
+<code class="sig-name descname">edge_mapping</code><a class="headerlink" href="#graphit.graph_orm.GraphORM.edge_mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_orm.GraphORM.get_edges">
+<code class="sig-name descname">get_edges</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">edges</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_orm.GraphORM.get_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve mapped edges</p>
+<p>Edge mapping and construction of custom classes is only performed when
+a single edge is provided.
+For multiple edges or when the query yields no result, the same class
+is returned base on the Graph instance making the call to the get
+method including any custom classes defined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:graph:Graph</em>) – a graph to match against</p></li>
+<li><p><strong>edges</strong> (<em>:py:list</em>) – one or more edges</p></li>
+<li><p><strong>classes</strong> (<em>:py:list</em><em> or </em><em>:py:tuple</em>) – additional classes to include in the base class when
+building the custom Graph class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>new Graph class instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_orm.GraphORM.get_nodes">
+<code class="sig-name descname">get_nodes</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nodes</em>, <em class="sig-param">classes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_orm.GraphORM.get_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve mapped nodes</p>
+<p>Node mapping and construction of custom classes is only performed when
+a single node is provided.
+For multiple nodes or when the query yields no result, the same class
+is returned base on the Graph instance making the call to the get
+method including any custom classes defined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:graph:Graph</em>) – a graph to match against</p></li>
+<li><p><strong>nodes</strong> (<em>:py:list</em>) – one or more nodes</p></li>
+<li><p><strong>classes</strong> (<em>:py:list</em><em> or </em><em>:py:tuple</em>) – additional classes to include in the base class when
+building the custom Graph class</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>new Graph class instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_orm.GraphORM.inherit">
+<code class="sig-name descname">inherit</code><a class="headerlink" href="#graphit.graph_orm.GraphORM.inherit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_orm.GraphORM.node_mapping">
+<code class="sig-name descname">node_mapping</code><a class="headerlink" href="#graphit.graph_orm.GraphORM.node_mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_orm.GraphORM.orm_class_factory">
+<code class="sig-name descname">orm_class_factory</code><span class="sig-paren">(</span><em class="sig-param">base_cls</em>, <em class="sig-param">classes</em>, <em class="sig-param">exclude_node_edge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_orm.GraphORM.orm_class_factory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factory for custom Graph classes</p>
+<p>Build custom Graph class by adding classes to base_cls.
+The factory resolves the right method resolution order (mro).</p>
+<p>Use the <cite>exclude_node_edge</cite> argument to prevent inheritance of classes
+that operate on single node or edge graphs such as the NodeTools class.
+This is important in for instance a query returning multiple nodes
+called from a single node object.
+Classes are identified by having the __isnetbc__ class variable part of
+the NodeEdgeToolsBaseClass abstract base class that custom node or edge
+classes should inherit from.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_cls</strong> (<em>:py:class</em>) – graph base class. Needs to be based on Graph</p></li>
+<li><p><strong>classes</strong> (<em>:py:list</em>) – additional classes to include in base class
+when building custom Graph class sorted
+according to the desired method resolution
+order</p></li>
+<li><p><strong>exclude_node_edge</strong> (<em>:py:bool</em>) – prevent including specific single node or
+edge classes (such as NodeTools) when
+returning an interface to multiple nodes or
+edges.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>custom Graph class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit" title="Permalink to this headline">¶</a></h2>
+<p>#Graph module</p>
+<p>###Basic graph structure
+A graph represented by a Graph class is an object that stores nodes, edges and
+adjacency information in seperate DictStorage classes. A DictStorage class is a
+subclass of the standard Python dictionary and collections MutableMappings
+Abstract Base Class (ABC).</p>
+<p>The nodes and edges DictStorage objects store node and edge attributes respectivly
+based on the node ID (nid).
+The graph DictStorage object stores node adjacency and is the primary store for
+the graph topology.</p>
+<p>###Node ID
+The node ID or nid for short is the unique identifier of a node and derived edges
+in the graph. The nid itself can be any hasable object except None. Set auto_nid
+to True in the graph to ensure all added nodes are automatically assigned a unique
+auto incremented integer ID.</p>
+<p>###Graph directionality
+A graph is undirected by default storing an two edges for every connected node,
+one in each direction.
+Change the graph directed attribute to True will ensure that every every newly
+added edge is directed. Directed and undirected edges can be mixed in the same
+graph.</p>
+<p>###Graph query and iteration
+The graph module has a rich palet of functions to query and analyze graphs.
+For performance reasons, most of these will return node or edge IDs. New Graph
+object representing a node and/or edge selection can returned using one of the
+following Graph methods:</p>
+<ul class="simple">
+<li><p>getnodes: return subgraph based on one or more nodes</p></li>
+<li><p>getedges: return subgraph based on one or more edges</p></li>
+<li><p>iternodes: iterate over nodes in the graph. Uses getnodes</p></li>
+<li><p>iteredges: iterate over edges in the graph. Uses getedges</p></li>
+<li><p>query_nodes: return subgraph based on a query over node attributes</p></li>
+<li><p>query_edges: return subgraph based on a query over edge attributes</p></li>
+</ul>
+<p>The subgraphs returned by these methods are implemented as a dictionary view over
+the keys in the nodes and edges DictStorage objects.
+By default this means that the subgraphs are fully isolated from the parent graph.
+Returning a single node using getnodes will have no neighbors.
+This may not be desirable in circumstances where you want a view over nodes but
+retain connectivity with nodes outside of the view. This behaviour is enabled by
+switching the Graph masked to False.</p>
+<dl class="function">
+<dt id="graphit.check_graphaxis_instance">
+<code class="sig-prename descclassname">graphit.</code><code class="sig-name descname">check_graphaxis_instance</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.check_graphaxis_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if all objects in <cite>args</cite> are instances of the GraphAxis class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – Arguments to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if validation successful</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>AttributeError if validation fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.check_graphbase_instance">
+<code class="sig-prename descclassname">graphit.</code><code class="sig-name descname">check_graphbase_instance</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.check_graphbase_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if all objects in <cite>args</cite> are instances of the GraphBase class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – Arguments to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if validation successful</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>AttributeError if validation fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.version">
+<code class="sig-prename descclassname">graphit.</code><code class="sig-name descname">version</code><span class="sig-paren">(</span><em class="sig-param">digits=3</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string representation of the graphit __version__</p>
+<p>Graphit version follows the  semantic versioning guidelines formatted as</p>
+<p>&lt;major version int&gt;.&lt;minor version int&gt;.&lt;micro version int&gt;</p>
+<p>The full version string is returned by default but number of significant
+version digits can be set using the <cite>digits</cite> argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>digits</strong> (<em>:py:int</em>) – number of digits to format version string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_algorithms.html" class="btn btn-neutral float-right" title="graphit.graph_algorithms package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>

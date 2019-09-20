@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit.graph_axis package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_combinatorial package" href="graphit.graph_combinatorial.html" />
+    <link rel="prev" title="graphit.graph_algorithms package" href="graphit.graph_algorithms.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graphit.html">graphit API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graphit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">graphit.graph_axis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_axis.graph_axis_class">graphit.graph_axis.graph_axis_class module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_axis.graph_axis_methods">graphit.graph_axis.graph_axis_methods module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_axis.graph_axis_mixin">graphit.graph_axis.graph_axis_mixin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_axis">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="graphit.html">graphit package</a> &raquo;</li>
+        
+      <li>graphit.graph_axis package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.graph_axis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-graph-axis-package">
+<h1>graphit.graph_axis package<a class="headerlink" href="#graphit-graph-axis-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-graphit.graph_axis.graph_axis_class">
+<span id="graphit-graph-axis-graph-axis-class-module"></span><h2>graphit.graph_axis.graph_axis_class module<a class="headerlink" href="#module-graphit.graph_axis.graph_axis_class" title="Permalink to this headline">¶</a></h2>
+<p>Graph axis methods</p>
+<p>Class for traversing and querying (sub)graph hierarchy with respect to a root
+node.</p>
+<dl class="simple">
+<dt>TODO: Add dict/list like methods for adding new nodes to the graph at a given</dt><dd><p>level automatically creating the edges to link the new node. Perhaps add
+some more method to mimick dict/list like behaviour.</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_axis.graph_axis_class.</code><code class="sig-name descname">GraphAxis</code><span class="sig-paren">(</span><em class="sig-param">edges=None</em>, <em class="sig-param">directed=False</em>, <em class="sig-param">nodes=None</em>, <em class="sig-param">data=None</em>, <em class="sig-param">root=None</em>, <em class="sig-param">orm=None</em>, <em class="sig-param">storagedriver=&lt;function init_dictstorage_driver&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="graphit.html#graphit.graph.GraphBase" title="graphit.graph.GraphBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph.GraphBase</span></code></a></p>
+<p>Hierarchical graph query and traversal with respect to a root node.</p>
+<p>The GraphAxis class extends the Graph base class with methods that enable
+query and traversal of graphs that have a hierachy with respect to a
+certain root node.
+A root node is chosen by node ID (nid) and is the one with the lowest ID
+(number) by default or any other one chosen at a later time.
+Hierarchy is queried with respect to the root node by means of axis that
+include: children, descendants, leaves, neighours, siblings, parents and
+ancestors.</p>
+<p>These methods return selections, or sub-graphs, that represent the
+respective axis. By default these selections maintain full connectivity to
+the full graphs and thus represent a selective ‘view’ on the full graph.
+This behaviour can be changed by enabling a ‘mask’ on the selection or by
+copying the selection into a new independent graph. The behaviour of both
+options are the same, connectivity is maintained with the selection but
+outside of it. The benefit of a mask, enabled by settings ‘masked’ to
+True, is that it is non-destructive to the data and can be easily lifted
+again.</p>
+<p>The behaviour of axis methods is furthermore affected by the directivety
+of the graph. The default non-directive graphs can be fully traversed
+forwards and backwards. Directed graphs or mixed graphs block traversal
+to parts of the graph by lack of an edge to traverse over.</p>
+<p>All of the axis methods are wrappers around their respective function in
+graphit.graph_axis.graph_axis_methods. These functions return node ID’s
+that are used by the wrapper method to return the respective sub-graph or
+node ID’s with ‘return_nids’ equals True.</p>
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.adjacency">
+<code class="sig-name descname">adjacency</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.adjacency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.all_parents">
+<code class="sig-name descname">all_parents</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.all_parents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all parent nodes to the source node relative to the graph root</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – node to define parents of</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return parent nid instead of a new graph object
+representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>all parents of the node</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.ancestors">
+<code class="sig-name descname">ancestors</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.ancestors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ancestors of the source node</p>
+<p>Traversal path is determined as the shortest path between the root node
+and the target node (Dijkstra shortest path).</p>
+<p>Directed graphs and/or masked behaviour: if the target node is not
+reachable using the Dijkstra shortest path method, the selection will
+remain empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return a list of node ID’s (nid) instead of a new
+graph object representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node ancestors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.children">
+<code class="sig-name descname">children</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the children of the source node.</p>
+<p>Traversal path is determined from the parent node with respect to the
+root via the source node to the children.</p>
+<p>Directed graphs and/or masked behaviour: masked child nodes or child
+nodes with directed connections from child to parent but not vice-versa
+will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>parent</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – parent nid if known</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return a list of node ID’s (nid) instead of a new
+graph object representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node children</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.descendants">
+<code class="sig-name descname">descendants</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.descendants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all descendants nodes to the source node</p>
+<p>Traversal path is determined from the parent with respect to the root
+node to the source node and then all descendants of the source.</p>
+<p>Directed graphs and/or masked behaviour: masked descendant linage’s
+or linage’s unreachable by directed edges are not returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return a list of node ID’s (nid) instead of a new
+graph object representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node descendants</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.directed">
+<code class="sig-name descname">directed</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.directed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.edge_tools">
+<code class="sig-name descname">edge_tools</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.edge_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.edges">
+<code class="sig-name descname">edges</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.get_root">
+<code class="sig-name descname">get_root</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.get_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method for returning the root node of a graph</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.items">
+<code class="sig-name descname">items</code><span class="sig-paren">(</span><em class="sig-param">keystring=None</em>, <em class="sig-param">valuestring=None</em>, <em class="sig-param">desc=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node items in the (sub)graph.</p>
+<p>Keystring defines the value lookup key in the node data dict.
+This defaults to the graph key_tag.
+Valuestring defines the value lookup key in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keystring</strong> (<em>:py:str</em>) – Data key to use for dictionary keys.</p></li>
+<li><p><strong>valuestring</strong> (<em>:py:str</em>) – Data key to use for dictionary values.</p></li>
+<li><p><strong>desc</strong> (<em>:py:bool</em>) – return nested values as new GraphAxis objects</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of keys, value pairs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><em class="sig-param">keystring=None</em>, <em class="sig-param">desc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node keys in the (sub)graph.</p>
+<p>Keystring defines the key lookup in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keystring</strong> (<em>:py:str</em>) – Data key to use for dictionary keys.</p></li>
+<li><p><strong>desc</strong> (<em>:py:bool</em>) – return nested values as new GraphAxis objects</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of keys</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.leaves">
+<code class="sig-name descname">leaves</code><span class="sig-paren">(</span><em class="sig-param">return_nids=False</em>, <em class="sig-param">include_root=False</em>, <em class="sig-param">include_isolated=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all leaf nodes in the (sub)graph</p>
+<p>Directed graphs and/or masked behaviour: leaf nodes are identified
+as those nodes having one edge only. This equals one adjacency node in
+an undirectional graph and no adjacency nodes in a directed graph.</p>
+<p>Graph root nodes do not affect the character of a node being a leave,
+neither will unidirectional versus directional edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_root</strong> (<em>:py:bool</em>) – include the root node if it is a leaf</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return a list of node ID’s (nid) instead of a new
+graph object representing the selection</p></li>
+<li><p><strong>include_isolated</strong> (<em>:py:bool</em>) – Include isolated nodes in the result</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>leaf nodes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.masked">
+<code class="sig-name descname">masked</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.masked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.neighbors">
+<code class="sig-name descname">neighbors</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return de neighbor nodes of the source node.</p>
+<p>This method is not hierarchical and thus the root node has no effect.</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – node to return neighbors for</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return a list of node ID’s (nid) instead of a new
+graph object representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node neighbors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.node_tools">
+<code class="sig-name descname">node_tools</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.node_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.origin">
+<code class="sig-name descname">origin</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.orm">
+<code class="sig-name descname">orm</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.orm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.parent">
+<code class="sig-name descname">parent</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the parent node of the source node relative to the graph root
+when following the shortest path (Dijkstra shortest path).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – node to define parent of</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return parent nid instead of a new graph object
+representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parent node</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.root">
+<code class="sig-name descname">root</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.siblings">
+<code class="sig-name descname">siblings</code><span class="sig-paren">(</span><em class="sig-param">node=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">return_nids=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.siblings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the siblings of the source node</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>parent</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – parent nid if known</p></li>
+<li><p><strong>return_nids</strong> (<em>:py:bool</em>) – return a list of node ID’s (nid) instead of a new
+graph object representing the selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node siblings</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:graph, :py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.storagedriver">
+<code class="sig-name descname">storagedriver</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.storagedriver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like update method for recursive update graph nodes from
+dictionary or other graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – dictionary or graph to update from</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.values">
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><em class="sig-param">valuestring=None</em>, <em class="sig-param">desc=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node values in the (sub)graph.</p>
+<p>Valuestring defines the value lookup key in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>valuestring</strong> (<em>:py:str</em>) – Data key to use for dictionary values.</p></li>
+<li><p><strong>desc</strong> (<em>:py:bool</em>) – return nested values as new GraphAxis objects</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_class.GraphAxis.xpath">
+<code class="sig-name descname">xpath</code><span class="sig-paren">(</span><em class="sig-param">expression</em>, <em class="sig-param">sep='/'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_class.GraphAxis.xpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate XPath expression against graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expression</strong> (<em>:py:str</em>) – XPath axpression</p></li>
+<li><p><strong>sep</strong> (<em>:py:str</em>) – XPath path location seperator</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_axis.graph_axis_methods">
+<span id="graphit-graph-axis-graph-axis-methods-module"></span><h2>graphit.graph_axis.graph_axis_methods module<a class="headerlink" href="#module-graphit.graph_axis.graph_axis_methods" title="Permalink to this headline">¶</a></h2>
+<p>Graph axis methods</p>
+<p>Functions for traversing and querying (sub)graph hierarchy with respect
+to a root node. These functions are similar to the axis methods commonly found
+in XML libraries.</p>
+<p>All these functions accept a (sub)graph, a node id (nid) to query axis based
+hierarchy for and a root nid relative to which the hierarchy should be
+defined.</p>
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.closest_to">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">closest_to</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">source</em>, <em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.closest_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine which of the target nodes are closest to the source node.</p>
+<p>This method is not hierarchical and thus the root node has no effect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>source</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node id</p></li>
+<li><p><strong>target</strong> (<em>:py:list</em>) – target node id’s</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_neighbors">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_neighbors</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return de neighbor nodes of the node.</p>
+<p>This method is not hierarchical and thus the root node has no effect.</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to query</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em>) – node ID to return neighbors for</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_all_parents">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_all_parents</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em>, <em class="sig-param">root</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_all_parents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all parent nodes to the source node relative to the graph root</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – root node for the search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parent node ID’s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_ancestors">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_ancestors</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em>, <em class="sig-param">root</em>, <em class="sig-param">include_self=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_ancestors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ancestors of the source node</p>
+<p>Traversal path is determined as the shortest path between the root node
+and the target node (Dijkstra shortest path).</p>
+<p>This function always uses the full graph to return the ancestors.
+For masked graphs, check afterwards if the ancestors are in the graph
+node view or use the GraphAxis ‘ancestors’ method that performs that
+check.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – root node for the search</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ancestor node ID’s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_children">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_children</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em>, <em class="sig-param">root</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the children of the source node.</p>
+<p>Traversal path is determined from the parent node with respect to the
+root via the source node to the children.
+A speedup can be achieved by proving the known parent nid using the
+<cite>parent</cite> argument no longer requiring a call to <cite>node_parent</cite>.</p>
+<p>Directed graphs and/or masked behaviour: masked child nodes or child
+nodes with directed connections from child to parent but not vice-versa
+will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – root node for the search</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+<li><p><strong>parent</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – parent nid if known</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>children node ID’s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_descendants">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_descendants</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em>, <em class="sig-param">root</em>, <em class="sig-param">include_self=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_descendants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all descendants nodes to the source node</p>
+<p>Traversal path is determined from the parent with respect to the root
+node to the source node and then all descendants of the source.</p>
+<p>Directed graphs and/or masked behaviour: masked descendant linage’s
+or linage’s unreachable by directed edges are not returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – root node for the search</p></li>
+<li><p><strong>include_self</strong> (<em>:py:bool</em>) – include source nid in results</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>descendants node ID’s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_leaves">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_leaves</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">include_isolated=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all leaf nodes in the graph</p>
+<p>Selects all nodes in the graph that are connected to one other node
+using a directed or undirected edge.
+The first selection may also include isolated nodes being nodes without any
+edge to other nodes. These are subsequently removed because they are no
+‘leaves’ of a parent node. However, is ‘include_isolated’ is True, they are
+returned</p>
+<p>Graph root nodes do not affect the character of a node being a leaf,
+directed graphs will if the edge goes from leaf to parent only as this
+effectively isolates the node from the parents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>include_isolated</strong> (<em>:py:bool</em>) – Include isolated nodes in the result</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>leaf node ID’s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_parent">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_parent</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em>, <em class="sig-param">root</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the parent node of the source node relative to the graph root
+when following the shortest path (Dijkstra shortest path).</p>
+<p>This function always uses the full graph to return the parent.
+For masked graphs, check afterwards if the parent is in the graph
+node view or use the GraphAxis ‘parent’ method that performs that
+check.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – root node for the search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parent node ID</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Graph object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_axis.graph_axis_methods.node_siblings">
+<code class="sig-prename descclassname">graphit.graph_axis.graph_axis_methods.</code><code class="sig-name descname">node_siblings</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em>, <em class="sig-param">root</em>, <em class="sig-param">parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_methods.node_siblings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the siblings of the source node</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.
+A speedup can be achieved by proving the known parent nid using the
+<cite>parent</cite> argument no longer requiring a call to <cite>node_parent</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to perform calculation for</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – source node to start search from</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – root node for the search</p></li>
+<li><p><strong>parent</strong> (<em>:py:int</em><em>, </em><em>:py:str</em>) – parent nid if known</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sibling node ID’s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_axis.graph_axis_mixin">
+<span id="graphit-graph-axis-graph-axis-mixin-module"></span><h2>graphit.graph_axis.graph_axis_mixin module<a class="headerlink" href="#module-graphit.graph_axis.graph_axis_mixin" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_mixin.py</p>
+<p>NodeTools and EdgeTools classes for axis based graphs (GraphAxis class)</p>
+<dl class="class">
+<dt id="graphit.graph_axis.graph_axis_mixin.NodeAxisTools">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_axis.graph_axis_mixin.</code><code class="sig-name descname">NodeAxisTools</code><a class="headerlink" href="#graphit.graph_axis.graph_axis_mixin.NodeAxisTools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="graphit.html#graphit.graph_mixin.NodeTools" title="graphit.graph_mixin.NodeTools"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeTools</span></code></a></p>
+<dl class="method">
+<dt id="graphit.graph_axis.graph_axis_mixin.NodeAxisTools.path">
+<code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">sep='.'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_axis.graph_axis_mixin.NodeAxisTools.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a breadcrumb (path) trail from the root node to the
+current node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>:py:str</em>) – parameter key to build breadcrumb path from</p></li>
+<li><p><strong>sep</strong> (<em>:py:str</em>) – breadcrumb path seperator character</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>breadcrumb path</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_axis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit.graph_axis" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_combinatorial.html" class="btn btn-neutral float-right" title="graphit.graph_combinatorial package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graphit.graph_algorithms.html" class="btn btn-neutral float-left" title="graphit.graph_algorithms package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>

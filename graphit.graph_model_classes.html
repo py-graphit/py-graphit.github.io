@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit.graph_model_classes package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_query package" href="graphit.graph_query.html" />
+    <link rel="prev" title="graphit.graph_io package" href="graphit.graph_io.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graphit.html">graphit API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graphit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">graphit.graph_model_classes package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_datetime">graphit.graph_model_classes.model_datetime module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_dictionary">graphit.graph_model_classes.model_dictionary module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_email">graphit.graph_model_classes.model_email module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_files">graphit.graph_model_classes.model_files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_identifiers">graphit.graph_model_classes.model_identifiers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_networking">graphit.graph_model_classes.model_networking module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_openapi">graphit.graph_model_classes.model_openapi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes.model_user">graphit.graph_model_classes.model_user module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_model_classes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="graphit.html">graphit package</a> &raquo;</li>
+        
+      <li>graphit.graph_model_classes package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.graph_model_classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-graph-model-classes-package">
+<h1>graphit.graph_model_classes package<a class="headerlink" href="#graphit-graph-model-classes-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-graphit.graph_model_classes.model_datetime">
+<span id="graphit-graph-model-classes-model-datetime-module"></span><h2>graphit.graph_model_classes.model_datetime module<a class="headerlink" href="#module-graphit.graph_model_classes.model_datetime" title="Permalink to this headline">¶</a></h2>
+<p>file: model_date_time.py</p>
+<p>Graph model classes for dealing with date/time definitions</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_datetime.Date">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_datetime.</code><code class="sig-name descname">Date</code><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Date.datetime">
+<code class="sig-name descname">datetime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Date.datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python datetime object representing the stored date</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:datetime:date</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Date.now">
+<em class="property">static </em><code class="sig-name descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Date.now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python datetime.datetime object representing the current date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:datetime:date</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Date.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Date.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set and validate an ISO string representation of a date instance
+in accordance to RFC 3339</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Date.timestamp">
+<code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Date.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a seconds since epoch timestamp</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_datetime.DateTime">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_datetime.</code><code class="sig-name descname">DateTime</code><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.DateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.DateTime.datetime">
+<code class="sig-name descname">datetime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.DateTime.datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python datetime object representing the stored date-time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:datetime:datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.DateTime.now">
+<em class="property">static </em><code class="sig-name descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.DateTime.now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python datetime.datetime object representing the current
+date-time respecting local timezone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:datetime:datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.DateTime.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.DateTime.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set and validate an ISO string representation of a date-time instance
+in accordance to RFC 3339.
+Set to current date-time if called without arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.DateTime.timestamp">
+<code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.DateTime.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a seconds since epoch timestamp</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_datetime.Time">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_datetime.</code><code class="sig-name descname">Time</code><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Time.datetime">
+<code class="sig-name descname">datetime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Time.datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python datetime object representing the stored time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:datetime:time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Time.now">
+<em class="property">static </em><code class="sig-name descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Time.now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Python datetime.datetime object representing the current
+time respecting local timezone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:datetime:time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Time.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">value=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Time.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set and validate an ISO string representation of a time instance
+in accordance to RFC 3339</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_datetime.Time.timestamp">
+<code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_datetime.Time.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a seconds since epoch timestamp</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_dictionary">
+<span id="graphit-graph-model-classes-model-dictionary-module"></span><h2>graphit.graph_model_classes.model_dictionary module<a class="headerlink" href="#module-graphit.graph_model_classes.model_dictionary" title="Permalink to this headline">¶</a></h2>
+<p>file: model_dictionary.py</p>
+<p>Graph mixin class to add method to a Graph base class that will have it
+behave like a python dictionary.</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_dictionary.PythonDictionary">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_dictionary.</code><code class="sig-name descname">PythonDictionary</code><a class="headerlink" href="#graphit.graph_model_classes.model_dictionary.PythonDictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_dictionary.PythonDictionary.items">
+<code class="sig-name descname">items</code><span class="sig-paren">(</span><em class="sig-param">keystring=None</em>, <em class="sig-param">valuestring=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_dictionary.PythonDictionary.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node items in the (sub)graph.</p>
+<p>Keystring defines the value lookup key in the node data dict.
+This defaults to the graph key_tag.
+Valuestring defines the value lookup key in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keystring</strong> (<em>:py:str</em>) – Data key to use for dictionary keys.</p></li>
+<li><p><strong>valuestring</strong> (<em>:py:str</em>) – Data key to use for dictionary values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of keys, value pairs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_dictionary.PythonDictionary.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><em class="sig-param">keystring=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_dictionary.PythonDictionary.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node keys in the (sub)graph.</p>
+<p>Keystring defines the value lookup key in the node data dict.
+This defaults to the graph key_tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keystring</strong> (<em>:py:str</em>) – Data key to use for dictionary keys.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of keys</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_dictionary.PythonDictionary.values">
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><em class="sig-param">valuestring=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_dictionary.PythonDictionary.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python dict-like function to return node values in the (sub)graph.</p>
+<p>Valuestring defines the value lookup key in the node data dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>valuestring</strong> (<em>:py:str</em>) – Data key to use for dictionary values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_email">
+<span id="graphit-graph-model-classes-model-email-module"></span><h2>graphit.graph_model_classes.model_email module<a class="headerlink" href="#module-graphit.graph_model_classes.model_email" title="Permalink to this headline">¶</a></h2>
+<p>file: model_email.py</p>
+<p>Graph model classes for dealing with emails</p>
+<dl class="simple">
+<dt>TODO: checkout <a class="reference external" href="https://github.com/JoshData/python-email-validator/blob/master/email_validator/__init__.py">https://github.com/JoshData/python-email-validator/blob/master/email_validator/__init__.py</a></dt><dd><p>for IDN emails</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_email.Email">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_email.</code><code class="sig-name descname">Email</code><a class="headerlink" href="#graphit.graph_model_classes.model_email.Email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_email.Email.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_email.Email.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate email adress syntax according to the ‘addr-spec’ part of the
+RFC 2822 specification.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_email.Email.validate_existence">
+<code class="sig-name descname">validate_existence</code><span class="sig-paren">(</span><em class="sig-param">timeout=10</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_email.Email.validate_existence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Email DNS and mailbox verification.</p>
+<p>This method requires dnspython module to be installed</p>
+<p>Incorrect results: some mail servers will give you incorrect results,
+for instance catch-all servers, which will accept all incoming email
+addresses, often forwarding incoming emails to a central mailbox.
+Yahoo addresses displays this catch-all behavior.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using this method allot will risk blacklisting your IP
+(e.g. Spamhaus), especially if you are using a dynamic IP
+address from your ISP.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>:py:int</em>) – SMTP timeout in seconds</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_files">
+<span id="graphit-graph-model-classes-model-files-module"></span><h2>graphit.graph_model_classes.model_files module<a class="headerlink" href="#module-graphit.graph_model_classes.model_files" title="Permalink to this headline">¶</a></h2>
+<p>file: model_files.py</p>
+<p>Graph model classes for working with files</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_files.FilePath">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_files.</code><code class="sig-name descname">FilePath</code><a class="headerlink" href="#graphit.graph_model_classes.model_files.FilePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_files.FilePath.exists">
+<em class="property">property </em><code class="sig-name descname">exists</code><a class="headerlink" href="#graphit.graph_model_classes.model_files.FilePath.exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_files.FilePath.iswritable">
+<em class="property">property </em><code class="sig-name descname">iswritable</code><a class="headerlink" href="#graphit.graph_model_classes.model_files.FilePath.iswritable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_files.FilePath.makedirs">
+<code class="sig-name descname">makedirs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_files.FilePath.makedirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursively create the directory structure of the path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Absolute path to working directory</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_files.FilePath.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">ignore_errors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_files.FilePath.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the path</p>
+<p>Uses <cite>shutil.rmtree</cite> to recursively remove files and directories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ignore_errors</strong> (<em>:py:bool</em>) – remove read-only files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_files.FilePath.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em>, <em class="sig-param">absolute=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_files.FilePath.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node/edge key/value pair</p>
+<p>Implement to provide a direct setter for node or edge key/value pairs
+preferably by using the <cite>set</cite> method of the node/edge storage API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node/edge key to set</p></li>
+<li><p><strong>value</strong> – node/edge value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_identifiers">
+<span id="graphit-graph-model-classes-model-identifiers-module"></span><h2>graphit.graph_model_classes.model_identifiers module<a class="headerlink" href="#module-graphit.graph_model_classes.model_identifiers" title="Permalink to this headline">¶</a></h2>
+<p>file: model_identifiers.py</p>
+<p>Graph model classes for working (unique) identifiers</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_identifiers.UUID">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_identifiers.</code><code class="sig-name descname">UUID</code><a class="headerlink" href="#graphit.graph_model_classes.model_identifiers.UUID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_identifiers.UUID.create">
+<em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_identifiers.UUID.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_identifiers.UUID.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_identifiers.UUID.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node/edge key/value pair</p>
+<p>Implement to provide a direct setter for node or edge key/value pairs
+preferably by using the <cite>set</cite> method of the node/edge storage API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node/edge key to set</p></li>
+<li><p><strong>value</strong> – node/edge value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_networking">
+<span id="graphit-graph-model-classes-model-networking-module"></span><h2>graphit.graph_model_classes.model_networking module<a class="headerlink" href="#module-graphit.graph_model_classes.model_networking" title="Permalink to this headline">¶</a></h2>
+<p>file: model_networking.py</p>
+<p>Graph model classes for dealing with network communication</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_networking.IP4Address">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_networking.</code><code class="sig-name descname">IP4Address</code><a class="headerlink" href="#graphit.graph_model_classes.model_networking.IP4Address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_networking.IP4Address.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_networking.IP4Address.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate and set IP4 address according to the “dotted-quad” ABNF
+syntax as defined in RFC 2673</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_networking.IP6Address">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_networking.</code><code class="sig-name descname">IP6Address</code><a class="headerlink" href="#graphit.graph_model_classes.model_networking.IP6Address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_networking.IP6Address.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_networking.IP6Address.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate and set IP6 address according to RFC 4291</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_openapi">
+<span id="graphit-graph-model-classes-model-openapi-module"></span><h2>graphit.graph_model_classes.model_openapi module<a class="headerlink" href="#module-graphit.graph_model_classes.model_openapi" title="Permalink to this headline">¶</a></h2>
+<p>file: io_json_format.py</p>
+<p>Functions for importing OpenAPI RESTfull API definitions into a functional
+API object</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_openapi.</code><code class="sig-name descname">OpenAPI</code><span class="sig-paren">(</span><em class="sig-param">edges=None</em>, <em class="sig-param">directed=False</em>, <em class="sig-param">nodes=None</em>, <em class="sig-param">data=None</em>, <em class="sig-param">root=None</em>, <em class="sig-param">orm=None</em>, <em class="sig-param">storagedriver=&lt;function init_dictstorage_driver&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="graphit.graph_axis.html#graphit.graph_axis.graph_axis_class.GraphAxis" title="graphit.graph_axis.graph_axis_class.GraphAxis"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_axis.graph_axis_class.GraphAxis</span></code></a></p>
+<p>Base Graph class for OpenAPI definition version 2.0 formally known as
+swagger version 2.0</p>
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.adjacency">
+<code class="sig-name descname">adjacency</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.adjacency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.directed">
+<code class="sig-name descname">directed</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.directed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.edge_tools">
+<code class="sig-name descname">edge_tools</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.edge_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.edges">
+<code class="sig-name descname">edges</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.get_method">
+<code class="sig-name descname">get_method</code><span class="sig-paren">(</span><em class="sig-param">method_name</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.get_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.list_methods">
+<code class="sig-name descname">list_methods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.list_methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.masked">
+<code class="sig-name descname">masked</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.masked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.node_tools">
+<code class="sig-name descname">node_tools</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.node_tools" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.origin">
+<code class="sig-name descname">origin</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.origin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.orm">
+<code class="sig-name descname">orm</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.orm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.root">
+<code class="sig-name descname">root</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.schemes">
+<code class="sig-name descname">schemes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.schemes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return supported HTTP schemes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="graphit.graph_model_classes.model_openapi.OpenAPI.storagedriver">
+<code class="sig-name descname">storagedriver</code><a class="headerlink" href="#graphit.graph_model_classes.model_openapi.OpenAPI.storagedriver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes.model_user">
+<span id="graphit-graph-model-classes-model-user-module"></span><h2>graphit.graph_model_classes.model_user module<a class="headerlink" href="#module-graphit.graph_model_classes.model_user" title="Permalink to this headline">¶</a></h2>
+<p>file: model_user.py</p>
+<p>Graph model classes for dealing with user information</p>
+<dl class="class">
+<dt id="graphit.graph_model_classes.model_user.User">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_model_classes.model_user.</code><code class="sig-name descname">User</code><a class="headerlink" href="#graphit.graph_model_classes.model_user.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_mixin.NodeEdgeToolsBaseClass</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_user.User.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key=None</em>, <em class="sig-param">value=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_user.User.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set to current system user if called without arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_model_classes.model_user.User.username">
+<em class="property">static </em><code class="sig-name descname">username</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_model_classes.model_user.User.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get user name of current system user</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_model_classes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit.graph_model_classes" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_query.html" class="btn btn-neutral float-right" title="graphit.graph_query package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graphit.graph_io.html" class="btn btn-neutral float-left" title="graphit.graph_io package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>

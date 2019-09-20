@@ -1,0 +1,1803 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit.graph_io package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_model_classes package" href="graphit.graph_model_classes.html" />
+    <link rel="prev" title="graphit.graph_combinatorial package" href="graphit.graph_combinatorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graphit.html">graphit API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graphit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">graphit.graph_io package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_adl_format">graphit.graph_io.io_adl_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_cwl_format">graphit.graph_io.io_cwl_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_dot_format">graphit.graph_io.io_dot_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_flattened_data_format">graphit.graph_io.io_flattened_data_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_gexf_format">graphit.graph_io.io_gexf_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graphit-graph-io-io-gml-format-module">graphit.graph_io.io_gml_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_helpers">graphit.graph_io.io_helpers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_jgf_format">graphit.graph_io.io_jgf_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_json_format">graphit.graph_io.io_json_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_jsonschema_format">graphit.graph_io.io_jsonschema_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_jsonschema_format_drafts">graphit.graph_io.io_jsonschema_format_drafts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_lgf_format">graphit.graph_io.io_lgf_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_lgr_format">graphit.graph_io.io_lgr_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_p2g_format">graphit.graph_io.io_p2g_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_pdb_format">graphit.graph_io.io_pdb_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_pgf_format">graphit.graph_io.io_pgf_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_pydata_format">graphit.graph_io.io_pydata_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_tgf_format">graphit.graph_io.io_tgf_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_web_format">graphit.graph_io.io_web_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_xml_format">graphit.graph_io.io_xml_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_yaml_format">graphit.graph_io.io_yaml_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="graphit.html">graphit package</a> &raquo;</li>
+        
+      <li>graphit.graph_io package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.graph_io.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-graph-io-package">
+<h1>graphit.graph_io package<a class="headerlink" href="#graphit-graph-io-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-graphit.graph_io.io_adl_format">
+<span id="graphit-graph-io-io-adl-format-module"></span><h2>graphit.graph_io.io_adl_format module<a class="headerlink" href="#module-graphit.graph_io.io_adl_format" title="Permalink to this headline">¶</a></h2>
+<p>Reading and writing graphs as adjacency lists (.adl)</p>
+<p>Adjacency lists are a simple textual representation of node identifiers
+and their linkage (adjacency) to one another.</p>
+<p>The graph with edges a-b, a-c, d-e can be represented as the following
+adjacency list (anything following the # in a line is a comment):</p>
+<blockquote>
+<div><p>a b c # source target target
+d e</p>
+</div></blockquote>
+<dl class="function">
+<dt id="graphit.graph_io.io_adl_format.read_adl">
+<code class="sig-prename descclassname">graphit.graph_io.io_adl_format.</code><code class="sig-name descname">read_adl</code><span class="sig-paren">(</span><em class="sig-param">adl_file</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_adl_format.read_adl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a graph from a adjacency list (ADL)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the directionality of the graph is not defined explicitly
+in the adjacency list and thus depends on the graph.directional
+attribute that is False (undirectional) by default.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adl_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – ADL graph data.</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import ADL data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_adl_format.write_adl">
+<code class="sig-prename descclassname">graphit.graph_io.io_adl_format.</code><code class="sig-name descname">write_adl</code><span class="sig-paren">(</span><em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_adl_format.write_adl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export graph as adjacency list (ADL)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This format does not store graph, node, or edge data.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_cwl_format">
+<span id="graphit-graph-io-io-cwl-format-module"></span><h2>graphit.graph_io.io_cwl_format module<a class="headerlink" href="#module-graphit.graph_io.io_cwl_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for importing data structures in Common Workflow Language format.</p>
+<p>The Common Workflow Language (CWL) is a specification for describing analysis
+workflows and tools in a way that makes them portable and scalable across a
+variety of software and hardware environments, from workstations to cluster,
+cloud, and high performance computing (HPC) environments.</p>
+<p>CWL data structures are stored in JSON or YAML format.
+The lie_graph CWL parser supports syntax version 1.0.2 as described here:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://www.commonwl.org/v1.0/">https://www.commonwl.org/v1.0/</a></p>
+</div></blockquote>
+<dl class="simple">
+<dt>Citation:</dt><dd><p>Peter Amstutz, Michael R. Crusoe, Nebojša Tijanić (editors), Brad Chapman,
+John Chilton, Michael Heuer, Andrey Kartashov, Dan Leehr, Hervé Ménager,
+Maya Nedeljkovich, Matt Scales, Stian Soiland-Reyes, Luka Stojanovic (2016):
+Common Workflow Language, v1.0. Specification, Common Workflow Language
+working group. <a class="reference external" href="https://w3id.org/cwl/v1.0/">https://w3id.org/cwl/v1.0/</a> doi:10.6084/m9.figshare.3115156.v2</p>
+</dd>
+<dt>For more information on CWL consult:</dt><dd><p><a class="reference external" href="https://www.commonwl.org">https://www.commonwl.org</a></p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="graphit.graph_io.io_cwl_format.read_cwl">
+<code class="sig-prename descclassname">graphit.graph_io.io_cwl_format.</code><code class="sig-name descname">read_cwl</code><span class="sig-paren">(</span><em class="sig-param">cwl_file</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_cwl_format.read_cwl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse Common Wokflow Language data structures to a graph</p>
+<p>Additional keyword arguments (kwargs) are passed to <cite>read_pydata</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cwl_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – CWL data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import dictionary data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_dot_format">
+<span id="graphit-graph-io-io-dot-format-module"></span><h2>graphit.graph_io.io_dot_format module<a class="headerlink" href="#module-graphit.graph_io.io_dot_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for exporting and importing graphs to and from graph description
+language (DOT) format</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_dot_format.write_dot">
+<code class="sig-prename descclassname">graphit.graph_io.io_dot_format.</code><code class="sig-name descname">write_dot</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">graph_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_dot_format.write_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>DOT graphs are either directional (digraph) or undirectional, mixed mode
+is not supported.</p>
+<p>Nodes and edges are all exported separably, short hand notations are not
+supported. Grouping and supgraphs are not supported.
+Graph attributes in graph.data, graph.edges and graph.nodes will be
+exported as DOT directives regardless if they are official GraphVis DOT
+graph directives as listed in the reference documentation:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://www.graphviz.org/doc/info/attrs.html">https://www.graphviz.org/doc/info/attrs.html</a></p>
+</div></blockquote>
+<p>Dot reserved rendering keywords part of the graphs global attributes in
+graph.data or part of the node and edge attributes are exported as part
+of the DOT graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p></li>
+<li><p><strong>graph_name</strong> (<em>:py:str</em>) – name of the ‘graph’ or ‘digraph’. Uses the ‘title’
+attribute in graph.data by default, else graph_name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>DOT graph representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_dot_format.read_dot">
+<code class="sig-prename descclassname">graphit.graph_io.io_dot_format.</code><code class="sig-name descname">read_dot</code><span class="sig-paren">(</span><em class="sig-param">dot</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_dot_format.read_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graph in DOT format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dot</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – DOT graph data.</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import DOT data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_flattened_data_format">
+<span id="graphit-graph-io-io-flattened-data-format-module"></span><h2>graphit.graph_io.io_flattened_data_format module<a class="headerlink" href="#module-graphit.graph_io.io_flattened_data_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for importing and exporting flattened (dot seperated) data structures</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_flattened_data_format.read_flattened">
+<code class="sig-prename descclassname">graphit.graph_io.io_flattened_data_format.</code><code class="sig-name descname">read_flattened</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_flattened_data_format.read_flattened" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_flattened_data_format.write_flattened">
+<code class="sig-prename descclassname">graphit.graph_io.io_flattened_data_format.</code><code class="sig-name descname">write_flattened</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">sep='.'</em>, <em class="sig-param">default=None</em>, <em class="sig-param">allow_none=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_flattened_data_format.write_flattened" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_gexf_format">
+<span id="graphit-graph-io-io-gexf-format-module"></span><h2>graphit.graph_io.io_gexf_format module<a class="headerlink" href="#module-graphit.graph_io.io_gexf_format" title="Permalink to this headline">¶</a></h2>
+<p>Reading and writing graphs in GEXF format.</p>
+<p>GEXF (Graph Exchange XML Format) is a language for describing complex
+network structures, their associated data and dynamics.</p>
+<dl class="simple">
+<dt>Reference and specification:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://gephi.org/gexf/format/schema.html">https://gephi.org/gexf/format/schema.html</a></p></li>
+<li><p><a class="reference external" href="https://gephi.org/gexf/1.2draft/gexf-12draft-primer.pdf">https://gephi.org/gexf/1.2draft/gexf-12draft-primer.pdf</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="graphit.graph_io.io_gexf_format.read_gexf">
+<code class="sig-prename descclassname">graphit.graph_io.io_gexf_format.</code><code class="sig-name descname">read_gexf</code><span class="sig-paren">(</span><em class="sig-param">gexf_file</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_gexf_format.read_gexf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graphs in GEXF format</p>
+<p>Uses the Python build-in etree cElementTree parser to parse the XML
+document and convert the elements into nodes.
+The XML element tag becomes the node key, XML text becomes the node
+value and XML attributes are added to the node as additional attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gexf_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – XML data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import dictionary data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_gexf_format.write_gexf">
+<code class="sig-prename descclassname">graphit.graph_io.io_gexf_format.</code><code class="sig-name descname">write_gexf</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">node_tools=&lt;class 'graphit.graph_io.io_gexf_format.GEXFNodeTools'&gt;</em>, <em class="sig-param">edge_tools=&lt;class 'graphit.graph_io.io_gexf_format.GEXFEdgeTools'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_gexf_format.write_gexf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph to an GEXF data format</p>
+<p>Custom XML serializers may be introduced as a custom NodeTools
+class using the <cite>node_tools</cite> attribute. In addition, the graph
+ORM may be used to inject tailored <cite>serialize</cite> methods in specific
+nodes or edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to export</p></li>
+<li><p><strong>node_tools</strong> (<em>:graphit:NodeTools</em>) – NodeTools class with node serialize method</p></li>
+<li><p><strong>edge_tools</strong> (<em>:graphit:EdgeTools</em>) – EdgeTools class with node serialize method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph exported as a hierarchical XML node structure</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="graphit-graph-io-io-gml-format-module">
+<h2>graphit.graph_io.io_gml_format module<a class="headerlink" href="#graphit-graph-io-io-gml-format-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-graphit.graph_io.io_helpers">
+<span id="graphit-graph-io-io-helpers-module"></span><h2>graphit.graph_io.io_helpers module<a class="headerlink" href="#module-graphit.graph_io.io_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="graphit.graph_io.io_helpers.initial_node">
+<code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">initial_node</code><span class="sig-paren">(</span><em class="sig-param">nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.initial_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return node ID of node with smallest _ID identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodes</strong> – graph ‘nodes’ object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node ID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_helpers.resolve_root_node">
+<code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">resolve_root_node</code><span class="sig-paren">(</span><em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.resolve_root_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve the node ID of the root node of the graph.</p>
+<p>For Graph objects there is no strict concept of a root node and by default
+the ‘root’ attribute of the grpah is not defined. Here, the root will
+resolve to the node nid with the smallest _id number which usually is the
+first node added when the graph was created.</p>
+<p>For GraphAxis object a root is essential for defining the graph hierarchy
+and thus, the graph ‘root’ attribute should be defined. If it is not
+defined it will also default to the node nid with the smallest _id number.
+If the user defined or default root is in the (sub)graph it is returned.
+If not, an attempt will be made to resolve it following:</p>
+<ul class="simple">
+<li><p>If the graph is a single node, its node ID will be root.</p></li>
+<li><p>If the graph has multiple nodes and the root is defined in the full_graph,
+return the node ID closest to the root</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> – graph to resolve root node for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>root node ID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_helpers.coarse_type">
+<code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">coarse_type</code><span class="sig-paren">(</span><em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.coarse_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_helpers.check_graphit_version">
+<code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">check_graphit_version</code><span class="sig-paren">(</span><em class="sig-param">file_version</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.check_graphit_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the graph version of the file is (backwards) compatible with
+the current graphit module version</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_version</strong> (<em>:py:str</em>) – graphit version to check</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_helpers.open_anything">
+<code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">open_anything</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">mode='r'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.open_anything" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open input available from a file, a Python file like object, standard
+input, a URL or a string and return a uniform Python file like object
+with standard methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>mixed</em>) – Input as file, Python file like object, standard
+input, URL or a string</p></li>
+<li><p><strong>mode</strong> (<em>string</em>) – file access mode, defaults to ‘r’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Python file like object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_io.io_helpers.FormatDetect">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">FormatDetect</code><span class="sig-paren">(</span><em class="sig-param">set_locale='en_US.UTF-8'</em>, <em class="sig-param">decimal_point=None</em>, <em class="sig-param">thousands_sep=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Type cast string or unicode objects to float, integer or boolean.</p>
+<p>Uses localization to identify</p>
+<p>TODO: comma separated strings fail if one comma</p>
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.FormatDetect.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">target_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse an unknown value to a float, integer, boolean or else
+remain in unicode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – value to parse</p></li>
+<li><p><strong>target_type</strong> – type to convert to as ‘integer’, ‘number’, ‘string’,
+‘boolean’ or automatic ‘detect’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parsed value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.FormatDetect.to_boolean">
+<code class="sig-name descname">to_boolean</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect.to_boolean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.FormatDetect.to_detect">
+<code class="sig-name descname">to_detect</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect.to_detect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.FormatDetect.to_integer">
+<em class="property">static </em><code class="sig-name descname">to_integer</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect.to_integer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.FormatDetect.to_number">
+<em class="property">static </em><code class="sig-name descname">to_number</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect.to_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.FormatDetect.to_string">
+<em class="property">static </em><code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.FormatDetect.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_io.io_helpers.StreamReader">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_helpers.</code><code class="sig-name descname">StreamReader</code><span class="sig-paren">(</span><em class="sig-param">stream</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>StreamReader class</p>
+<p>Extention of the Python file like object (io class) to read data as
+flexible streams. Enables a stream to be read by character, or block
+of characters crossing file lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream</strong> – textual data that can be parsed as file-like object.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.next">
+<code class="sig-name descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator next method</p>
+<p>Returns next character in the iterations as long as there are
+characters left in the file-like object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>StopIteration, if no more characters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.read_upto_block">
+<code class="sig-name descname">read_upto_block</code><span class="sig-paren">(</span><em class="sig-param">blocks</em>, <em class="sig-param">sep=(' '</em>, <em class="sig-param">'\n')</em>, <em class="sig-param">keep=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.read_upto_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return characters from active position up to a certain block of
+characters or the first occurrence of one of multiple blocks.
+A block is defined as a sequence of characters bounded by separator
+characters <cite>sep</cite> usually spaces and newline characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blocks</strong> (<em>:py:str</em><em>, </em><em>:py:list</em><em>, </em><em>:py:tuple</em>) – block(s) to search for.</p></li>
+<li><p><strong>sep</strong> (<em>:py:tuple</em><em>, </em><em>:py:list</em>) – block seperation characters</p></li>
+<li><p><strong>keep</strong> (<em>:py:bool</em>) – keep the block to search for as part of the
+returned string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of text segment and termination character</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.read_upto_char">
+<code class="sig-name descname">read_upto_char</code><span class="sig-paren">(</span><em class="sig-param">chars</em>, <em class="sig-param">keep=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.read_upto_char" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return characters from active position up to a certain
+character or the first occurrence of one of multiple
+characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chars</strong> (<em>:py:str</em><em>, </em><em>:py:list</em><em>, </em><em>:py:tuple</em>) – character(s) to search for.</p></li>
+<li><p><strong>keep</strong> (<em>:py:bool</em>) – keep the character to search for as part of the
+returned string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of text segment and termination character</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.readline">
+<code class="sig-name descname">readline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.readline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns ‘readline’ method of the base file-like object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.set_cursor">
+<code class="sig-name descname">set_cursor</code><span class="sig-paren">(</span><em class="sig-param">position</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.set_cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the file reader cursor to a new position in the file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>position</strong> (<em>:py:int</em>) – position to move to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.slice">
+<code class="sig-name descname">slice</code><span class="sig-paren">(</span><em class="sig-param">start</em>, <em class="sig-param">stop</em>, <em class="sig-param">step=1</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text slice method.</p>
+<p>Returns a segment of text defined by a start and stop character
+position relative to the start of the text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>:py:int</em>) – start character position</p></li>
+<li><p><strong>stop</strong> (<em>:py:str</em>) – stop character position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_io.io_helpers.StreamReader.tell">
+<code class="sig-name descname">tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_helpers.StreamReader.tell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current position of file cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_jgf_format">
+<span id="graphit-graph-io-io-jgf-format-module"></span><h2>graphit.graph_io.io_jgf_format module<a class="headerlink" href="#module-graphit.graph_io.io_jgf_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for reading and writing graph files in the graphit .jgf JSON format</p>
+<p>This is a propitiatory format in which the graph meta-data, the nodes, edges
+and their data dictionaries are stored in JSON format.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_jgf_format.read_jgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_jgf_format.</code><code class="sig-name descname">read_jgf</code><span class="sig-paren">(</span><em class="sig-param">jgf_format</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jgf_format.read_jgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read JSON graph format (.jgf)</p>
+<p>This is a propitiatory format in which the graph meta-data, the nodes,
+edges and their data dictionaries are stored in JSON format.</p>
+<p>Format description. Primary key/value pairs:
+* graph: Graph class meta-data. Serializes all class attributes of type</p>
+<blockquote>
+<div><p>int, float, bool, long, str or unicode.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>nodes: Graph node identifiers (keys) and attributes (values)</p></li>
+<li><p>edges: Graph enumerated edge identifiers</p></li>
+<li><p>edge_attr: Graph edge attributes</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jgf_format</strong> (<em>:py:str</em>) – JSON encoded graph data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import TGF data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Graph or GraphAxis object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_jgf_format.write_jgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_jgf_format.</code><code class="sig-name descname">write_jgf</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">indent=2</em>, <em class="sig-param">encoding='utf-8'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jgf_format.write_jgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write JSON graph format</p>
+<p>This is a propitiatory format in which the graph meta-data, the nodes,
+edges and their data dictionaries are stored in JSON format.</p>
+<p>Format description. Primary key/value pairs:
+* graph: Graph class meta-data. Serializes all class attributes of type</p>
+<blockquote>
+<div><p>int, float, bool, long, str or unicode.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>data: Graph meta-data dictionary</p></li>
+<li><p>nodes: Graph node identifiers (keys) and attributes (values)</p></li>
+<li><p>edges: Graph enumerated edge identifiers</p></li>
+<li><p>edge_attr: Graph edge attributes</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph</em><em> or </em><em>GraphAxis object</em>) – graph object to serialize</p></li>
+<li><p><strong>indent</strong> (<em>:py:int</em>) – JSON indentation count</p></li>
+<li><p><strong>encoding</strong> (<em>:py:str</em>) – JSON string encoding</p></li>
+<li><p><strong>kwargs</strong> (<em>:py:dic</em>) – additional data to be stored as file meta data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON encoded graph dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_json_format">
+<span id="graphit-graph-io-io-json-format-module"></span><h2>graphit.graph_io.io_json_format module<a class="headerlink" href="#module-graphit.graph_io.io_json_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for importing and exporting JSON data into a graph data structure</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_json_format.read_json">
+<code class="sig-prename descclassname">graphit.graph_io.io_json_format.</code><code class="sig-name descname">read_json</code><span class="sig-paren">(</span><em class="sig-param">json_file</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_json_format.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse (hierarchical) JSON data structure to a graph</p>
+<p>Use the default Python json parser to parse the JSON file to a dictionary
+followed by io_dict_format.read_pydata to parse to a graph structure.</p>
+<p>Additional keyword arguments (kwargs) are passed to <cite>read_pydata</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – json data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import dictionary data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_json_format.write_json">
+<code class="sig-prename descclassname">graphit.graph_io.io_json_format.</code><code class="sig-name descname">write_json</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">default=None</em>, <em class="sig-param">include_root=False</em>, <em class="sig-param">allow_none=True</em>, <em class="sig-param">**kwrags</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_json_format.write_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph to a (nested) JSON structure</p>
+<p>Convert graph representation of the dictionary tree into JSON
+using a nested or flattened representation of the dictionary hierarchy.</p>
+<p>Dictionary keys and values are obtained from the node attributes using
+<cite>key_tag</cite> and <cite>value_tag</cite>.  The key_tag is set to graph
+key_tag by default.</p>
+<p>Additional keyword arguments (kwargs) are passed to json.dumps()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:GraphAxis</em>) – Graph object to export</p></li>
+<li><p><strong>default</strong> (<em>mixed</em>) – value to use when node value was not found using
+value_tag.</p></li>
+<li><p><strong>include_root</strong> (<em>:py:bool</em>) – Include the root node in the hierarchy</p></li>
+<li><p><strong>root_nid</strong> – root node ID in graph hierarchy</p></li>
+<li><p><strong>allow_none</strong> (<em>:py:bool</em>) – allow None values in the output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:json</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_jsonschema_format">
+<span id="graphit-graph-io-io-jsonschema-format-module"></span><h2>graphit.graph_io.io_jsonschema_format module<a class="headerlink" href="#module-graphit.graph_io.io_jsonschema_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for building and validating graphs based on a JSON schema definition.
+<a class="reference external" href="http://json-schema.org">http://json-schema.org</a></p>
+<dl class="function">
+<dt id="graphit.graph_io.io_jsonschema_format.read_json_schema">
+<code class="sig-prename descclassname">graphit.graph_io.io_jsonschema_format.</code><code class="sig-name descname">read_json_schema</code><span class="sig-paren">(</span><em class="sig-param">schema</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">exclude_args=None</em>, <em class="sig-param">resolve_ref=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format.read_json_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import hierarchical data structures defined in a JSON schema format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schema</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a><em>, </em><em>file</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – JSON Schema data format to import</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – graph object to import TGF data in</p></li>
+<li><p><strong>exclude_args</strong> (<em>:py:list</em>) – JSON schema arguments to exclude from import</p></li>
+<li><p><strong>resolve_ref</strong> (<em>:py:bool</em>) – Parse JSON schema ‘definitions’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_jsonschema_format_drafts">
+<span id="graphit-graph-io-io-jsonschema-format-drafts-module"></span><h2>graphit.graph_io.io_jsonschema_format_drafts module<a class="headerlink" href="#module-graphit.graph_io.io_jsonschema_format_drafts" title="Permalink to this headline">¶</a></h2>
+<p>Classes representing JSON Schema draft version as specified by
+<a class="reference external" href="http://json-schema.org">http://json-schema.org</a>.</p>
+<dl class="class">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.StringType">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_jsonschema_format_drafts.</code><code class="sig-name descname">StringType</code><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.StringType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_io.io_jsonschema_format_drafts.JSONSchemaValidatorDraft07</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.StringType.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.StringType.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node attribute values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node attribute key</p></li>
+<li><p><strong>value</strong> – node attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.IntegerType">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_jsonschema_format_drafts.</code><code class="sig-name descname">IntegerType</code><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.IntegerType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_io.io_jsonschema_format_drafts.JSONSchemaValidatorDraft07</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.IntegerType.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.IntegerType.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node attribute values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node attribute key</p></li>
+<li><p><strong>value</strong> – node attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.BooleanType">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_jsonschema_format_drafts.</code><code class="sig-name descname">BooleanType</code><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.BooleanType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_io.io_jsonschema_format_drafts.JSONSchemaValidatorDraft07</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.BooleanType.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.BooleanType.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node attribute values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node attribute key</p></li>
+<li><p><strong>value</strong> – node attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.NumberType">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_jsonschema_format_drafts.</code><code class="sig-name descname">NumberType</code><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.NumberType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_io.io_jsonschema_format_drafts.JSONSchemaValidatorDraft07</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.NumberType.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.NumberType.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node attribute values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node attribute key</p></li>
+<li><p><strong>value</strong> – node attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.ArrayType">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_io.io_jsonschema_format_drafts.</code><code class="sig-name descname">ArrayType</code><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.ArrayType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_io.io_jsonschema_format_drafts.JSONSchemaValidatorDraft07</span></code></p>
+<dl class="method">
+<dt id="graphit.graph_io.io_jsonschema_format_drafts.ArrayType.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_jsonschema_format_drafts.ArrayType.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set node attribute values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – node attribute key</p></li>
+<li><p><strong>value</strong> – node attribute value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_lgf_format">
+<span id="graphit-graph-io-io-lgf-format-module"></span><h2>graphit.graph_io.io_lgf_format module<a class="headerlink" href="#module-graphit.graph_io.io_lgf_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for reading and writing graphs defined in the LEMON Graph Format</p>
+<p>Reference:  <a class="reference external" href="http://lemon.cs.elte.hu/pub/doc/1.3/a00002.html">http://lemon.cs.elte.hu/pub/doc/1.3/a00002.html</a></p>
+<dl class="simple">
+<dt>Citation:   Balázs Dezső, Alpár Jüttner, Péter Kovács “LEMON – an Open Source</dt><dd><p>C++ Graph Template Library” (2011) Electronic Notes in Theoretical
+Computer Science, 264(5), 23-45</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="graphit.graph_io.io_lgf_format.read_lgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_lgf_format.</code><code class="sig-name descname">read_lgf</code><span class="sig-paren">(</span><em class="sig-param">lgf</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_lgf_format.read_lgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graph in LEMON Graph Format (LGF)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lgf</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – LGF graph data.</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import LGF data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_lgf_format.write_lgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_lgf_format.</code><code class="sig-name descname">write_lgf</code><span class="sig-paren">(</span><em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_lgf_format.write_lgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write graph in LEMON Graph Format (LGF)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import LGF data in</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_lgr_format">
+<span id="graphit-graph-io-io-lgr-format-module"></span><h2>graphit.graph_io.io_lgr_format module<a class="headerlink" href="#module-graphit.graph_io.io_lgr_format" title="Permalink to this headline">¶</a></h2>
+<p>Reading and writing graphs in LEDA format (.gw, .lgr).</p>
+<p>The Library of Efficient Data types and Algorithms (LEDA) is a propitiatory
+licensed software library providing C++ implementations of a broad variety of
+algorithms for graph theory and computational geometry.</p>
+<dl class="simple">
+<dt>Specifications:</dt><dd><p><a class="reference external" href="http://www.algorithmic-solutions.info/leda_guide/graphs/leda_native_graph_fileformat.html">http://www.algorithmic-solutions.info/leda_guide/graphs/leda_native_graph_fileformat.html</a></p>
+</dd>
+</dl>
+<p>Example:</p>
+<blockquote>
+<div><p>#header section
+LEDA.GRAPH
+string
+int
+-1
+#nodes section
+5
+<a href="#id1"><span class="problematic" id="id2">|{v1}|</span></a>
+<a href="#id3"><span class="problematic" id="id4">|{v2}|</span></a>
+<a href="#id5"><span class="problematic" id="id6">|{v3}|</span></a>
+<a href="#id7"><span class="problematic" id="id8">|{v4}|</span></a>
+<a href="#id9"><span class="problematic" id="id10">|{v5}|</span></a>
+#edges section
+7
+1 2 0 <a href="#id11"><span class="problematic" id="id12">|{4}|</span></a>
+1 3 0 <a href="#id13"><span class="problematic" id="id14">|{3}|</span></a>
+2 3 0 <a href="#id15"><span class="problematic" id="id16">|{2}|</span></a>
+3 4 0 <a href="#id17"><span class="problematic" id="id18">|{3}|</span></a>
+3 5 0 <a href="#id19"><span class="problematic" id="id20">|{7}|</span></a>
+4 5 0 <a href="#id21"><span class="problematic" id="id22">|{6}|</span></a>
+5 1 0 <a href="#id23"><span class="problematic" id="id24">|{1}|</span></a></p>
+</div></blockquote>
+<p>The LEDA graph format is a simple and a fast format always separated in a
+header, nodes and edges section. The header always starts with LEDA.GRAPH
+followed by the data type for node and edge data as string, int, float or
+boolean or ‘void’ if no data defined. The fourth line described directionality
+of the graph as directed (-1) or undirected (-2).
+The nodes section starts with the number of nodes followed by an ordered list
+of node labels (between <a href="#id25"><span class="problematic" id="id26">|{}|</span></a>) that are sequentially number starting from 1.
+The node labels are converted to the respective types as indicated in the
+header section.
+The edge section is similar to nodes but list for each edge the source and
+target nodes following the sequential number of the nodes, reversal number
+(not used) and edge data label (between <a href="#id27"><span class="problematic" id="id28">|{}|</span></a>).</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_lgr_format.read_lgr">
+<code class="sig-prename descclassname">graphit.graph_io.io_lgr_format.</code><code class="sig-name descname">read_lgr</code><span class="sig-paren">(</span><em class="sig-param">lgr</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">edge_label='label'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_lgr_format.read_lgr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graph in LEDA format</p>
+<p>Nodes are added to the graph using a unique ID or with the node data
+as label depending if the graph.data.auto_nid is True or False.
+Edge data is added to the edge attributes using <cite>edge_label</cite> as key.
+The data types for both nodes and edges is set according to the
+specifications in the LEDA header as either string, int, float or bool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lgr</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – LEDA graph data.</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import LEDA data in</p></li>
+<li><p><strong>edge_label</strong> (<em>:py:str</em>) – edge data label name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>TypeError if node/edge type conversion failed
+GraphitException in case of malformed LEDA file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_lgr_format.write_lgr">
+<code class="sig-prename descclassname">graphit.graph_io.io_lgr_format.</code><code class="sig-name descname">write_lgr</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">node_key=None</em>, <em class="sig-param">edge_key=None</em>, <em class="sig-param">node_data_type='string'</em>, <em class="sig-param">edge_data_type='void'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_lgr_format.write_lgr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph to an LGR data format</p>
+<p>The LEDA format allows for export of only one node or edge data type
+(as: <a href="#id29"><span class="problematic" id="id30">|{data type}|</span></a>). For nodes this is usually the node label and for
+edges any arbitrary data key,value pair. In both cases the data type
+is required to be of either: string, int, float or bool.</p>
+<p>Nodes and edges are exported by iterating over them using <cite>iternodes</cite>
+and <cite>iteredges</cite>. Iteration uses the graphit Object Relations Mapper (ORM)
+allowing full control over the data export by overriding the <cite>get</cite>
+method globally in the ‘NodeTools’ or ‘EdgeTools’ classes or using custom
+classes registered with the ORM.
+Data returned by the <cite>get</cite> method will be serialized regardless the return
+type.</p>
+<p>The node and edge data types are registered globally in the LENA file using
+<cite>node_data_type</cite> and <cite>edge_data_type</cite> set to ‘void’ (no data) by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to export</p></li>
+<li><p><strong>node_key</strong> (<em>:py:str</em>) – key name of node data to export</p></li>
+<li><p><strong>edge_key</strong> (<em>:py:str</em>) – key name of edge data to export</p></li>
+<li><p><strong>node_data_type</strong> (<em>:py:str</em>) – primitive data type of exported node data</p></li>
+<li><p><strong>edge_data_type</strong> (<em>:py:str</em>) – primitive data type of exported edge data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph exported as LGR format</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>GraphitException</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_p2g_format">
+<span id="graphit-graph-io-io-p2g-format-module"></span><h2>graphit.graph_io.io_p2g_format module<a class="headerlink" href="#module-graphit.graph_io.io_p2g_format" title="Permalink to this headline">¶</a></h2>
+<p>Reading and writing graphs defined in P2G Graph Format (.p2g) used for
+representing metabolic pathways from the KEGG database.</p>
+<p>A file that describes a uniquely labeled graph (with extension “.gr”) format
+looks like the following:</p>
+<p>name
+3 4
+a
+1 2
+b</p>
+<p>c
+0 2</p>
+<p>“name” is simply a description of what the graph corresponds to. The second
+line displays the number of nodes and number of edges, respectively.
+This sample graph contains three nodes labeled “a”, “b”, and “c”. The rest of
+the graph contains two lines for each node. The first line for a node contains
+the node label.
+After the declaration of the node label, the out-edges of that node in the
+graph are provided. For instance, “a” is linked to nodes 1 and 2, which are
+labeled “b” and “c”, while the node labeled “b” has no outgoing edges.
+Observe that node labeled “c” has an outgoing edge to itself.
+Indeed, self-loops are allowed. Node index starts from 0.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_p2g_format.read_p2g">
+<code class="sig-prename descclassname">graphit.graph_io.io_p2g_format.</code><code class="sig-name descname">read_p2g</code><span class="sig-paren">(</span><em class="sig-param">p2g_file</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_p2g_format.read_p2g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graph in P2G format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p2g_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – P2G data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import to or Graph by default</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph instance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_p2g_format.write_p2g">
+<code class="sig-prename descclassname">graphit.graph_io.io_p2g_format.</code><code class="sig-name descname">write_p2g</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">graph_name_label='name'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_p2g_format.write_p2g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graphit graph to P2G format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p></li>
+<li><p><strong>graph_name_label</strong> (<em>:py:str</em>) – graph.data attribute label for the graph name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>P2G graph representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_pdb_format">
+<span id="graphit-graph-io-io-pdb-format-module"></span><h2>graphit.graph_io.io_pdb_format module<a class="headerlink" href="#module-graphit.graph_io.io_pdb_format" title="Permalink to this headline">¶</a></h2>
+<p>Reading and writing graphs in RCSB Protein DataBank format (.pdb).</p>
+<p>The PDB molecular structure format is represented as GraphAxis graph using the
+Model-Segment-Residue-Atom (MSRA) hierarchical structure. The reader and
+writer support the official wwPDB guidelines for MODEL, ATOM, HETATM and CONECT
+records. Other records are not supported.</p>
+<dl class="simple">
+<dt>Reference and specification:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html">https://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="graphit.graph_io.io_pdb_format.read_pdb">
+<code class="sig-prename descclassname">graphit.graph_io.io_pdb_format.</code><code class="sig-name descname">read_pdb</code><span class="sig-paren">(</span><em class="sig-param">pdb_file</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">column_format={'atalt': (slice(16</em>, <em class="sig-param">17</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'atname': (slice(12</em>, <em class="sig-param">16</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'atnum': (slice(6</em>, <em class="sig-param">12</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'int'&gt;)</em>, <em class="sig-param">'b': (slice(60</em>, <em class="sig-param">66</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'float'&gt;)</em>, <em class="sig-param">'chain': (slice(21</em>, <em class="sig-param">22</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'charge': (slice(78</em>, <em class="sig-param">80</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'float'&gt;)</em>, <em class="sig-param">'elem': (slice(76</em>, <em class="sig-param">78</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'insert': (slice(26</em>, <em class="sig-param">30</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'label': (slice(0</em>, <em class="sig-param">6</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'occ': (slice(54</em>, <em class="sig-param">60</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'float'&gt;)</em>, <em class="sig-param">'resname': (slice(17</em>, <em class="sig-param">21</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'resnum': (slice(22</em>, <em class="sig-param">26</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'int'&gt;)</em>, <em class="sig-param">'segid': (slice(72</em>, <em class="sig-param">76</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'str'&gt;)</em>, <em class="sig-param">'xcoor': (slice(30</em>, <em class="sig-param">38</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'float'&gt;)</em>, <em class="sig-param">'ycoor': (slice(38</em>, <em class="sig-param">46</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'float'&gt;)</em>, <em class="sig-param">'zcoor': (slice(46</em>, <em class="sig-param">54</em>, <em class="sig-param">None)</em>, <em class="sig-param">&lt;class 'float'&gt;)}</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_pdb_format.read_pdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse RCSB Protein Data Bank (PDB) structure files to a graph</p>
+<p>Builds a Model-Segment-Residue-Atom (MSRA) hierarchy of the structure
+in a GraphAxis graph. Primary structure data will be extracted from the
+columns in ATOM and HETATM lines. The data label, character positions
+and required type conversion are described by the <cite>column_format</cite>
+dictionary by default supporting wwPDB version 3.3 guidelines.
+CONECT records will represented as edges between atoms. These edges can
+be identified by the ‘label=conect’ attribute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The GraphAxis ‘auto_nid’ functionality will be enabled for the
+import to uniquely represent structures possibly sharing similar
+atom numbers (MODELS).</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdb_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – PDB data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import dictionary data in</p></li>
+<li><p><strong>column_format</strong> (<em>:py:dict</em>) – ATOM/HETATM line label based slice records</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_pdb_format.write_pdb">
+<code class="sig-prename descclassname">graphit.graph_io.io_pdb_format.</code><code class="sig-name descname">write_pdb</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">atom_format='{label:6}{atnum:&gt;5} {atname:^4}{atalt:1}{resname:&gt;3} {chain}{resnum:&gt;4}{insert:1}   {xcoor:8.3f}{ycoor:8.3f}{zcoor:8.3f}{occ:6.2f}{b:6.2f}   {segid:&gt;4}{elem:&gt;2}{charge:&gt;2}\n'</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_pdb_format.write_pdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a Model-Segment-Residue-Atom (MSRA) graph structure as
+RCSB Protein Data Bank (PDB) structure file</p>
+<p>PDB ATOM and HETATM lines are formatted using the <cite>atom_format</cite> string
+formatter using Python’s keyword based format() mini-language.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:graph</em>) – Graph to export</p></li>
+<li><p><strong>atom_format</strong> (<em>:py:str</em>) – String formater for ATOM/HETATM lines</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RCSB PDB string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_pgf_format">
+<span id="graphit-graph-io-io-pgf-format-module"></span><h2>graphit.graph_io.io_pgf_format module<a class="headerlink" href="#module-graphit.graph_io.io_pgf_format" title="Permalink to this headline">¶</a></h2>
+<p>Reading and writing graphs defined in Propitiatory Graph Format (.pgf) a
+format specific to the graphit module.</p>
+<p>PGF stores graphit graph data as plain text python dictionaries or as
+serialized byte stream using the Python <cite>pickle</cite> module. Graphit graphs can
+contain any hashable Python object as node (not just integers and strings).
+Storing a graph by “Pickling” it is probably the best way of representing
+arbitrary hashable data types.
+Both storage options are feature rich but not portable as they are (so far)
+only supported by graphit.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_pgf_format.read_pgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_pgf_format.</code><code class="sig-name descname">read_pgf</code><span class="sig-paren">(</span><em class="sig-param">pgf_file</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">pickle_graph=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_pgf_format.read_pgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import graph from Graph Python Format file</p>
+<p>PGF format is the modules own file format consisting of a serialized
+graph data, nodes and edges dictionaries. Import either as plain text
+serialized dictionary or pickled graph object.
+The format is feature rich with good performance but is not portable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pgf_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – PGF data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import to or Graph by default</p></li>
+<li><p><strong>pickle_graph</strong> (<em>:py:bool</em>) – PGF format is a pickled graph</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph instance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_pgf_format.write_pgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_pgf_format.</code><code class="sig-name descname">write_pgf</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">pickle_graph=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_pgf_format.write_pgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export graph as Graph Python Format file</p>
+<p>PGF format is the modules own file format consisting of a serialized
+graph data, nodes and edges dictionaries. Exports either as plain text
+serialized dictionary or pickled graph object.
+The format is feature rich with good performance but is not portable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p></li>
+<li><p><strong>pickle_graph</strong> (<em>:py:bool</em>) – serialize the Graph using Python pickle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph in GPF graph representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_pydata_format">
+<span id="graphit-graph-io-io-pydata-format-module"></span><h2>graphit.graph_io.io_pydata_format module<a class="headerlink" href="#module-graphit.graph_io.io_pydata_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for importing and exporting (nested) Python data structures into
+graph data structures.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_pydata_format.read_pydata">
+<code class="sig-prename descclassname">graphit.graph_io.io_pydata_format.</code><code class="sig-name descname">read_pydata</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">parser_classes=None</em>, <em class="sig-param">level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_pydata_format.read_pydata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse (hierarchical) python data structures to a graph</p>
+<p>Many data formats are first parsed to a python structure before they are
+converted to a graph using the <cite>read_pydata</cite> function.
+The function supports any object that is an instance of, or behaves as, a
+Python dictionary, list, tuple or set and converts these (nested)
+structures to graph nodes and edges for connectivity. Data is stored in
+nodes using the node and edge ‘key_tag’ and ‘value_tag’ attributes in the
+Graph class.</p>
+<p>Data type and format information are also stored as part of the nodes to
+enable reconstruction of the Python data structure on export using the
+<cite>write_pydata</cite> function. Changing type and format on a node or edge
+allows for customized data export.</p>
+<p>Parsing of data structures to nodes and edges is handled by parser classes
+that need to define the methods <cite>deserialize</cite> for reading and <cite>serialize</cite>
+for writing. In <cite>write_pydata</cite> these classes are registered with the ORM
+to fully customize the use of the <cite>serialize</cite> method. In the <cite>read_pydata</cite>
+function the ORM cannot be used because the nodes/edges themselves do not
+yet exist. Instead they are provided as a dictionary through the
+<cite>parser_classes</cite> argument. The dictionary defines the string representation
+of the Python data type as key and parser class as value.</p>
+<p>Parser customization is important as Python data structures can be
+represented as a graph structure in different ways. This is certainly true
+for dictionaries where key/value pairs can be part of the node attributes,
+as separate nodes or as a combination of the two.
+<cite>read_pydata</cite> has quick support for two scenario’s using the <cite>level</cite>
+argument:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>level 0: every dictionary key/value pair is represented as a node
+regardless of its position in the nested data structure</p></li>
+<li><p>level 1: all keys at the same level in the hierarchy that have a
+primitive type value are stored as part of the node attributes.</p></li>
+</ul>
+</div></blockquote>
+<p>If the <cite>graph</cite> is empty, the first node added to the graph is assigned
+as root node. If the <cite>graph</cite> is not empty, new nodes and edges will be
+added to it as subgraph. Edge connections between the two will have to be
+made afterwards.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Python (hierarchical) data structure</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:GraphAxis</em>) – GraphAxis object to import dictionary data in</p></li>
+<li><p><strong>parser_classes</strong> (<em>:py:dict</em>) – parser class definition for different Python data
+types. Updates default classes for level 0 or 1</p></li>
+<li><p><strong>level</strong> (<em>:py:int</em>) – dictionary parsing mode</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_pydata_format.write_pydata">
+<code class="sig-prename descclassname">graphit.graph_io.io_pydata_format.</code><code class="sig-name descname">write_pydata</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">default=None</em>, <em class="sig-param">allow_none=True</em>, <em class="sig-param">export_all=False</em>, <em class="sig-param">include_root=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_pydata_format.write_pydata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph to a (nested) dictionary</p>
+<p>Convert graph representation of the dictionary tree into a dictionary
+using a nested representation of the dictionary hierarchy.</p>
+<p>Dictionary keys and values are obtained from the node attributes using
+<cite>key_tag</cite> and <cite>value_tag</cite>. The key_tag is set to graph key_tag by default.
+Export using these primary key_tag/value_tag pairs is de default
+behaviour. If a node contains more data these can be exported as part of
+a dictionary using the <cite>export_all</cite> argument.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>export_all</cite> is important when dictionary data structures where
+imported using level=1 in <cite>read_pydata</cite>. In this case, all key
+value pairs at the same dictionary level are contained in the
+same node.</p>
+</div>
+<p>Node values that are ‘None’ are exported by default unless <cite>allow_none</cite>
+equals False.
+If the key_tag exists but value_tag is absent use <cite>default</cite> as default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if a graph is composed out of multiple, independent subgraphs
+only the subgraph for which the root node is defined will be
+exported. To export all, iterate over the subgraphs and define
+the appropriate root for each of them.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:GraphAxis</em>) – Graph object to export</p></li>
+<li><p><strong>default</strong> (<em>mixed</em>) – value to use when node value was not found using
+value_tag.</p></li>
+<li><p><strong>allow_none</strong> (<em>:py:bool</em>) – allow None values in the output</p></li>
+<li><p><strong>export_all</strong> (<em>:py:bool</em>) – Export the full node storage dictionary.</p></li>
+<li><p><strong>include_root</strong> (<em>:py:bool</em>) – Include the root node in the hierarchy</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_tgf_format">
+<span id="graphit-graph-io-io-tgf-format-module"></span><h2>graphit.graph_io.io_tgf_format module<a class="headerlink" href="#module-graphit.graph_io.io_tgf_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for reading and writing graphs defined in Trivial Graph Format (.tgf)
+a simple text-based file format for describing graphs. It consists of a list of
+node definitions, which map node IDs to labels, followed by a list of edges,
+which specify node pairs and an optional edge label. Node IDs can be arbitrary
+identifiers, whereas labels for both nodes and edges are plain strings.</p>
+<p>The graph may be interpreted as a directed or undirected graph.
+For directed graphs, to specify the concept of bi-directionality in an edge,
+one may either specify two edges (forward and back) or differentiate the edge
+by means of a label.</p>
+<p>TGF format only described the nodes themselves and edges connecting them.
+Node data (attributes) are not represented.</p>
+<dl class="simple">
+<dt>Example:</dt><dd><p>1 January
+2 March
+3 April
+4 May
+5 December
+6 June
+7 September
+#
+1 2
+3 2
+4 3
+5 1 Happy New Year!
+5 3 April Fools Day
+6 3
+6 1
+7 5
+7 6
+7 1</p>
+</dd>
+</dl>
+<p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/Trivial_Graph_Format">https://en.wikipedia.org/wiki/Trivial_Graph_Format</a></p>
+<dl class="function">
+<dt id="graphit.graph_io.io_tgf_format.read_tgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_tgf_format.</code><code class="sig-name descname">read_tgf</code><span class="sig-paren">(</span><em class="sig-param">tgf</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_tgf_format.read_tgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graph in Trivial Graph Format</p>
+<p>TGF format dictates that nodes to be listed in the file first with each
+node on a new line. A ‘#’ character signals the end of the node list and
+the start of the edge list.</p>
+<p>Node and edge ID’s can be integers, float or strings. They are parsed
+automatically to their most likely format.
+Simple node and edge labels are supported in TGF as all characters that
+follow the node or edge ID’s. They are parsed and stored in the Graph
+node and edge data stores using the graphs default or custom ‘key_tag’.</p>
+<p>TGF data is imported into a default Graph object if no custom Graph
+instance is provided. The graph behaviour and the data import process is
+influenced and can be controlled using a (custom) Graph class.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TGF format always defines edges in a directed fashion.
+This is enforced even for custom graphs.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tgf</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – TGF graph data.</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import TGF data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_tgf_format.write_tgf">
+<code class="sig-prename descclassname">graphit.graph_io.io_tgf_format.</code><code class="sig-name descname">write_tgf</code><span class="sig-paren">(</span><em class="sig-param">graph</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_tgf_format.write_tgf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph in Trivial Graph Format</p>
+<p>TGF graph export uses the Graph iternodes and iteredges methods to retrieve
+nodes and edges and ‘get’ the data labels. The behaviour of this process is
+determined by the single node/edge mixin classes and the ORM mapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>TGF graph representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_web_format">
+<span id="graphit-graph-io-io-web-format-module"></span><h2>graphit.graph_io.io_web_format module<a class="headerlink" href="#module-graphit.graph_io.io_web_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for reading and writing hierarchical data structures defined by the
+Spider data modelling package as .web format files.</p>
+<p>A .web format defines data blocks containing key, value pairs or Array data
+as hierarchically nested blocks enclosed using braces ‘(‘ and ‘),’ and indented
+for visual clarity.</p>
+<p>Every data item in the format is written on a new line and is either a
+traditional key, value pair as: ‘key = value,’ or a single that are together
+combined into an array like:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>key = FloatArray (</dt><dd><p>1.0,
+2.0,</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
+<p>Key, value pairs and array type data structures can be freely combined such as
+in:</p>
+<blockquote>
+<div><dl>
+<dt>c2segments = LabeledRangePairArray (</dt><dd><dl>
+<dt>LabeledRangePair (</dt><dd><dl>
+<dt>r = LabeledRangeArray (</dt><dd><dl class="simple">
+<dt>LabeledRange (</dt><dd><p>start = 1,
+end = 12,
+chain = ‘A’,</p>
+</dd>
+</dl>
+<p>),
+LabeledRange (</p>
+<blockquote>
+<div><p>start = 1,
+end = 12,
+chain = ‘B’,</p>
+</div></blockquote>
+<p>),</p>
+</dd>
+</dl>
+<p>),</p>
+</dd>
+</dl>
+<p>),</p>
+</dd>
+</dl>
+<p>),</p>
+</div></blockquote>
+<p>The data inside a LabeledRange are key, value pairs but LabeledRange and also
+LabeledRangePair are array types. The latter two are stored as nodes in the
+graph and are automatically assigned a key as “itemX” where X is an incremented
+integer.</p>
+<p>The type of any piece of data is loosely defined by a type identifier in front
+of every new data block that closely reassembles a Python style class name.
+The ‘FloatArray’ identifier in the expression above would be an example.
+These identifiers are usually coupled to classes in charge of data exchange
+by an object relations mapper such as the one used in the graphit package.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_web_format.read_web">
+<code class="sig-prename descclassname">graphit.graph_io.io_web_format.</code><code class="sig-name descname">read_web</code><span class="sig-paren">(</span><em class="sig-param">web</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">orm_data_tag='haddock_type'</em>, <em class="sig-param">auto_parse_format=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_web_format.read_web" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import hierarchical data structures defined in the Spider .web format</p>
+<p>The data block type identifiers used in the .web format are stored in
+the nodes using the <cite>orm_data_tag</cite> attribute. These can be used by the
+Graph ORM mapper for custom data exchange in the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>web</strong> (<em>file</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – Spider .web data format to import</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – graph object to import TGF data in</p></li>
+<li><p><strong>orm_data_tag</strong> (<em>:py:str</em>) – data key to use for .web data identifier</p></li>
+<li><p><strong>auto_parse_format</strong> (<em>:py:bool</em>) – automatically detect basic format types using JSON decoding</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_web_format.write_web">
+<code class="sig-prename descclassname">graphit.graph_io.io_web_format.</code><code class="sig-name descname">write_web</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">orm_data_tag='haddock_type'</em>, <em class="sig-param">indent=2</em>, <em class="sig-param">root_nid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_web_format.write_web" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph in Spyder .web format</p>
+<p>Empty data blocks or Python None values are not exported.</p>
+<p>Web graph export uses the Graph iternodes and iteredges methods to retrieve
+nodes and edges and ‘get’ the data labels. The behaviour of this process is
+determined by the single node/edge mixin classes and the ORM mapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p></li>
+<li><p><strong>orm_data_tag</strong> (<em>:py:str</em>) – data key to use for .web data identifier</p></li>
+<li><p><strong>indent</strong> (<em>:py:int</em>) – .web file white space indentation level</p></li>
+<li><p><strong>root_nid</strong> – Root node ID in graph hierarchy</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spyder .web graph representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_xml_format">
+<span id="graphit-graph-io-io-xml-format-module"></span><h2>graphit.graph_io.io_xml_format module<a class="headerlink" href="#module-graphit.graph_io.io_xml_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for exporting and importing XML documents in a graph structure.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_xml_format.read_xml">
+<code class="sig-prename descclassname">graphit.graph_io.io_xml_format.</code><code class="sig-name descname">read_xml</code><span class="sig-paren">(</span><em class="sig-param">xml_file</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_xml_format.read_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse hierarchical XML data structure to a graph</p>
+<p>Uses the Python build-in etree cElementTree parser to parse the XML
+document and convert the elements into nodes.
+The XML element tag becomes the node key, XML text becomes the node
+value and XML attributes are added to the node as additional attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xml_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – XML data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import dictionary data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_xml_format.write_xml">
+<code class="sig-prename descclassname">graphit.graph_io.io_xml_format.</code><code class="sig-name descname">write_xml</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">node_tools=&lt;class 'graphit.graph_io.io_xml_format.XMLNodeTools'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_xml_format.write_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph to an XML data format</p>
+<p>Custom XML serializers may be introduced as a custom NodeTools
+class using the <cite>node_tools</cite> attribute. In addition, the graph
+ORM may be used to inject tailored <cite>serialize</cite> methods in specific
+nodes or edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to export</p></li>
+<li><p><strong>node_tools</strong> (<em>:graphit:NodeTools</em>) – NodeTools class with node serialize method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph exported as a hierarchical XML node structure</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io.io_yaml_format">
+<span id="graphit-graph-io-io-yaml-format-module"></span><h2>graphit.graph_io.io_yaml_format module<a class="headerlink" href="#module-graphit.graph_io.io_yaml_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for importing and exporting graphs in YAML format.
+Relies on PyYAML.</p>
+<dl class="function">
+<dt id="graphit.graph_io.io_yaml_format.read_yaml">
+<code class="sig-prename descclassname">graphit.graph_io.io_yaml_format.</code><code class="sig-name descname">read_yaml</code><span class="sig-paren">(</span><em class="sig-param">yaml_file</em>, <em class="sig-param">graph=None</em>, <em class="sig-param">link_subgraphs=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_yaml_format.read_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse (hierarchical) YAML data structure to a graph</p>
+<p>YAML files are parsed to a Python data structure that is converted to graph
+using the <cite>read_pydata</cite> method.
+Additional keyword arguments (kwargs) are passed to <cite>read_pydata</cite></p>
+<p>A YAML file may contain multiple separate data structures. The subgraphs
+that result from importing these separate data structures are linked to the
+root of the first imported graph by default. Changing the <cite>link_subgraphs</cite>
+attribute to False will not link the subgraphs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaml_file</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – yaml data to parse</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import dictionary data in</p></li>
+<li><p><strong>link_subgraphs</strong> (<em>:py:bool</em>) – link subgraphs from separate data structures
+in the YAML file to the root graph</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GraphAxis object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:GraphAxis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_yaml_format.write_yaml">
+<code class="sig-prename descclassname">graphit.graph_io.io_yaml_format.</code><code class="sig-name descname">write_yaml</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">default=None</em>, <em class="sig-param">include_root=False</em>, <em class="sig-param">allow_none=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_yaml_format.write_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graph to a (nested) JSON structure</p>
+<p>Convert graph representation of the dictionary tree into JSON
+using a nested or flattened representation of the dictionary hierarchy.</p>
+<p>Dictionary keys and values are obtained from the node attributes using
+<cite>key_tag</cite> and <cite>value_tag</cite>.  The key_tag is set to graph
+key_tag by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:GraphAxis</em>) – Graph object to export</p></li>
+<li><p><strong>default</strong> (<em>mixed</em>) – value to use when node value was not found using
+value_tag.</p></li>
+<li><p><strong>include_root</strong> (<em>:py:bool</em>) – Include the root node in the hierarchy</p></li>
+<li><p><strong>allow_none</strong> (<em>:py:bool</em>) – allow None values in the output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:yaml</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_io">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit.graph_io" title="Permalink to this headline">¶</a></h2>
+<p>Importing and exporting data structures as graphit graphs.</p>
+<p>These include both data structures in a format dedicated to representing graphs
+and other (hierarchical) data that has a structure that could be represented as
+a graph.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_model_classes.html" class="btn btn-neutral float-right" title="graphit.graph_model_classes package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graphit.graph_combinatorial.html" class="btn btn-neutral float-left" title="graphit.graph_combinatorial package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>

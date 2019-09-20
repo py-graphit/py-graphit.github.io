@@ -1,0 +1,1289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit.graph_storage_drivers package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_utils package" href="graphit.graph_utils.html" />
+    <link rel="prev" title="graphit.graph_query package" href="graphit.graph_query.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graphit.html">graphit API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graphit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_algorithms.html">graphit.graph_algorithms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">graphit.graph_storage_drivers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_storage_drivers.graph_arraystorage_driver">graphit.graph_storage_drivers.graph_arraystorage_driver module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_storage_drivers.graph_dictstorage_driver">graphit.graph_storage_drivers.graph_dictstorage_driver module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_storage_drivers.graph_driver_baseclass">graphit.graph_storage_drivers.graph_driver_baseclass module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_storage_drivers.graph_storage_views">graphit.graph_storage_drivers.graph_storage_views module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_storage_drivers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="graphit.html">graphit package</a> &raquo;</li>
+        
+      <li>graphit.graph_storage_drivers package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.graph_storage_drivers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-graph-storage-drivers-package">
+<h1>graphit.graph_storage_drivers package<a class="headerlink" href="#graphit-graph-storage-drivers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-graphit.graph_storage_drivers.graph_arraystorage_driver">
+<span id="graphit-graph-storage-drivers-graph-arraystorage-driver-module"></span><h2>graphit.graph_storage_drivers.graph_arraystorage_driver module<a class="headerlink" href="#module-graphit.graph_storage_drivers.graph_arraystorage_driver" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_arraystorage_driver.py</p>
+<p>Classes that store nodes, edges and their attributes as numpy arrays using the
+Pandas package</p>
+<dl class="class">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_arraystorage_driver.</code><code class="sig-name descname">ArrayStorage</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass" title="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass</span></code></a></p>
+<p>ArrayStorage class</p>
+<p>Provides a Pandas DataFrame based storage for nodes and edges.
+The class supports weak referencing of the internal DataFrame (_storage)
+using the weakref module to reduce memory footprint and enable true
+synchronized views across different instances of the DictStorage class.</p>
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a deep copy of the storage class with the same view as
+the parent instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>deep copy of storage instance</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage" title="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage">ArrayStorage</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.dataframe">
+<em class="property">property </em><code class="sig-name descname">dataframe</code><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original pandas DataFrame object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:pandas:DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.del_data_reference">
+<code class="sig-name descname">del_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.del_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements GraphDriverBaseClass abstract method.</p>
+<p>The array storage does not support reference pointers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">k</em><span class="optional">[</span>, <em class="sig-param">d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; D[k] if k in D, else d.  d defaults to None.<a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.get_data_reference">
+<code class="sig-name descname">get_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.get_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements GraphDriverBaseClass abstract method.</p>
+<p>The array storage does not support reference pointers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.items">
+<code class="sig-name descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; a set-like object providing a view on D's items<a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.iteritems">
+<code class="sig-name descname">iteritems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd><p>D.items() -&gt; a set-like object providing a view on D’s items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.iterkeys">
+<code class="sig-name descname">iterkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a Python dict style ‘keys’ method</p>
+<p>Returns the keys of the DataFrame which equal the columns returned as
+pandas Index object. This is subsequently returned as plain list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dataframe column indexes (keys)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.itervalues">
+<code class="sig-name descname">itervalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>D.values() -&gt; an object providing a view on D’s values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a Python dict style ‘keys’ method</p>
+<p>Returns the keys of the DataFrame which equal the columns returned as
+pandas Index object. This is subsequently returned as plain list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dataframe column indexes (keys)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement dictionary setter</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not use this method directly to add new nodes or edges
+to the graph. Use the graph add_node or add_edge methods for this
+purpose instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – dictionary key to add or update</p></li>
+<li><p><strong>value</strong> – key value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.set_data_reference">
+<code class="sig-name descname">set_data_reference</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.set_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>The array storage class does not support data referencing and will
+simply copy the data stored in source to target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> – source key having the data</p></li>
+<li><p><strong>target</strong> – target key referring to data of source</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><em class="sig-param">return_full=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the full dictionary.</p>
+<p>If the current ArrayStorage represent a selective view on the parent
+dictionary then only return a dictionary with a shallow copy of the
+keys in the selective view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>return_full</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – ignores is_view and return the full dictionary</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.values">
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; an object providing a view on D's values<a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.viewitems">
+<code class="sig-name descname">viewitems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.viewitems" title="Permalink to this definition">¶</a></dt>
+<dd><p>D.items() -&gt; a set-like object providing a view on D’s items</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.viewkeys">
+<code class="sig-name descname">viewkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.viewkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a Python dict style ‘keys’ method</p>
+<p>Returns the keys of the DataFrame which equal the columns returned as
+pandas Index object. This is subsequently returned as plain list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dataframe column indexes (keys)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.viewvalues">
+<code class="sig-name descname">viewvalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.ArrayStorage.viewvalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>D.values() -&gt; an object providing a view on D’s values</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_storage_drivers.graph_arraystorage_driver.init_arraystorage_driver">
+<code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_arraystorage_driver.</code><code class="sig-name descname">init_arraystorage_driver</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">edges</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_arraystorage_driver.init_arraystorage_driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>ArrayStorage specific driver initiation method</p>
+<p>Returns a ArrayStorage instance for nodes and edges and a AdjacencyView
+for adjacency based on the initiated nodes and edges stores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<em>:py:list</em><em>, </em><em>:py:dict</em><em>,
+</em><em>:graphit:graph_arraystorage_driver:DictStorage</em>) – Nodes to initiate nodes DictStorage instance</p></li>
+<li><p><strong>edges</strong> (<em>:py:list</em><em>, </em><em>:py:dict</em><em>,
+</em><em>:graphit:graph_arraystorage_driver:DictStorage</em>) – Edges to initiate edges DictStorage instance</p></li>
+<li><p><strong>data</strong> (<em>:py:list</em><em>, </em><em>:py:dict</em><em>,
+</em><em>:graphit:graph_dictstorage_driver:DictStorage</em>) – graph data attributes to initiate data DictStorage instance</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Nodes and edges storage instances and Adjacency view.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_storage_drivers.graph_dictstorage_driver">
+<span id="graphit-graph-storage-drivers-graph-dictstorage-driver-module"></span><h2>graphit.graph_storage_drivers.graph_dictstorage_driver module<a class="headerlink" href="#module-graphit.graph_storage_drivers.graph_dictstorage_driver" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_dictstorage_driver.py</p>
+<p>Unified view based dictionary class used by the Graph class to store node, edge
+and adjacency information.</p>
+<p>Based on GraphDriverBaseClass it implements key, value and items abstract
+methods using the Python 3.x concept of view based representations with the
+added feature to define views as data mask on the storage level.</p>
+<dl class="class">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_dictstorage_driver.</code><code class="sig-name descname">DictStorage</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass" title="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass</span></code></a></p>
+<p>DictStorage class</p>
+<p>Provides a Python native dict like class with unified keys, values, and
+items based dictionary views across Python distributions.
+The class supports weak referencing of the internal dictionary (_storage)
+using the weakref module to reduce memory footprint and enable true
+synchronized views across different instances of the DictStorage class.</p>
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.del_data_reference">
+<code class="sig-name descname">del_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.del_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove JSON $ref data reference in target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> – key of target to remove $ref from</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.get_data_reference">
+<code class="sig-name descname">get_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.get_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the key defines a reference to the data of another key using
+the $ref pointer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> – key to check</p></li>
+<li><p><strong>default</strong> – default to return if $ref pointer not found</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>referred key or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.items">
+<code class="sig-name descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3 dictionary like ‘items’ method that returns a
+DictView class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary items as tuple of key/value pairs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ItemsView instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.iteritems">
+<code class="sig-name descname">iteritems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3 dictionary like ‘items’ method that returns a
+DictView class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary items as tuple of key/value pairs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ItemsView instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.iterkeys">
+<code class="sig-name descname">iterkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3 dictionary like ‘keys’ method that returns a DictView
+class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>KeysView instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.itervalues">
+<code class="sig-name descname">itervalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3 dictionary like ‘values’ method that returns a DictView
+class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ValuesView instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3 dictionary like ‘keys’ method that returns a DictView
+class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>KeysView instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.values">
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3 dictionary like ‘values’ method that returns a DictView
+class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ValuesView instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_storage_drivers.graph_dictstorage_driver.init_dictstorage_driver">
+<code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_dictstorage_driver.</code><code class="sig-name descname">init_dictstorage_driver</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">edges</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.init_dictstorage_driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>DictStorage specific driver initiation method</p>
+<p>Returns a DictStorage instance for nodes and edges and a AdjacencyView
+for adjacency based on the initiated nodes and edges stores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<em>:py:list</em><em>, </em><em>:py:dict</em><em>,
+</em><em>:graphit:graph_dictstorage_driver:DictStorage</em>) – Nodes to initiate nodes DictStorage instance</p></li>
+<li><p><strong>edges</strong> (<em>:py:list</em><em>, </em><em>:py:dict</em><em>,
+</em><em>:graphit:graph_dictstorage_driver:DictStorage</em>) – Edges to initiate edges DictStorage instance</p></li>
+<li><p><strong>data</strong> (<em>:py:list</em><em>, </em><em>:py:dict</em><em>,
+</em><em>:graphit:graph_dictstorage_driver:DictStorage</em>) – graph data attributes to initiate data DictStorage instance</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Nodes and edges storage instances and Adjacency view.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_storage_drivers.graph_driver_baseclass">
+<span id="graphit-graph-storage-drivers-graph-driver-baseclass-module"></span><h2>graphit.graph_storage_drivers.graph_driver_baseclass module<a class="headerlink" href="#module-graphit.graph_storage_drivers.graph_driver_baseclass" title="Permalink to this headline">¶</a></h2>
+<p>Storage driver abstract base class</p>
+<p>Graphit uses dedicated data stores for node and edge data. Access is enabled
+using an API that reassembles a Python dictionary with a node or edge ID as
+‘key’ and a node/edge data dictionary as ‘value’.</p>
+<p>The API is formalized in the <cite>GraphDriverBaseClass</cite> base class that defines
+abstract and derived methods required for the dict-like API similar to the
+‘MutableMapping’ abstract base class from the <cite>collections</cite> module.
+The data stores are decoupled from the main graph object structure by weak
+referencing through Pythons <cite>weakref</cite> module.</p>
+<p>The <cite>GraphDriverBaseClass</cite> uses data ‘views’ to allow instances of the driver
+class to represent a subset of nodes/edges while still having the same weak
+reference to the full data storage object. A ‘view’ is a simple list (_view)
+storing the node/edge primary keys.</p>
+<p>The <cite>GraphDriverBaseClass</cite> facilitates easy creation of different storage
+backends that can be transparently used as Python dictionaries in graphit
+graphs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The developer of new a new storage driver is responsible for initializing
+an empty ‘_view’ list and providing support for ‘views’ in the
+implementation of the abstract methods.</p>
+</div>
+<dl class="class">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_driver_baseclass.</code><code class="sig-name descname">GraphDriverBaseClass</code><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.MutableMapping</span></code></a></p>
+<p>Abstract base class for graph data storage drivers</p>
+<p>This is the boilerplate class for the implementation of node and edge
+storage driver classes in graphit.
+It exposes a Python dict-like API by using the ‘MutableMapping’ abstract
+base class from the ‘collections’ module. In addition it implements
+support for several methods to provide support for list-like method and
+rich set-like comparison methods.</p>
+<p>The following abstract methods from the ‘MutableMapping’ class are
+required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>__getitem__, __setitem__, __delitem__, __iter__, __len__</p></li>
+</ul>
+</div></blockquote>
+<p>The following abstract methods for dictionary ‘view’ like iteration are
+required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>iterkeys, itervalues, iteritems</p></li>
+</ul>
+</div></blockquote>
+<p>All other methods are derived from the abstract methods but may be
+overloaded if it benefits efficiency for a given storage backend for
+instance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>please note that the ‘GraphDriverBaseClass’ uses data ‘views’ to
+allow instances of the driver class to represent a subset of nodes
+edges while still having the same weak reference to the full data
+storage object. A ‘view’ is a simple list (_view) storing the node
+edge primary keys.
+The empty ‘_view’ list needs to be initialized by the storage driver
+and support for ‘views’ needs to be implemented for the abstract
+methods.</p>
+</div>
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a deep copy of the storage class with the same view as
+the parent instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>deep copy of storage instance</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage" title="graphit.graph_storage_drivers.graph_dictstorage_driver.DictStorage">DictStorage</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.del_data_reference">
+<em class="property">abstract </em><code class="sig-name descname">del_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.del_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove JSON $ref data reference in target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> – key of target to remove $ref from</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.difference">
+<code class="sig-name descname">difference</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the difference between the key set of self and other</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:class:set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.fromkeys">
+<code class="sig-name descname">fromkeys</code><span class="sig-paren">(</span><em class="sig-param">keys</em>, <em class="sig-param">value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.fromkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the dictionary for selected keys.</p>
+<p>If the DictStorage instance represent a selective view of the main
+dictionary, only those keys will be considered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keys</strong> – keys to return dictionary copy for</p></li>
+<li><p><strong>value</strong> – Default value keys</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.get_data_reference">
+<em class="property">abstract </em><code class="sig-name descname">get_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.get_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the key defines a reference to the data of another key using
+the $ref pointer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> – key to check</p></li>
+<li><p><strong>default</strong> – default to return if $ref pointer not found</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>referred key or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.has_data_reference">
+<code class="sig-name descname">has_data_reference</code><span class="sig-paren">(</span><em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.has_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the target key defines a JSON $ref pointer to the data of
+another (source) key/value pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> – target key to check reference for</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.intersection">
+<code class="sig-name descname">intersection</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intersection between the key set of self and other</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>:py:dict</em>) – object to compare to</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:class:set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.is_view">
+<em class="property">property </em><code class="sig-name descname">is_view</code><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.is_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the current DictStorage represent a selective view on the
+parent dictionary?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.isdisjoint">
+<code class="sig-name descname">isdisjoint</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.isdisjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Boolean stating whether the key set in self overlap with the
+specified key set or iterable of other.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>:py:dict</em>) – object to compare to</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.issubset">
+<code class="sig-name descname">issubset</code><span class="sig-paren">(</span><em class="sig-param">other</em>, <em class="sig-param">propper=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.issubset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keys in self are also in other but other contains more keys
+(propper = True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>:py:dict</em>) – object to compare to</p></li>
+<li><p><strong>propper</strong> (<em>:py:bool</em>) – ensure that both key lists are not the same.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.issuperset">
+<code class="sig-name descname">issuperset</code><span class="sig-paren">(</span><em class="sig-param">other</em>, <em class="sig-param">propper=True</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.issuperset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keys in self are also in other but self contains more keys
+(propper = True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>:py:dict</em>) – object to compare to</p></li>
+<li><p><strong>propper</strong> (<em>:py:bool</em>) – ensure that both key lists are not the same.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.iteritems">
+<em class="property">abstract </em><code class="sig-name descname">iteritems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3.x dictionary like ‘items’ iterator method that
+returns a view on the items in the data store.
+The <cite>viewitems</cite> equals <cite>iteritems</cite> and implements the Python 2.7
+equivalent.</p>
+<p>If the storage instance does not support view based iterations then
+<cite>iteritems</cite> should default to the <cite>items</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data items as tuple of key/value pairs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>items view instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.iterkeys">
+<em class="property">abstract </em><code class="sig-name descname">iterkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3.x dictionary like ‘keys’ iterator method that
+returns a view on the keys in the data store.
+The <cite>viewkeys</cite> equals <cite>iterkeys</cite> and implements the Python 2.7
+equivalent.</p>
+<p>If the storage instance does not support view based iterations then
+<cite>iterkeys</cite> should default to the <cite>keys</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>keys view instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.itervalues">
+<em class="property">abstract </em><code class="sig-name descname">itervalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 3.x dictionary like ‘values’ iterator method that
+returns a view on the values in the data store.
+The <cite>viewvalues</cite> equals <cite>itervalues</cite> and implements the Python 2.7
+equivalent.</p>
+<p>If the storage instance does not support view based iterations then
+<cite>itervalues</cite> should default to the <cite>values</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>values view instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">match_func</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage query method</p>
+<p>Use Python lambda functions to query the storage based on primary
+storage keys (node ID/egde ID) and values (attribute dictionary).
+Other function are allowed as well as long as they match the
+function signature described below.</p>
+<p>The used lambda function excepts two arguments in the following
+order: the primary key first and the attribute dictionary (value)
+as seconds argument.</p>
+<p>Example:    lambda k,v: v[‘weight’] &gt; 2 and k == 13</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match_func</strong> (<em>:py:lambda</em>) – lambda query function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of primary storage identifiers (keys) matching
+the lambda query</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements list-like key removal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – key to remove</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.reset_view">
+<code class="sig-name descname">reset_view</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.reset_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the selective view on the DataFrame</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement dictionary setter</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not use this method directly to add new nodes or edges
+to the graph. Use the graph add_node or add_edge methods for this
+purpose instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – dictionary key to add or update</p></li>
+<li><p><strong>value</strong> – key value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.set_data_reference">
+<code class="sig-name descname">set_data_reference</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">target</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.set_data_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a reference in the target key to the data attributes (value)
+of the source key using a JSON $ref pointer</p>
+<p>This method is for instance used in setting up the edge pair that
+defines an undirectional edge having the data of the second edge
+in the pair referring to that of the first.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> – source key having the data</p></li>
+<li><p><strong>target</strong> – target key referring to data of source</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.set_view">
+<code class="sig-name descname">set_view</code><span class="sig-paren">(</span><em class="sig-param">keys</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.set_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register keys to represent a selective view on the dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – keys to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.symmetric_difference">
+<code class="sig-name descname">symmetric_difference</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.symmetric_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the symmetric difference between the key set of self and other</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:class:set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><em class="sig-param">return_full=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the full dictionary.</p>
+<p>If the current DictStorage represent a selective view on the parent
+dictionary then only return a dictionary with a shallow copy of the
+keys in the selective view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>return_full</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – ignores is_view and return the full dictionary</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.union">
+<code class="sig-name descname">union</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.union" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the union between the key set of self and other</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:class:set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.viewitems">
+<code class="sig-name descname">viewitems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.viewitems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 2.7 dictionary like ‘items’ iterator method that
+returns a view on the items in the data store.
+It redirects the call to the <cite>iteritems</cite> method which is the Python
+3.x equivalent and abstract method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data items as tuple of key/value pairs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>items view instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.viewkeys">
+<code class="sig-name descname">viewkeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.viewkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 2.7 dictionary like ‘keys’ iterator method that
+returns a view on the values in the data store.
+It redirects the call to the <cite>iterkeys</cite> method which is the Python
+3.x equivalent and abstract method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>keys view instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.viewvalues">
+<code class="sig-name descname">viewvalues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_driver_baseclass.GraphDriverBaseClass.viewvalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement Python 2.7 dictionary like ‘values’ iterator method that
+returns a view on the values in the data store.
+It redirects the call to the <cite>itervalues</cite> method which is the Python
+3.x equivalent and abstract method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>values view instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_storage_drivers.graph_storage_views">
+<span id="graphit-graph-storage-drivers-graph-storage-views-module"></span><h2>graphit.graph_storage_drivers.graph_storage_views module<a class="headerlink" href="#module-graphit.graph_storage_drivers.graph_storage_views" title="Permalink to this headline">¶</a></h2>
+<p>file: graph_storage_views.py</p>
+<p>Contains classes that provide various types of ‘views’ on the data in the
+main node and edge storage.</p>
+<p>These classes use the common storage driver API for nodes and edges and
+therefor they should work for every storage driver. A driver can implement
+it’s own version of a view for performance purposes for instance.</p>
+<dl class="class">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_storage_views.</code><code class="sig-name descname">AdjacencyView</code><span class="sig-paren">(</span><em class="sig-param">nodes</em>, <em class="sig-param">edges</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Adjacency View class</p>
+<p>Makes class adjacency information available through a dict-like API.
+Adjacency is based on the graphs nodes and edges. When the latter two
+are ‘views’ then AdjacencyView als behaves as a view.</p>
+<p>An adjacency view is based on nodes and edges. The view is built on
+each call to a method of the AdjacencyView. This is not very efficient
+if the nodes and edges did not change in the meantime. As a solution
+one can either request the full adjacency dictionary by calling the
+class (<cite>__call__</cite>) or using the ‘with graph.adjacency as adj’ construct
+that will use the same adjacency dictionary for all calls made to the
+class while in the ‘with’ loop.</p>
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.degree">
+<code class="sig-name descname">degree</code><span class="sig-paren">(</span><em class="sig-param">nodes=None</em>, <em class="sig-param">method='degree'</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the degree of nodes in the graph</p>
+<p>Reports a dictionary with for every node in the graph the number of
+connected edges of type:</p>
+<ul class="simple">
+<li><p>indegree: edges from others to self</p></li>
+<li><p>outdegree: edges from self to others</p></li>
+<li><p>degree: indegree and outdegree combined</p></li>
+</ul>
+<p>Edges connected to self are counted twice when using ‘degree’ as method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<em>:py:list</em>) – Nodes to return degree for</p></li>
+<li><p><strong>method</strong> (<em>:py:str</em>) – degree type as ‘indegree’, ‘outdegree’ or both ‘degree’</p></li>
+<li><p><strong>weight</strong> (<em>:py:str</em>) – Name of edge weight attribute. If None, then each edge
+has weight 1. The degree is the sum of the edge weights
+adjacent to the node.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Degree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">node</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements dict-like <cite>get</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node to get adjacency for</p></li>
+<li><p><strong>default</strong> – Default return value if node not in adjacency dict</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>adjacency</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.is_view">
+<em class="property">property </em><code class="sig-name descname">is_view</code><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.is_view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.items">
+<code class="sig-name descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements dict-like <cite>items</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjacency dict items tuples</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements dict-like <cite>keys</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjacency dict keys</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.predecessors">
+<code class="sig-name descname">predecessors</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.predecessors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list for all predecessors nodes of ‘node’.</p>
+<p>These are all nodes for which there exist an edge from other
+nodes to self (node).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>predecessors nodes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.successors">
+<code class="sig-name descname">successors</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.successors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list for all successor nodes of ‘node’.</p>
+<p>These are all nodes for which there exist and edge from ‘node’
+to other. This is the same as the neighbours of ‘node’ or self[node].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>successor nodes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.values">
+<code class="sig-name descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.AdjacencyView.values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements dict-like <cite>values</cite> method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjacency dict values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.DataView">
+<em class="property">class </em><code class="sig-prename descclassname">graphit.graph_storage_drivers.graph_storage_views.</code><code class="sig-name descname">DataView</code><span class="sig-paren">(</span><em class="sig-param">storage</em>, <em class="sig-param">data</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.DataView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Set" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Set</span></code></a></p>
+<p>A read-only DataView class on node/edge data</p>
+<p>This class allows iteration over the data store primary keys (nodes
+or edges) and data attributes in a read-only fashion.
+The full data dictionary is considered by default. If the ‘data’
+attribute is defined to something other then a boolean that parameter
+will be used as lookup key for the data dictionary only returning the
+corresponding value or ‘default’ if not found.</p>
+<p>This class is available to provide compatibility with the NodeDataView
+and EdgeDataView classes from the NetworkX library.
+The same functionality can be achieved using the ‘iteritems’ or
+‘itervalues’ methods of the default storage driver class that provide
+iterators over the attribute data in the node/edge data store.</p>
+<dl class="method">
+<dt id="graphit.graph_storage_drivers.graph_storage_views.DataView.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">item</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_storage_drivers.graph_storage_views.DataView.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement dict-like ‘get’ method</p>
+<p>Return node/edge attribute dictionary or specific value (_data).
+If _data key was not found return default value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – node/edge primary key</p></li>
+<li><p><strong>default</strong> – default value to return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data dictionary or attribute value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_storage_drivers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit.graph_storage_drivers" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_utils.html" class="btn btn-neutral float-right" title="graphit.graph_utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graphit.graph_query.html" class="btn btn-neutral float-left" title="graphit.graph_query package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graphit.graph_algorithms package &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="graphit.graph_axis package" href="graphit.graph_axis.html" />
+    <link rel="prev" title="graphit package" href="graphit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="graphit.html">graphit API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="graphit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">graphit.graph_algorithms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_algorithms.centrality">graphit.graph_algorithms.centrality module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_algorithms.connectivity">graphit.graph_algorithms.connectivity module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_algorithms.path_traversal">graphit.graph_algorithms.path_traversal module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_algorithms.shortest_path">graphit.graph_algorithms.shortest_path module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_algorithms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_axis.html">graphit.graph_axis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_combinatorial.html">graphit.graph_combinatorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_io.html">graphit.graph_io package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_model_classes.html">graphit.graph_model_classes package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_query.html">graphit.graph_query package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_storage_drivers.html">graphit.graph_storage_drivers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graphit.graph_utils.html">graphit.graph_utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph">graphit.graph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_exceptions">graphit.graph_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_helpers">graphit.graph_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_mixin">graphit.graph_mixin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_networkx">graphit.graph_networkx module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit.graph_orm">graphit.graph_orm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphit.html#module-graphit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="graphit.html">graphit package</a> &raquo;</li>
+        
+      <li>graphit.graph_algorithms package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/graphit.graph_algorithms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="graphit-graph-algorithms-package">
+<h1>graphit.graph_algorithms package<a class="headerlink" href="#graphit-graph-algorithms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-graphit.graph_algorithms.centrality">
+<span id="graphit-graph-algorithms-centrality-module"></span><h2>graphit.graph_algorithms.centrality module<a class="headerlink" href="#module-graphit.graph_algorithms.centrality" title="Permalink to this headline">¶</a></h2>
+<p>Functions for calculating node centrality measures in a graph</p>
+<dl class="function">
+<dt id="graphit.graph_algorithms.centrality.brandes_betweenness_centrality">
+<code class="sig-prename descclassname">graphit.graph_algorithms.centrality.</code><code class="sig-name descname">brandes_betweenness_centrality</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nodes=None</em>, <em class="sig-param">normalized=True</em>, <em class="sig-param">weight=None</em>, <em class="sig-param">endpoints=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.centrality.brandes_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Brandes algorithm for betweenness centrality.</p>
+<p>Betweenness centrality is an indicator of a node’s centrality in a network.
+It is equal to the number of shortest paths from all vertices to all others
+that pass through that node. A node with high betweenness centrality has a
+large influence on the transfer of items through the network, under the
+assumption that item transfer follows the shortest paths.</p>
+<p>Original publication:
+Brandes, Ulrik. “A faster algorithm for betweenness centrality*.”
+Journal of mathematical sociology 25.2 (2001): 163-177.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to calculate Brandes betweenness centrality</p></li>
+<li><p><strong>nodes</strong> (<em>:py:list</em>) – nodes to calculate centrality for. Defaults to all nodes</p></li>
+<li><p><strong>normalized</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) – normalize betweenness centrality measure between 0 and 1</p></li>
+<li><p><strong>endpoints</strong> (<em>:py:bool</em>) – include the endpoints in the shortest path counts</p></li>
+<li><p><strong>weight</strong> (<em>string</em>) – edge attribute to use as edge weight</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.centrality.eigenvector_centrality">
+<code class="sig-prename descclassname">graphit.graph_algorithms.centrality.</code><code class="sig-name descname">eigenvector_centrality</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">max_iter=100</em>, <em class="sig-param">tolerance=1e-06</em>, <em class="sig-param">weight=None</em>, <em class="sig-param">start_value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.centrality.eigenvector_centrality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Eigenvector centrality for nodes in the graph (like Google’s PageRank).</p>
+<p>Eigenvector centrality is a measure of the importance of a node in a directed network.
+It rewards nodes with a high potential of (indirectly) connecting to high-scoring nodes.
+Nodes with no incoming connections have a score of zero.
+If you want to measure outgoing connections, reversed should be False.</p>
+<p>The eigenvector calculation is done by the power iteration method.
+It has no guarantee of convergence.
+A starting vector for the power iteration can be given in the start dict.</p>
+<p>You can adjust the importance of a node with the rating dictionary,
+which links node id’s to a score.</p>
+<p>The algorithm is adapted from NetworkX, Aric Hagberg (<a class="reference external" href="mailto:hagberg&#37;&#52;&#48;lanl&#46;gov">hagberg<span>&#64;</span>lanl<span>&#46;</span>gov</a>):
+<a class="reference external" href="https://networkx.lanl.gov/attachment/ticket/119/eigenvector_centrality.py">https://networkx.lanl.gov/attachment/ticket/119/eigenvector_centrality.py</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to calculate eigenvector centrality for</p></li>
+<li><p><strong>max_iter</strong> (<em>:py:int</em>) – maximum number of iterations to reach convergance</p></li>
+<li><p><strong>weight</strong> (<em>string</em>) – edge attribute to use as weight. 1 if not defined</p></li>
+<li><p><strong>tolerance</strong> (<em>:py:float</em>) – iteration convergence criterion</p></li>
+<li><p><strong>start_value</strong> (<em>:py:dict</em>) – starting value of eigenvector iteration for each node</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>eigenvector centrality for each node in the graph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_algorithms.connectivity">
+<span id="graphit-graph-algorithms-connectivity-module"></span><h2>graphit.graph_algorithms.connectivity module<a class="headerlink" href="#module-graphit.graph_algorithms.connectivity" title="Permalink to this headline">¶</a></h2>
+<p>Functions for calculating node connectivity.</p>
+<dl class="function">
+<dt id="graphit.graph_algorithms.connectivity.adjacency">
+<code class="sig-prename descclassname">graphit.graph_algorithms.connectivity.</code><code class="sig-name descname">adjacency</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">directed=False</em>, <em class="sig-param">reverse=False</em>, <em class="sig-param">stochastic=False</em>, <em class="sig-param">heuristic=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.connectivity.adjacency" title="Permalink to this definition">¶</a></dt>
+<dd><p>An edge weight map indexed by node id’s.</p>
+<p>A dictionary indexed by node id1’s in which each value is a
+dictionary of connected node id2’s linking to the edge weight.
+If directed, edges go from id1 to id2, but not the other way.
+If stochastic, all the weights for the neighbors of a given node sum to 1.
+A heuristic can be a function that takes two node id’s and returns
+an additional cost for movement between the two nodes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.connectivity.is_reachable">
+<code class="sig-prename descclassname">graphit.graph_algorithms.connectivity.</code><code class="sig-name descname">is_reachable</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">root</em>, <em class="sig-param">destination</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.connectivity.is_reachable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if given node can be reached over traversable edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to query</p></li>
+<li><p><strong>root</strong> (<em>:py:int</em>) – source node ID</p></li>
+<li><p><strong>destination</strong> (<em>:py:int</em>) – destintion node ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.connectivity.nodes_are_interconnected">
+<code class="sig-prename descclassname">graphit.graph_algorithms.connectivity.</code><code class="sig-name descname">nodes_are_interconnected</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nodes</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.connectivity.nodes_are_interconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Are all the provided nodes directly connected with one another</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph to query</p></li>
+<li><p><strong>nodes</strong> (<em>:py:list</em>) – nodes to test connectivity for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_algorithms.path_traversal">
+<span id="graphit-graph-algorithms-path-traversal-module"></span><h2>graphit.graph_algorithms.path_traversal module<a class="headerlink" href="#module-graphit.graph_algorithms.path_traversal" title="Permalink to this headline">¶</a></h2>
+<p>Functions for traversing graph nodes and edges in depth-first-search
+and breath-first-search order.</p>
+<dl class="function">
+<dt id="graphit.graph_algorithms.path_traversal.dfs_paths">
+<code class="sig-prename descclassname">graphit.graph_algorithms.path_traversal.</code><code class="sig-name descname">dfs_paths</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">start</em>, <em class="sig-param">goal</em>, <em class="sig-param">method='dfs'</em>, <em class="sig-param">cutoff=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.path_traversal.dfs_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all possible paths between two nodes.</p>
+<p>Setting method to ‘bfs’ returns the shortest path first</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>graph class instance</em>) – graph to search</p></li>
+<li><p><strong>start</strong> (<em>:py:int</em>) – root node to start the search from</p></li>
+<li><p><strong>goal</strong> (<em>:py:int</em>) – target node</p></li>
+<li><p><strong>method</strong> (<em>:py:str</em>) – search method. Depth-first search (dfs, default)
+and Breath-first search (bfs) supported.</p></li>
+<li><p><strong>cutoff</strong> (<em>:py:int</em>) – only return paths with length up to cutoff</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>generator object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.path_traversal.dfs_nodes">
+<code class="sig-prename descclassname">graphit.graph_algorithms.path_traversal.</code><code class="sig-name descname">dfs_nodes</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">start</em>, <em class="sig-param">method='dfs'</em>, <em class="sig-param">max_depth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.path_traversal.dfs_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node implementation of depth-first-search and breath-first-search</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>graph class instance</em>) – graph to search</p></li>
+<li><p><strong>start</strong> (<em>node ID</em><em> or </em><em>Node object</em>) – root node to start the search from</p></li>
+<li><p><strong>method</strong> (<em>:py:str</em>) – search method. Depth-first search (dfs, default)
+and Breath-first search (bfs) supported.</p></li>
+<li><p><strong>max_depth</strong> (<em>:py:int</em><em>, </em><em>default equals number of nodes in graph</em>) – maximum search depth</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A generator of nodes in dfs or bfs mode.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:generator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.path_traversal.dfs_edges">
+<code class="sig-prename descclassname">graphit.graph_algorithms.path_traversal.</code><code class="sig-name descname">dfs_edges</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">start</em>, <em class="sig-param">method='dfs'</em>, <em class="sig-param">max_depth=None</em>, <em class="sig-param">edge_based=False</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.path_traversal.dfs_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edge implementation of depth-first-search and breath-first-search</p>
+<p>This function uses dfs or bfs to traverse the nodes of the graph reporting
+the connected edges. A list of visited nodes is used to guide graph
+traversal but this does not guaranty that all edges will be visited.
+Use the <cite>edge_based</cite> argument to switch to a true edge based graph
+traversal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>graph class instance</em>) – graph to search</p></li>
+<li><p><strong>start</strong> (<em>node ID</em><em> or </em><em>Node object</em>) – root node to start the search from</p></li>
+<li><p><strong>method</strong> (<em>:py:str</em>) – search method. Depth-first search (dfs, default)
+and Breath-first search (bfs) supported.</p></li>
+<li><p><strong>max_depth</strong> (<em>:py:int</em><em>, </em><em>default equals number of nodes in graph</em>) – maximum search depth</p></li>
+<li><p><strong>edge_based</strong> (<em>:py:bool</em>) – traverse over edges instead of nodes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A generator of edges in dfs or bfs mode.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:generator</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_algorithms.shortest_path">
+<span id="graphit-graph-algorithms-shortest-path-module"></span><h2>graphit.graph_algorithms.shortest_path module<a class="headerlink" href="#module-graphit.graph_algorithms.shortest_path" title="Permalink to this headline">¶</a></h2>
+<p>Functions for calculating the shortest paths in a graph.</p>
+<dl class="function">
+<dt id="graphit.graph_algorithms.shortest_path.dijkstra_shortest_path">
+<code class="sig-prename descclassname">graphit.graph_algorithms.shortest_path.</code><code class="sig-name descname">dijkstra_shortest_path</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">start</em>, <em class="sig-param">goal=None</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.shortest_path.dijkstra_shortest_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dijkstra algorithm for finding shortest paths.</p>
+<p>In contrast to depth- or breath first search, Dijkstra’s algorithm
+supports weighted graphs using a priority queue.
+The <cite>weight</cite> attribute defined the edge data attribute to use as
+weight which defaults to 1 if not defined or not found.</p>
+<p>If the target node is not specified, the path search will continue untill
+the leaf node(s) are reached.</p>
+<p>Original publication:
+Dijkstra, E. W. (1959). “A note on two problems in connexion with graphs”
+Numerische Mathematik 1: 269–271. doi:10.1007/BF01386390.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>graph class instance</em>) – graph to search</p></li>
+<li><p><strong>start</strong> (<em>:py:int</em>) – root node to start the search from</p></li>
+<li><p><strong>goal</strong> (<em>:py:int</em>) – target node</p></li>
+<li><p><strong>weight</strong> (<em>:py:str</em>) – edge attribute to use as edge weight</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-graphit.graph_algorithms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-graphit.graph_algorithms" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="graphit.graph_algorithms.degree">
+<code class="sig-prename descclassname">graphit.graph_algorithms.</code><code class="sig-name descname">degree</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nodes=None</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the degree of nodes in the graph</p>
+<p>The degree (or valency) of a graph node are the number of edges
+connected to the node, with loops counted twice.
+The method supports weighted degrees in which the connected
+nodes are multiplied by a weight factor stored as attribute in
+the edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to return the degree of nodes for</p></li>
+<li><p><strong>nodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – nodes to return the degree for, None uses all
+nodes in the graph.</p></li>
+<li><p><strong>weight</strong> (<em>string</em>) – Weight factor attribute in the edges</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>degree of each node</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of tuples (node, degree)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.node_neighbors">
+<code class="sig-prename descclassname">graphit.graph_algorithms.</code><code class="sig-name descname">node_neighbors</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">nid</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.node_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return de neighbor nodes of the node.</p>
+<p>This method is not hierarchical and thus the root node has no effect.</p>
+<p>Directed graphs and/or masked behaviour: masked nodes or directed
+nodes not having an edge from source to node will not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>Graph class instance</em>) – Graph to query</p></li>
+<li><p><strong>nid</strong> (<em>:py:int</em>) – node ID to return neighbors for</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_algorithms.size">
+<code class="sig-prename descclassname">graphit.graph_algorithms.</code><code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">weight=None</em>, <em class="sig-param">is_directed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_algorithms.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The graph <cite>size</cite> equals the total number of edges it contains</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – graph to calculate size for</p></li>
+<li><p><strong>weight</strong> (<em>:py:str</em>) – edge attribute name containing a weight value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>graph size</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:int, :py:float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="graphit.graph_axis.html" class="btn btn-neutral float-right" title="graphit.graph_axis package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graphit.html" class="btn btn-neutral float-left" title="graphit package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #f85b01;
+    }
+  </style>
+
+
+</body>
+</html>
