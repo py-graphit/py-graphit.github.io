@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to Graphit’s documentation! &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Graphit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Graphit’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to Graphit’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-graphit">
+<span id="welcome-to-graphit-s-documentation"></span><h1>Welcome to Graphit’s documentation!<a class="headerlink" href="#module-graphit" title="Permalink to this headline">¶</a></h1>
+<p>#Graph module</p>
+<p>###Basic graph structure
+A graph represented by a Graph class is an object that stores nodes, edges and
+adjacency information in seperate DictStorage classes. A DictStorage class is a
+subclass of the standard Python dictionary and collections MutableMappings
+Abstract Base Class (ABC).</p>
+<p>The nodes and edges DictStorage objects store node and edge attributes respectivly
+based on the node ID (nid).
+The graph DictStorage object stores node adjacency and is the primary store for
+the graph topology.</p>
+<p>###Node ID
+The node ID or nid for short is the unique identifier of a node and derived edges
+in the graph. The nid itself can be any hasable object except None. Set auto_nid
+to True in the graph to ensure all added nodes are automatically assigned a unique
+auto incremented integer ID.</p>
+<p>###Graph directionality
+A graph is undirected by default storing an two edges for every connected node,
+one in each direction.
+Change the graph directed attribute to True will ensure that every every newly
+added edge is directed. Directed and undirected edges can be mixed in the same
+graph.</p>
+<p>###Graph query and iteration
+The graph module has a rich palet of functions to query and analyze graphs.
+For performance reasons, most of these will return node or edge IDs. New Graph
+object representing a node and/or edge selection can returned using one of the
+following Graph methods:</p>
+<ul class="simple">
+<li><p>getnodes: return subgraph based on one or more nodes</p></li>
+<li><p>getedges: return subgraph based on one or more edges</p></li>
+<li><p>iternodes: iterate over nodes in the graph. Uses getnodes</p></li>
+<li><p>iteredges: iterate over edges in the graph. Uses getedges</p></li>
+<li><p>query_nodes: return subgraph based on a query over node attributes</p></li>
+<li><p>query_edges: return subgraph based on a query over edge attributes</p></li>
+</ul>
+<p>The subgraphs returned by these methods are implemented as a dictionary view over
+the keys in the nodes and edges DictStorage objects.
+By default this means that the subgraphs are fully isolated from the parent graph.
+Returning a single node using getnodes will have no neighbors.
+This may not be desirable in circumstances where you want a view over nodes but
+retain connectivity with nodes outside of the view. This behaviour is enabled by
+switching the Graph masked to False.</p>
+<dl class="function">
+<dt id="graphit.check_graphaxis_instance">
+<code class="sig-prename descclassname">graphit.</code><code class="sig-name descname">check_graphaxis_instance</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.check_graphaxis_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if all objects in <cite>args</cite> are instances of the GraphAxis class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – Arguments to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if validation successful</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>AttributeError if validation fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.check_graphbase_instance">
+<code class="sig-prename descclassname">graphit.</code><code class="sig-name descname">check_graphbase_instance</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.check_graphbase_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate if all objects in <cite>args</cite> are instances of the GraphBase class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – Arguments to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if validation successful</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:bool</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>AttributeError if validation fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.version">
+<code class="sig-prename descclassname">graphit.</code><code class="sig-name descname">version</code><span class="sig-paren">(</span><em class="sig-param">digits=3</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string representation of the graphit __version__</p>
+<p>Graphit version follows the  semantic versioning guidelines formatted as</p>
+<p>&lt;major version int&gt;.&lt;minor version int&gt;.&lt;micro version int&gt;</p>
+<p>The full version string is returned by default but number of significant
+version digits can be set using the <cite>digits</cite> argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>digits</strong> (<em>:py:int</em>) – number of digits to format version string</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Marc van Dijk
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
