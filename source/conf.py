@@ -14,15 +14,16 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../../py-graphit'))
 
+import graphit
+
 # -- Project information -----------------------------------------------------
 
-project = 'Graphit'
-copyright = '2019, Marc van Dijk'
-author = 'Marc van Dijk'
+project = graphit.__module__.capitalize()
+copyright = graphit.__copyright__
+author = graphit.__author__
 
 # The full version, including alpha/beta/rc tags
-release = '0.2.1'
-
+release = version = graphit.version()
 
 # -- General configuration ---------------------------------------------------
 
