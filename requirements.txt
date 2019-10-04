@@ -1,3 +1,4 @@
 # Use to build the Binder container
 
-py-graphit[yaml]
+PyYAML
+py-graphit
