@@ -2,10 +2,15 @@
 build/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
 # JetBrains PyCharm
 .idea
 
 # OS specific files
 .DS_Store
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
