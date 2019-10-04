@@ -39,7 +39,8 @@ The `examples` section contains a few notebooks with a quick start on using the 
 usage of data importers/exporters and the ORN. You can get your hands dirty right away using the live Jupyter
 Notebook service offered by the *Binder service* on the py-graphit GitHub page.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/py-graphit/py-graphit.github.io/master?filepath=examples)
+.. image:: https://mybinder.org/badge_logo.svg
+  :target: https://mybinder.org/v2/gh/py-graphit/py-graphit.github.io/master?filepath=examples
 
 
 .. toctree::
