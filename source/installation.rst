@@ -19,7 +19,7 @@ Install from source
 -------------------
 
 You can clone or download the Graphit source repository from `GitHub <https://github.com/py-graphit/py-graphit>`_,
-or better even ``fork`` it! Intall using ::
+or better even **fork** it! Intall using ::
 
   git clone https://github.com/py-graphit/py-graphit.git
   cd py-graphit
@@ -32,3 +32,4 @@ The source repository on Github contains a `test` directory, a great way to veri
 everything is working. You can run the test from the root of the repository using ::
 
   python tests
+

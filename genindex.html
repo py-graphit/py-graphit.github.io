@@ -53,10 +53,17 @@
           
 
           
+            
+            <img src="_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
+            
+              <div class="version">
+                0.2.1
+              </div>
             
           
 
@@ -143,6 +150,7 @@
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
            <div itemprop="articleBody">
             
 
@@ -528,6 +536,8 @@
       <li><a href="graphit.graph_io.html#module-graphit.graph_io.io_flattened_data_format">graphit.graph_io.io_flattened_data_format (module)</a>
 </li>
       <li><a href="graphit.graph_io.html#module-graphit.graph_io.io_gexf_format">graphit.graph_io.io_gexf_format (module)</a>
+</li>
+      <li><a href="graphit.graph_io.html#module-graphit.graph_io.io_gml_format">graphit.graph_io.io_gml_format (module)</a>
 </li>
       <li><a href="graphit.graph_io.html#module-graphit.graph_io.io_helpers">graphit.graph_io.io_helpers (module)</a>
 </li>
@@ -967,6 +977,8 @@
 </li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_gexf_format.read_gexf">read_gexf() (in module graphit.graph_io.io_gexf_format)</a>
 </li>
+      <li><a href="graphit.graph_io.html#graphit.graph_io.io_gml_format.read_gml">read_gml() (in module graphit.graph_io.io_gml_format)</a>
+</li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_jgf_format.read_jgf">read_jgf() (in module graphit.graph_io.io_jgf_format)</a>
 </li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_json_format.read_json">read_json() (in module graphit.graph_io.io_json_format)</a>
@@ -1247,16 +1259,18 @@
 </li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_gexf_format.write_gexf">write_gexf() (in module graphit.graph_io.io_gexf_format)</a>
 </li>
+      <li><a href="graphit.graph_io.html#graphit.graph_io.io_gml_format.write_gml">write_gml() (in module graphit.graph_io.io_gml_format)</a>
+</li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_jgf_format.write_jgf">write_jgf() (in module graphit.graph_io.io_jgf_format)</a>
 </li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_json_format.write_json">write_json() (in module graphit.graph_io.io_json_format)</a>
 </li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_lgf_format.write_lgf">write_lgf() (in module graphit.graph_io.io_lgf_format)</a>
 </li>
-      <li><a href="graphit.graph_io.html#graphit.graph_io.io_lgr_format.write_lgr">write_lgr() (in module graphit.graph_io.io_lgr_format)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="graphit.graph_io.html#graphit.graph_io.io_lgr_format.write_lgr">write_lgr() (in module graphit.graph_io.io_lgr_format)</a>
+</li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_p2g_format.write_p2g">write_p2g() (in module graphit.graph_io.io_p2g_format)</a>
 </li>
       <li><a href="graphit.graph_io.html#graphit.graph_io.io_pdb_format.write_pdb">write_pdb() (in module graphit.graph_io.io_pdb_format)</a>
@@ -1293,6 +1307,10 @@
            </div>
            
           </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
           <footer>
   
 
@@ -1300,7 +1318,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Marc van Dijk
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
 
     </p>
   </div>
@@ -1326,15 +1344,7 @@
   
   
     
-    
-
-  <style>
-    /* Sidebar header (and topbar for mobile) */
-    .wy-side-nav-search, .wy-nav-top {
-      background: #f85b01;
-    }
-  </style>
-
+   
 
 </body>
 </html>

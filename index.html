@@ -53,10 +53,17 @@
           
 
           
+            
+            <img src="_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
+            
+              <div class="version">
+                0.2.1
+              </div>
             
           
 
@@ -145,25 +152,53 @@
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
            <div itemprop="articleBody">
             
   <div class="section" id="graphit">
 <h1>Graphit<a class="headerlink" href="#graphit" title="Permalink to this headline">¶</a></h1>
-<p>Graphit is a graph based data modeling library written in Python.
-It marries three powerful concepts:</p>
+<p>Graphit is a graph based data modeling library written in Python. It combines three powerful
+concepts into one easy to use package:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>A graph library similar to <a class="reference external" href="https://networkx.github.io">NetworkX</a></p></li>
-<li><p>A Python Object Relation Mapper</p></li>
-<li><p>A Python native API</p></li>
+<li><p>Graph based data representation similar to the well known
+<a class="reference external" href="https://networkx.github.io">NetworkX</a> library.</p></li>
+<li><p>A Python Object Relation Mapper (ORN).</p></li>
+<li><p>A Python native API. If you know Python you know Graphit.</p></li>
 </ul>
 </div></blockquote>
+<div class="section" id="why-graphit">
+<h2>Why Graphit?<a class="headerlink" href="#why-graphit" title="Permalink to this headline">¶</a></h2>
+<p>The data that we work in Python can often be represented as a graph-(like) structure.
+Different pieces of data (nodes) have a relationship with one another (edges). Frequently, these
+relationships have a common origin, the data structure is know to be hierarchical or nested.
+Examples are Python dictionaries, JSON files or XML documents. Many native graph formats (GEXF, GML, LGF)
+on the other hand do not have a (predefined) common origin but are still a graph.</p>
+<p>Graphit imports data structures and represents them as graphs using a Python native API that is packed
+with a rich set of graph iteration, query and analysis tools. Graphit supports all Python native data types
+and many industry standards out of the box (e.a. JSON, YAML, XML, GEXF, DOT an many more).
+The simple graph construction API will quickly enable you to write new data importers/exporters for formats
+not yet supported by Graphit.</p>
+<p>Now the fun really starts! When you work with data in a Graphit graph, the data is always represented as a
+node or edge object or subgraph representing multiple nodes/edges. These objects mimick as much as possible
+common Python data types that you are accustomed to work with. Python class magic methods all work, just as
+methods such as <cite>keys</cite>, <cite>values</cite> and <cite>items</cite> for instance. The best is yet to come, these objects are <strong>on the
+fly customizable</strong> using the Graphit ORN. Using the ORN you can mixin custom classes and functions based on
+the active state of the data creating a dynamic data model. That is allot of power with only a few lines of
+code!</p>
+</div>
+<div class="section" id="sounds-great-show-me-something">
+<h2>Sounds great, show me something<a class="headerlink" href="#sounds-great-show-me-something" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>examples</cite> section contains a few notebooks with a quick start on using the graph API and more advanced
+usage of data importers/exporters and the ORN. You can get your hands dirty right away using the live Jupyter
+Notebook service offered by the <em>Binder service</em> on the py-graphit GitHub.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphit.html">graphit API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Examples</a></li>
 </ul>
+</div>
 </div>
 <div class="section" id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
@@ -179,6 +214,10 @@ It marries three powerful concepts:</p>
            </div>
            
           </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
@@ -193,7 +232,7 @@ It marries three powerful concepts:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Marc van Dijk
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
 
     </p>
   </div>
@@ -219,15 +258,7 @@ It marries three powerful concepts:</p>
   
   
     
-    
-
-  <style>
-    /* Sidebar header (and topbar for mobile) */
-    .wy-side-nav-search, .wy-nav-top {
-      background: #f85b01;
-    }
-  </style>
-
+   
 
 </body>
 </html>

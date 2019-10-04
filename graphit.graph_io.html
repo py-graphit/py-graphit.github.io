@@ -54,10 +54,17 @@
           
 
           
+            
+            <img src="_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
+            
+              <div class="version">
+                0.2.1
+              </div>
             
           
 
@@ -93,7 +100,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_dot_format">graphit.graph_io.io_dot_format module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_flattened_data_format">graphit.graph_io.io_flattened_data_format module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_gexf_format">graphit.graph_io.io_gexf_format module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#graphit-graph-io-io-gml-format-module">graphit.graph_io.io_gml_format module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_gml_format">graphit.graph_io.io_gml_format module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_helpers">graphit.graph_io.io_helpers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_jgf_format">graphit.graph_io.io_jgf_format module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-graphit.graph_io.io_json_format">graphit.graph_io.io_json_format module</a></li>
@@ -192,6 +199,7 @@
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
            <div itemprop="articleBody">
             
   <div class="section" id="graphit-graph-io-package">
@@ -433,8 +441,64 @@ nodes or edges.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="graphit-graph-io-io-gml-format-module">
-<h2>graphit.graph_io.io_gml_format module<a class="headerlink" href="#graphit-graph-io-io-gml-format-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-graphit.graph_io.io_gml_format">
+<span id="graphit-graph-io-io-gml-format-module"></span><h2>graphit.graph_io.io_gml_format module<a class="headerlink" href="#module-graphit.graph_io.io_gml_format" title="Permalink to this headline">¶</a></h2>
+<p>Functions for exporting and importing graphs to and from graph modelling
+language (GML) format as described in the online documentation:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graph_Modelling_Language">https://en.wikipedia.org/wiki/Graph_Modelling_Language</a>
+<a class="reference external" href="http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1">http://www.fim.uni-passau.de/index.php?id=17297&amp;L=1</a></p>
+</div></blockquote>
+<dl class="function">
+<dt id="graphit.graph_io.io_gml_format.read_gml">
+<code class="sig-prename descclassname">graphit.graph_io.io_gml_format.</code><code class="sig-name descname">read_gml</code><span class="sig-paren">(</span><em class="sig-param">gml</em>, <em class="sig-param">graph=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_gml_format.read_gml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read graph in GML format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gml</strong> (<em>File</em><em>, </em><em>string</em><em>, </em><em>stream</em><em> or </em><em>URL</em>) – GML graph data.</p></li>
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to import GML data in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Graph object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:graphit:Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="graphit.graph_io.io_gml_format.write_gml">
+<code class="sig-prename descclassname">graphit.graph_io.io_gml_format.</code><code class="sig-name descname">write_gml</code><span class="sig-paren">(</span><em class="sig-param">graph</em>, <em class="sig-param">node_tools=None</em>, <em class="sig-param">edge_tools=None</em><span class="sig-paren">)</span><a class="headerlink" href="#graphit.graph_io.io_gml_format.write_gml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a graphit graph to GML format</p>
+<p>Export graphit Graph data, nodes and edges in Graph Modelling Language
+(GML) format. The function replaces the graph NodeTools and EdgeTools
+with a custom version exposing a <cite>serialize</cite> method responsible for
+serializing the node/edge attributes in a GML format. The NodeTools
+class is also used to export Graph.data attributes.</p>
+<p>Custom serializers may be introduced as custom NodeTools or EdgeTools
+classes using the <cite>node_tools</cite> and/or <cite>edge_tools</cite> attributes.
+In addition, the graph ORM may be used to inject tailored <cite>serialize</cite>
+methods in specific nodes or edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<em>:graphit:Graph</em>) – Graph object to export</p></li>
+<li><p><strong>node_tools</strong> (<em>:graphit:NodeTools</em>) – NodeTools class with node serialize method</p></li>
+<li><p><strong>edge_tools</strong> (<em>:graphit:EdgeTools</em>) – EdgeTools class with edge serialize method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>GML graph representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>:py:str</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-graphit.graph_io.io_helpers">
 <span id="graphit-graph-io-io-helpers-module"></span><h2>graphit.graph_io.io_helpers module<a class="headerlink" href="#module-graphit.graph_io.io_helpers" title="Permalink to this headline">¶</a></h2>
@@ -1747,6 +1811,10 @@ a graph.</p>
            </div>
            
           </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
@@ -1763,7 +1831,7 @@ a graph.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Marc van Dijk
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
 
     </p>
   </div>
@@ -1789,15 +1857,7 @@ a graph.</p>
   
   
     
-    
-
-  <style>
-    /* Sidebar header (and topbar for mobile) */
-    .wy-side-nav-search, .wy-nav-top {
-      background: #f85b01;
-    }
-  </style>
-
+   
 
 </body>
 </html>
