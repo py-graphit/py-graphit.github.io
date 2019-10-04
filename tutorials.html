@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Examples &mdash; Graphit 0.2.1 documentation</title>
+  <title>Tutorials &mdash; Graphit 0.2.1 documentation</title>
   
 
   
@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial 1: Building simple graphs" href="_tutorials/basics1_building_graphs.html" />
     <link rel="prev" title="graphit.graph_utils package" href="graphit.graph_utils.html" /> 
 </head>
 
@@ -89,7 +90,17 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphit.html">graphit API reference</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-notebooks">Tutorial notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_tutorials/basics1_building_graphs.html">Building a graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_tutorials/basics2_nodes_and_edges.html">Working with nodes and edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_tutorials/basics3_graph_selections.html">Graph query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_tutorials/moderate1_graph_orm.html">Using the graph ORM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_tutorials/moderate2_graph_compare_join.html">Comparing and combining graphs</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -135,7 +146,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Examples</li>
+      <li>Tutorials</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -155,27 +166,32 @@
 
            <div itemprop="articleBody">
             
-  <div class="section" id="examples">
-<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<p>This page provides a series of examples, tutorials and recipes to help you
-get started with <code class="docutils literal notranslate"><span class="pre">mdtraj</span></code>.</p>
-<p>Each subsection is a notebook.  To open these notebooks in a “live”
-Jupyter/IPython session and execute the documentation interactively, you
-need to download the repository and start the Jupyter notebook.</p>
-<p>If you installed <cite>MDTraj</cite> from source, you will need to navigate to
-<code class="code docutils literal notranslate"><span class="pre">path-to-mdtraj/examples</span></code>. The notebook files for these examples and
-the notebooks are available in the top level  <a class="reference external" href="https://github.com/mdtraj/mdtraj/tree/master/examples">examples folder</a> on github too. In
-the directory with the notebook files, start an IPython notebook server:</p>
+  <div class="section" id="tutorials">
+<span id="id1"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<p>This page provides a series of examples, tutorials and recipes as Jupyter
+notebooks to help you get started using Graphit.</p>
+<p>Reading them online is helpful but it does not replace getting your hands
+dirty with live code. You can work with the <em>live</em> version of the Jupyter
+Notebook using the <em>Binder service</em> with the link below.</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/py-graphit/py-graphit.github.io/master?filepath=examples"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+<p>The source code of the notebooks is available on Graphit GitHub repository
+in the <a class="reference external" href="https://github.com/py-graphit/py-graphit.github.io/tree/master/examples">examples</a>
+folder. In the directory with the notebook files, start an IPython notebook server:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The pre-filled out notebooks are far less fun than running them
-yourself!</p>
+<div class="section" id="tutorial-notebooks">
+<h2>Tutorial notebooks<a class="headerlink" href="#tutorial-notebooks" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_tutorials/basics1_building_graphs.html">Building a graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tutorials/basics2_nodes_and_edges.html">Working with nodes and edges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tutorials/basics3_graph_selections.html">Graph query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tutorials/moderate1_graph_orm.html">Using the graph ORM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tutorials/moderate2_graph_compare_join.html">Comparing and combining graphs</a></li>
+</ul>
 </div>
-<p>Let us know if you would like to contribute other example notebooks, or
-have any suggestions for how these can be improved.</p>
+</div>
 </div>
 
 
@@ -189,6 +205,8 @@ have any suggestions for how these can be improved.</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="_tutorials/basics1_building_graphs.html" class="btn btn-neutral float-right" title="Tutorial 1: Building simple graphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="graphit.graph_utils.html" class="btn btn-neutral float-left" title="graphit.graph_utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

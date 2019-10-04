@@ -9,6 +9,13 @@ concepts into one easy to use package:
  - A Python Object Relation Mapper (ORN).
  - A Python native API. If you know Python you know Graphit.
 
+.. toctree::
+   :maxdepth: 1
+
+   installation
+   graphit API reference <graphit>
+   tutorials
+
 Why Graphit?
 ------------
 
@@ -35,20 +42,12 @@ code!
 Sounds great, show me something
 -------------------------------
 
-The `examples` section contains a few notebooks with a quick start on using the graph API and more advanced
+The `tutorials` section contains a few notebooks with a quick start on using the graph API and more advanced
 usage of data importers/exporters and the ORN. You can get your hands dirty right away using the live Jupyter
 Notebook service offered by the *Binder service* on the py-graphit GitHub page.
 
 .. image:: https://mybinder.org/badge_logo.svg
   :target: https://mybinder.org/v2/gh/py-graphit/py-graphit.github.io/master?filepath=examples
-
-
-.. toctree::
-   :maxdepth: 1
-
-   installation
-   graphit API reference <graphit>
-   tutorials
 
 License
 -------

@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Importing a graph &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Graphit
+          
+
+          
+            
+            <img src="../_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphit.html">graphit API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Importing a graph</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_tutorials/basic_axis_graph.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+           <div itemprop="articleBody">
+            
+  <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from graphit import GraphAxis
+from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
+from graphit.graph_io.io_jgf_format import read_jgf
+
+from orm_classes import Segid, Resid, Atom
+</pre></div>
+</div>
+<div class="section" id="importing-a-graph">
+<h1>Importing a graph<a class="headerlink" href="#importing-a-graph" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = read_jgf(&#39;files/axis_graph.jgf&#39;)
+g.node_tools = NodeAxisTools
+
+for n in g.iternodes():
+    print(n)
+</pre></div>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;system&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;residue&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">11</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">12</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">13</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">14</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">15</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">16</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">17</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">18</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">19</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;segid&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;segid&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;residue&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">21</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">22</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">23</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">24</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">25</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">26</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">27</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;residue&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">28</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">29</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;residue&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">30</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">31</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">32</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">33</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">34</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">35</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">36</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">37</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">6</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256200</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">8</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">GraphAxis</span> <span class="s2">&quot;atom&quot;</span> <span class="n">node</span> <span class="nb">object</span> <span class="mi">4511256048</span><span class="p">,</span> <span class="nb">id</span> <span class="mi">9</span><span class="p">:</span> <span class="mi">1</span> <span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">edges</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-axis">
+<h1>Working with axis<a class="headerlink" href="#working-with-axis" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># GraphAxis objects have a root
+print(g.root)
+
+root = g.get_root()
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Traverse along axis with respect to root
+segid = g.getnodes(2)
+
+print(segid)
+print(segid.parent())
+print(segid.children().keys())
+print(segid.ancestors().keys())
+print(segid.descendants().keys())
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Class magic methods
+
+for residue in segid:
+    print(residue.name)
+
+for atom in segid.residue:
+    print(atom.name, atom.elem, atom.value)
+
+print(atom.path())
+print(segid.residue.atom.name)
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Basic XPath query support
+
+print(g.xpath(&#39;/system/segid/residue&#39;).keys())
+print(g.xpath(&#39;//atom&#39;).values())
+print(g.xpath(&#39;//residue[3]&#39;).keys(&#39;value&#39;))
+print(g.xpath(&#39;//segid[@value=&quot;A&quot;]/residue[@value=1]&#39;).keys(&#39;value&#39;))
+print(g.xpath(&#39;//atom[@value&gt;620]&#39;).values())
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-the-graph-orm">
+<h1>Working with the graph ORM<a class="headerlink" href="#working-with-the-graph-orm" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g.orm.node_mapping.add(Segid, lambda x: x.get(&#39;key&#39;) == &#39;segid&#39;)
+g.orm.node_mapping.add(Resid, lambda x: x.get(&#39;key&#39;) == &#39;residue&#39;)
+g.orm.node_mapping.add(Atom, lambda x: x.get(&#39;key&#39;) == &#39;atom&#39;)
+
+for segid in root:
+    print(segid.custom_print())
+    for resid in segid:
+        print(resid.custom_print())
+        for atom in resid:
+            print(atom.custom_print())
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

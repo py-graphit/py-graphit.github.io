@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 3: Working with graph selections &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Graphit
+          
+
+          
+            
+            <img src="../_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphit.html">graphit API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial 3: Working with graph selections</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_tutorials/basics3_graph_selections.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+           <div itemprop="articleBody">
+            
+  <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import time
+import logging
+
+from graphit import Graph
+from graphit.graph_algorithms import node_neighbors
+
+logging.basicConfig(level=logging.WARN)
+</pre></div>
+</div>
+<div class="section" id="tutorial-3-working-with-graph-selections">
+<h1>Tutorial 3: Working with graph selections<a class="headerlink" href="#tutorial-3-working-with-graph-selections" title="Permalink to this headline">¶</a></h1>
+<p>Tutorial 2 demonstrated how to retrieve/query specific nodes and edges
+from a graph. In <strong>graphit</strong> these node and edge selections are regarded
+subgraphs of the parent graph they are selected from. In this tutorial
+you will take a closer look at these subgraphs and the special
+properties they have.</p>
+<div class="section" id="subgraphs-are-views-on-the-main-graph">
+<h2>Subgraphs are ‘views’ on the main graph<a class="headerlink" href="#subgraphs-are-views-on-the-main-graph" title="Permalink to this headline">¶</a></h2>
+<p>The various node and edge query and selection tools that <strong>graphit</strong>
+offers are powerfull in selecting subgraphs based on a wide range of
+criteria. The subgraphs returned are not a copy but a ‘view’ on the data
+in the main graph similar to dictionary views in Python. <strong>graphit</strong>
+aims in using views as often as possible for graph operations.</p>
+<p>Views are convenient because they are fast compared to making a full
+copies and do not fragment the data. The latter means that data
+modifications made in a ‘view’ effect the data stored in the <em>source</em>
+graph only and are synchronized automatically in all other views on the
+same data. The source or <em>origin</em> <code class="docutils literal notranslate"><span class="pre">Graph</span></code> representing the full node
+and edge data set can always be obtained from any selection using the
+<code class="docutils literal notranslate"><span class="pre">origin</span></code> attribute.</p>
+<div class="section" id="creating-subgraphs">
+<h3>1.1 Creating subgraphs<a class="headerlink" href="#creating-subgraphs" title="Permalink to this headline">¶</a></h3>
+<p>Create a subgraph using <code class="docutils literal notranslate"><span class="pre">getnodes</span></code> or <code class="docutils literal notranslate"><span class="pre">getedges</span></code> by default returns
+a <code class="docutils literal notranslate"><span class="pre">Graph</span></code> object with a view on the respective selection only. In both
+cases this means a view on the nodes, the edges connecting them and
+adjacency reflecting the neighbours of the nodes. Adjacency itself is
+not a view as both keys (source nodes) and the values (list of
+neighbouring nodes) will need to be adjusted to reflect the node and
+edge selection.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = Graph()
+g.add_edges([(1, 2), (2, 4), (4, 5), (4, 6), (5, 7), (6, 8), (7, 9)], node_from_edge=True)
+
+# Making a node selection using getnodes
+nsub1 = g.getnodes([4,5,6])
+print(nsub1.nodes.keys())
+print(nsub1.edges.keys())
+print(nsub1.adjacency())
+
+# Nodes, edges and adjacency are &#39;views&#39;
+print(nsub1.nodes.is_view, nsub1.edges.is_view)
+
+# Selecting nodes from another selection
+nsub2 = nsub1.getnodes([5,8])
+print(nsub2.nodes.keys())
+print(nsub2.edges.keys())
+print(nsub2.adjacency())
+
+# Selecting nodes that do not exist will not work
+nsub3 = nsub1.getnodes(8)
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># The source graph for the selections remains available
+print(nsub1.origin == g, nsub2.origin == g)
+
+# Data modifications in views are made on the parent data object and synchronized
+print(g.nodes[5])
+nsub1.nodes[5][&#39;key&#39;] = 15
+print(g.nodes[5], nsub2.nodes[5])
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Making an edge selection using getedges works in the same way as getnodes
+esub1 = g.getedges([(2, 4), (4, 2), (4, 5), (5, 4), (4, 6)])
+print(esub1.nodes.keys())
+print(esub1.edges.keys())
+print(esub1.adjacency())
+</pre></div>
+</div>
+</div>
+<div class="section" id="subgraph-connectivity">
+<h3>1.2 Subgraph connectivity<a class="headerlink" href="#subgraph-connectivity" title="Permalink to this headline">¶</a></h3>
+<p>Subgraphs created using <code class="docutils literal notranslate"><span class="pre">getnodes</span></code>, <code class="docutils literal notranslate"><span class="pre">getedges</span></code> or other selection
+and query methods return <code class="docutils literal notranslate"><span class="pre">Graph</span></code> objects with a view on the given
+selection. Although they seem to be isolated subgraphs they maintain
+connectivity with the origin graph by default.</p>
+<p>Connectivity behaviour is controlled using the <code class="docutils literal notranslate"><span class="pre">Graph.masked</span></code>
+attribute. False by default maintains connectivity with the origin graph
+while set to False treats the selection as an isolated subgraph.</p>
+<p>This is an important functionality as it for instance allows selection
+of a node while still maintaining information on the environment it is
+embedded in (like neighbours), <code class="docutils literal notranslate"><span class="pre">masked</span></code> set to true on the other hand
+treats the subgraph as an isolated graph even if it is connected to or
+embedded in a larger graph.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Get neighbours outside subgraph by default
+print(node_neighbors(g, 6))
+print(node_neighbors(nsub1, 6))
+
+# Set masked only considers the subgraph nodes as neighbours
+nsub1.masked = True
+print(node_neighbors(nsub1, 6))
+</pre></div>
+</div>
+</div>
+<div class="section" id="everything-is-a-view">
+<h3>1.3 Everything is a view<a class="headerlink" href="#everything-is-a-view" title="Permalink to this headline">¶</a></h3>
+<p><strong>graphit</strong> aims to use views as often as possible when operating on
+graph selections originating from the same origin graph. Only when
+operations will or are likely to return a graph with a distinct topology
+not found in the input graphs will it return a new independant graph.</p>
+</div>
+<div class="section" id="copying-graphs">
+<h3>1.3 Copying graphs<a class="headerlink" href="#copying-graphs" title="Permalink to this headline">¶</a></h3>
+<p>Moving from a graph with a ‘view’ on the origin graph to an independent
+graph is handled by the <code class="docutils literal notranslate"><span class="pre">Graph.copy</span></code> method that returns a (deep)copy.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cp = nsub1.copy()
+
+print(cp)
+print(cp.origin != nsub1.origin)
+print(cp.nodes.is_view, cp.edges.is_view, cp.adjacency.is_view)
+print(cp.nodes.keys())
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

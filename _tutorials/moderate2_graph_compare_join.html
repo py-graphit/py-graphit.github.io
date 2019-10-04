@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 5: Compairing, mergin and appending graphs &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Graphit
+          
+
+          
+            
+            <img src="../_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphit.html">graphit API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial 5: Compairing, mergin and appending graphs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_tutorials/moderate2_graph_compare_join.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+           <div itemprop="articleBody">
+            
+  <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import time
+import logging
+
+from graphit import Graph
+from graphit.graph_combinatorial.graph_setlike_operations import *
+
+logging.basicConfig(level=logging.WARN)
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Build tutorial graph
+
+graph1 = Graph(auto_nid=False)
+graph1.add_nodes(range(1, 11), graph=&#39;one&#39;)
+graph1.add_edges([(1, 2), (2, 3), (3, 4), (3, 5), (5, 6), (4, 7), (6, 8), (7, 8), (8, 9), (9, 10)])
+
+graph2 = Graph(auto_nid=False)
+graph2.add_nodes(range(6, 16), graph=&#39;two&#39;)
+graph2.add_edges([(6, 8), (7, 8), (8, 9), (9, 10), (10, 11), (10, 12), (12, 13), (11, 14), (13, 15), (14, 15)])
+
+print(&#39;Tutorial example graphs 1 and 2:&#39;, graph1, graph2)
+</pre></div>
+</div>
+<div class="section" id="tutorial-5-compairing-mergin-and-appending-graphs">
+<h1>Tutorial 5: Compairing, mergin and appending graphs<a class="headerlink" href="#tutorial-5-compairing-mergin-and-appending-graphs" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial you will take a closer look at <strong>graphit</strong> function for
+operations on multiple grpahs such as compairing two graphs, joining or
+merging them.</p>
+<div class="section" id="compairing-subgraphs">
+<h2>5.1 Compairing subgraphs<a class="headerlink" href="#compairing-subgraphs" title="Permalink to this headline">¶</a></h2>
+<p><strong>graphit</strong> offers a number of
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset">set-like</a>
+comparison methods to compare subgraphs based on topology defined by
+node IDs and edges. This means that the graphs at least need to share
+nodes with the same ID or derived from a common ancestor (origin graph).</p>
+<p>These functions aim to return a view-based result graph whenever
+possible. The principles and benefits of ‘views’ are discussed in more
+detail in the the moderate1_graph_orm.ipynb tutorial. If returning a
+view is not possible a new (deep copy) will be returned.</p>
+<p>Note: These functions do not update node and/or edge attributes in the
+resulting graph as might be required in for instance a union or
+intersection operation.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;intersection: {0}&#39;.format(graph_intersection(graph1, graph2)))
+print(&#39;difference: {0}&#39;.format(graph_difference(graph1, graph2)))
+print(&#39;symmetric_difference: {0}&#39;.format(graph_symmetric_difference(graph1, graph2)))
+print(&#39;union: {0}&#39;.format(graph_union(graph1, graph2)))
+
+print(&#39;\nissubset: {0}&#39;.format(graph_issubset(graph1.getnodes([3, 4, 5]), graph1)))
+print(&#39;issuperset: {0}&#39;.format(graph_issuperset(graph1, graph_union(graph1, graph2))))
+</pre></div>
+</div>
+<p>The set-like operations demonstrated above are also used in <code class="docutils literal notranslate"><span class="pre">Graph</span></code>
+magic methods where they are often combined with attribute update
+functions to for instance return a true union between two graphs.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Graph addition, attributes of first updated with second
+new = graph1 + graph2
+print(new.items(&#39;_id&#39;, &#39;graph&#39;))
+
+# Is graph 1 contained in the previous graph
+print(&#39;Graph 1 contained in new:&#39;, graph1 in new)
+print(&#39;Graph 1 not contained in graph 2:&#39;, graph1 in graph2)
+
+# Equality
+print(&#39;Graph 1 does not equal graph 2:&#39;, graph1 == graph2)
+print(&#39;A copy of graph 1 equals graph 1:&#39;, graph1.copy() == graph1)
+
+# Logical less-then/greater-then
+print(graph1 &lt;= new)
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

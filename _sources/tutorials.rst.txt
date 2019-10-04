@@ -1,28 +1,35 @@
-.. _examples:
+.. _tutorials:
 
-Examples
-========
+Tutorials
+=========
 
-This page provides a series of examples, tutorials and recipes to help you
-get started with ``mdtraj``.
+This page provides a series of examples, tutorials and recipes as Jupyter
+notebooks to help you get started using Graphit.
 
-Each subsection is a notebook.  To open these notebooks in a "live"
-Jupyter/IPython session and execute the documentation interactively, you
-need to download the repository and start the Jupyter notebook.
+Reading them online is helpful but it does not replace getting your hands
+dirty with live code. You can work with the *live* version of the Jupyter
+Notebook using the *Binder service* with the link below.
 
-If you installed `MDTraj` from source, you will need to navigate to
-:code:`path-to-mdtraj/examples`. The notebook files for these examples and
-the notebooks are available in the top level  `examples folder
-<https://github.com/mdtraj/mdtraj/tree/master/examples>`_ on github too. In
-the directory with the notebook files, start an IPython notebook server:
+.. image:: https://mybinder.org/badge_logo.svg
+  :target: https://mybinder.org/v2/gh/py-graphit/py-graphit.github.io/master?filepath=examples
+
+The source code of the notebooks is available on Graphit GitHub repository
+in the `examples <https://github.com/py-graphit/py-graphit.github.io/tree/master/examples>`_
+folder. In the directory with the notebook files, start an IPython notebook server:
 
 .. code:: bash
 
    $ jupyter notebook
 
-.. warning:: The pre-filled out notebooks are far less fun than running them
-             yourself!
 
+Tutorial notebooks
+------------------
 
-Let us know if you would like to contribute other example notebooks, or
-have any suggestions for how these can be improved.
+.. toctree::
+   :maxdepth: 1
+
+   Building a graph <_tutorials/basics1_building_graphs>
+   Working with nodes and edges <_tutorials/basics2_nodes_and_edges>
+   Graph query <_tutorials/basics3_graph_selections>
+   Using the graph ORM <_tutorials/moderate1_graph_orm>
+   Comparing and combining graphs <_tutorials/moderate2_graph_compare_join>

@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The graph Object Relation Mapper &mdash; Graphit 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Graphit
+          
+
+          
+            
+            <img src="../_static/graphit-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphit.html">graphit API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Graphit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>The graph Object Relation Mapper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_tutorials/moderate1_graph_orm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+           <div itemprop="articleBody">
+            
+  <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import logging
+
+from graphit import Graph
+
+logging.basicConfig(level=logging.WARN)
+</pre></div>
+</div>
+<div class="section" id="the-graph-object-relation-mapper">
+<h1>The graph Object Relation Mapper<a class="headerlink" href="#the-graph-object-relation-mapper" title="Permalink to this headline">¶</a></h1>
+<p>Graph libraries are first and foremost a database with node, edge and
+optional adjacency information. The libraries application programming
+interface (API) provides the methods to build, edit and query the stored
+graph data. For libraries written in an object oriented language (such
+as graphit in Python) the API is an object but also the nodes and edges
+it returns are often objects. These may be basic data structure such as
+dictionaries in the case of the
+<a class="reference external" href="http://www.networkx.github.io">networkX</a> library of more elaborate
+custom classes.</p>
+<p>In graphit every object representing a full graph, a subgraph or even
+single node or edge is itself derived from the Graph class. These
+objects always represent a <code class="docutils literal notranslate"><span class="pre">view</span></code> on the nodes and edges in the main
+storage class (initial Graph object initiated) for efficiency and
+concurancy. The abbility to always interact with the same consistent API
+regardless of the graph state is an attractive benefit of the library.
+But graphit goes one step further by dynamically building the Graph
+objects and allowing the user to add or change the objects methods
+through the use of an Object Relation Mapper (ORM).</p>
+<p>The ORM allows a user to map a custom class together with a matching
+function that will be evaluated against node or edge data every time a
+node or edge query is performed. All the custom classes associated to
+positive matches are used in building a new Graph or GraphAxis class.
+This design strategy provides a powerfull means to have fine grained
+control over the graph behaviour and the functionality of the returned
+Graph object. This turns an already feature rich graph library into a
+dynamic data modelling library, a combination unique to graphit.</p>
+<div class="section" id="using-the-orm">
+<h2>Using the ORM<a class="headerlink" href="#using-the-orm" title="Permalink to this headline">¶</a></h2>
+<p>Every new graph automatically initiates an instance of the GraphORM
+class. Graph objects returned by querying the “parent” graph will have a
+weak reference to the GraphORM class similar as to the nodes and edges
+storage objects.</p>
+<p>Let’s have a look at the capabilities of the ORM by building a simple
+example graph:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>graph = Graph()
+graph.add_edges([(1, 2), (2, 3), (2, 4), (3, 5), (3, 6), (4, 6), (6, 7), (7, 8), (7, 9)], node_from_edge=True)
+
+print(graph)
+print(graph.orm)
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">orm</span></code> object has no registered node or edge mappings yet. Let’s
+register a custom class to a node</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class CustomNodeClass(object):
+
+    def magic(self):
+        print(&#39;Hello from {0}&#39;.format(self.nid))
+
+graph.orm.node_mapping.add(CustomNodeClass, lambda x: x.get(&#39;_id&#39;) == 3)
+print(graph.orm)
+</pre></div>
+</div>
+<p>In using <code class="docutils literal notranslate"><span class="pre">node_mapping.add</span></code>, the <code class="docutils literal notranslate"><span class="pre">CustomNodeClass</span></code> class is
+registered and will be mapped when the lambda function evaluates to
+True. The second argument can be any function as long as it accepts a
+dictionary as the only argument. That plain Python dictionary contains
+the node attributes or edge attributes in the equivalent
+<code class="docutils literal notranslate"><span class="pre">edge_mapping.add</span></code> function.</p>
+<p>Note that it is highly recommended to use the dictionary <code class="docutils literal notranslate"><span class="pre">get</span></code> method
+to avoid raising a KeyError when the key is not defined which is likely
+to happen.</p>
+<p>Now, fetching node 3 will return a Graph object with the added <code class="docutils literal notranslate"><span class="pre">magic</span></code>
+method while a call node 5 for instance will not have that method.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>node3 = graph.getnodes(3)
+
+print(hasattr(node3, &#39;magic&#39;))
+node3.magic()
+
+print(hasattr(graph.getnodes(5), &#39;magic&#39;))
+</pre></div>
+</div>
+<p><strong>Class inheritance</strong></p>
+<p>In the example above, node 3 has the <code class="docutils literal notranslate"><span class="pre">magic</span></code> method as we defined
+while node 5 does not. However, if we fetch node 5 from the node 3 graph
+object it inherits node3 methods and that includes the <code class="docutils literal notranslate"><span class="pre">magic</span></code> method.
+This is controlled by the <code class="docutils literal notranslate"><span class="pre">inherit</span></code> argument of the GraphORM class
+that defaults to True. When disabled, each newly created Graph object
+only consists of the Graph base class and the custom classes resolved
+for the particular call to the ORM.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>node3.getnodes(5).magic()
+
+# Disable ORM inheritance
+graph.orm.inherit = False
+print(hasattr(node3.getnodes(5), &#39;magic&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="https://github.com/py-graphit/py-graphit">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Marc van Dijk, VU University, Amsterdam
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

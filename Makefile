@@ -25,3 +25,4 @@ help:
 	cp -f ./$(BUILDDIR)/html/.nojekyll .
 	cp -fr ./$(BUILDDIR)/html/_sources .
 	cp -fr ./$(BUILDDIR)/html/_static .
+	cp -fr ./$(BUILDDIR)/html/_tutorials .
